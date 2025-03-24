@@ -1,0 +1,61 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Auxiliar\Form.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="componentes\Acompanhapage.razor" />
+    <Content Remove="componentes\Avisos.razor" />
+    <Content Remove="componentes\NovoTicketApoioATOMgest.razor" />
+    <Content Remove="componentes\NovoTicketApoioFinanceiro.razor" />
+    <Content Remove="componentes\NovoTicketApoioHeadline.razor" />
+    <Content Remove="componentes\NovoTicketApoioPROtextil.razor" />
+    <Content Remove="componentes\NovoTicketComercialATOMgest.razor" />
+    <Content Remove="componentes\NovoTicketComercialIT.razor" />
+    <Content Remove="componentes\NovoTicketComercialOutros.razor" />
+    <Content Remove="componentes\NovoTicketComercialPROtextil.razor" />
+    <Content Remove="componentes\VejaoSeuTicket.razor" />
+    <Content Remove="Pages\TicketApoioATOMgest.razor" />
+    <Content Remove="Pages\TicketApoioFinanceiro.razor" />
+    <Content Remove="Pages\TicketApoioHeadline.razor" />
+    <Content Remove="Pages\TicketApoioPROtextil.razor" />
+    <Content Remove="Pages\TicketComercialATOMgest.razor" />
+    <Content Remove="Pages\TicketComercialeITrazor.razor" />
+    <Content Remove="Pages\TicketComercialOutros.razor" />
+    <Content Remove="Pages\TicketComercialPROtextil.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="componentes\Avisos.razor.css" />
+    <None Remove="componentes\NovoTicketApoioATOMgest.razor.css" />
+    <None Remove="componentes\NovoTicketApoioFinanceiro.razor.css" />
+    <None Remove="componentes\NovoTicketApoioHeadline.razor.css" />
+    <None Remove="componentes\NovoTicketApoioPROtextil.razor.css" />
+    <None Remove="componentes\NovoTicketComercialATOMgest.razor.css" />
+    <None Remove="componentes\NovoTicketComercialIT.razor.css" />
+    <None Remove="componentes\NovoTicketComercialOutros.razor.css" />
+    <None Remove="componentes\NovoTicketComercialPROtextil.razor.css" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Blazored.LocalStorage" Version="4.5.0" />
+    <PackageReference Include="Blazored.SessionStorage" Version="2.4.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="8.0.13" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.0.13" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="8.0.13" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.AspNetCore.WebUtilities" Version="8.0.13" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.6.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Shared\Shared.csproj" />
+  </ItemGroup>
+
+</Project>

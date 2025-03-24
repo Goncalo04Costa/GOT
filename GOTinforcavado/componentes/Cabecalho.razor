@@ -1,0 +1,305 @@
+﻿@inject NavigationManager Navigation
+<style>
+    .cabecalho {
+        height: 72px;
+        background: #E8F2F3;
+        display: flex;
+        align-items: center;
+        padding: 0 130px;
+        justify-content: space-between;
+        position: relative; /* para posicionar o popup em relação ao cabeçalho */
+    }
+
+    .cabecalhoesq {
+        display: flex;
+        align-items: center;
+    }
+
+    .logoGOT {
+        padding-right: 20px;
+    }
+
+    .byinforcavadologo {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .byInforcavado {
+        margin: 0;
+        font-family: "Poppins";
+        font-size: 10px;
+        font-weight: 500;
+        color: #17585F;
+    }
+
+    .verticket {
+        width: fit-content;
+        height: 40px;
+        background: #17585F;
+        color: white;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 16px;
+        margin-right: 8px;
+        cursor: pointer;
+        border: none;
+    }
+
+    .menu {
+        border-radius: 20px;
+        display: none;
+        cursor: pointer;
+    }
+
+    .verticket p, .website p {
+        font-family: "Sora";
+        font-weight: 500;
+        font-size: 14px;
+    }
+
+    .website {
+        width: fit-content;
+        border: 1px solid #B2BEBE;
+        height: 40px;
+        color: var(--neutral-500);
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 16px;
+    }
+
+    .popup-menu {
+        display: none;
+        position: absolute;
+        top: 60px;
+        right: 0px;
+        height: 48px;
+        background: white;
+        padding: 18px 14px;
+        width: 100%;
+        z-index: 1000;
+    }
+
+        .popup-menu.show {
+            display: block;
+        }
+
+        .popup-menu a {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            font-family: "Sora";
+            font-weight: 500;
+            font-size: 14px;
+            color: #17585F;
+            padding: 5px 10px;
+        }
+
+            .popup-menu a:hover {
+                border-radius: 5px;
+            }
+
+    /* Responsividade */
+    @@media (max-width: 1280px) {
+        .cabecalho {
+            padding: 0 96px;
+        }
+    }
+
+    @@media (max-width: 1024px) {
+        .cabecalho {
+            padding: 0 40px;
+        }
+    }
+
+    @@media (max-width: 768px) {
+        .cabecalho {
+            padding: 0 40px;
+        }
+
+        .menu {
+            display: inline;
+        }
+
+        .website {
+            display: none;
+        }
+    }
+
+    @@media (max-width: 640px) {
+        .cabecalho {
+            padding: 0 40px;
+        }
+
+        .menu {
+            display: inline;
+        }
+
+        .website {
+            display: none;
+        }
+
+        .verticket {
+            display: none;
+        }
+
+        .popup-menu {
+            display: none;
+            position: absolute;
+            top: 60px;
+            right: 0px;
+            height: 112px;
+            background: white;
+            padding: 18px 14px;
+            width: 100%;
+            z-index: 1000;
+        }
+    }
+
+    .code-popup {
+        position: absolute;
+        top: 58px;
+        right: 130px;
+        background: #fff;
+        padding: 16px;
+        width: 476px;
+        border-radius: 8px;
+    }
+
+    
+    .input-container {
+        position: relative;
+        width: 100%;
+    }
+
+        .input-container input {
+            width: 100%;
+            height: 48px;
+            border: 1px solid #758A8A;
+            border-radius: 8px;
+            padding: 0 10px;
+            font-size: 14px;
+        }
+
+        .input-container button {
+            position: absolute;
+            right: 4px;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 40px;
+            background: #1B7C87;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-size: 14px;
+            padding: 0 12px;
+            cursor: pointer;
+            width: 124px;
+        }
+</style>
+
+<header class="cabecalho">
+    <div class="cabecalhoesq">
+        <img class="logoGOT" src="../imagens/Logo-growing-together-prioritario-cores.svg" alt="Logo GOT" />
+        @if (imagem)
+        {
+            <div class="byinforcavadologo">
+                <img class="logoInfor" src="../imagens/inforcavado.svg" alt="Logo Inforcavado" style="width:24px; height:24px" />
+                <p class="byInforcavado">By Inforcávado</p>
+            </div>
+        }
+    </div>
+
+    <div class="cabecalhoesq">
+        @if (botoesrf != null)
+        {
+            @botoesrf
+        }
+        else
+        {
+            @if (botoes == Botoes.Acompanhamento)
+            {
+                <button class="verticket" @onclick="ToggleCodePopup">
+                    <span class="material-symbols-outlined">confirmation_number</span>
+                    <p>Acompanhar Ticket</p>
+                </button>
+
+                <a href="https://inforcavado.com" class="website" target="_blank" style="text-decoration: none;">
+                    <p>Website Inforcavado</p>
+                </a>
+
+                <div class="menu" @onclick="ToggleMenu">
+                    <span class="material-symbols-outlined">menu</span>
+                </div>
+
+                <div class="popup-menu @(isMenuOpen ? "show" : "")">
+                    <a href="/AcompanhaTicket" target="_blank" style="text-decoration: none;">
+                        <span class="material-symbols-outlined">confirmation_number</span>
+                        <p>Acompanhar Ticket</p>
+                    </a>
+
+                    <a href="https://inforcavado.com" target="_blank">
+                        <span class="material-symbols-outlined">language</span>
+                        <span>Website Inforcavado</span>
+                    </a>
+                </div>
+            }
+            else if (botoes == Botoes.Novo)
+            {
+                <a href="/" class="verticket" target="_blank" style="text-decoration: none;">
+                    <span class="material-symbols-outlined">add</span>
+                    <p>Novo Ticket</p>
+                </a>
+            }
+        }
+    </div>
+
+    @if (isCodePopupOpen)
+    {
+        <div class="code-popup">
+            <div class="input-container">
+                <input type="text" @bind="ticketCode" placeholder="Introduza o código..." />
+                <button @onclick="SubmitCode">Acompanhar</button>
+            </div>
+        </div>
+    }
+</header>
+
+@code {
+    [Parameter] public bool imagem { get; set; }
+    [Parameter] public Botoes botoes { get; set; } = Botoes.Acompanhamento;
+    [Parameter] public RenderFragment? botoesrf { get; set; }
+
+    private bool isMenuOpen = false;
+    private bool isCodePopupOpen = false;
+    private string ticketCode = string.Empty;
+
+    private void ToggleMenu()
+    {
+        isMenuOpen = !isMenuOpen;
+    }
+
+    private void ToggleCodePopup()
+    {
+        isCodePopupOpen = !isCodePopupOpen;
+    }
+
+    private void SubmitCode()
+    {
+        if (!string.IsNullOrWhiteSpace(ticketCode))
+        {
+            Console.WriteLine($"Código inserido: {ticketCode}");
+            isCodePopupOpen = false;
+            Navigation.NavigateTo($"/AcompanhaTicket?codigo={ticketCode}"); 
+        }
+    }
+    public enum Botoes
+    {
+        Acompanhamento = 1,
+        Novo = 2
+    }
+}

@@ -1,0 +1,99 @@
+is_global = true
+build_property.EnableAotAnalyzer = 
+build_property.EnableSingleFileAnalyzer = 
+build_property.EnableTrimAnalyzer = false
+build_property.IncludeAllContentForSelfExtract = 
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = false
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = browser
+build_property.RootNamespace = GOTinforcavado
+build_property.RootNamespace = GOTinforcavado
+build_property.ProjectDir = C:\Inforcavado\GOTinforcavado\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = false
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Inforcavado\GOTinforcavado
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Inforcavado/GOTinforcavado/App.razor]
+build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Inforcavado/GOTinforcavado/componentes/Headline.razor]
+build_metadata.AdditionalFiles.TargetPath = Y29tcG9uZW50ZXNcSGVhZGxpbmUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Inforcavado/GOTinforcavado/componentes/ZonaEscolha.razor]
+build_metadata.AdditionalFiles.TargetPath = Y29tcG9uZW50ZXNcWm9uYUVzY29saGEucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Inforcavado/GOTinforcavado/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = TWFpbkxheW91dC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Inforcavado/GOTinforcavado/Pages/Acompanha.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWNvbXBhbmhhLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Inforcavado/GOTinforcavado/Pages/Apoio.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXBvaW8ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Inforcavado/GOTinforcavado/Pages/Comercial.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29tZXJjaWFsLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Inforcavado/GOTinforcavado/Pages/Formulario.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRm9ybXVsYXJpby5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Inforcavado/GOTinforcavado/Pages/Index.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Inforcavado/GOTinforcavado/Pages/Login.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9naW4ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Inforcavado/GOTinforcavado/Pages/MostraTickets.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTW9zdHJhVGlja2V0cy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Inforcavado/GOTinforcavado/Pages/Sucesso.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3VjZXNzby5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Inforcavado/GOTinforcavado/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Inforcavado/GOTinforcavado/componentes/Autenticacao.razor]
+build_metadata.AdditionalFiles.TargetPath = Y29tcG9uZW50ZXNcQXV0ZW50aWNhY2FvLnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-tr91tpl2et
+
+[C:/Inforcavado/GOTinforcavado/componentes/Cabecalho.razor]
+build_metadata.AdditionalFiles.TargetPath = Y29tcG9uZW50ZXNcQ2FiZWNhbGhvLnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-yhqzdqbb95
+
+[C:/Inforcavado/GOTinforcavado/componentes/ComercialCards.razor]
+build_metadata.AdditionalFiles.TargetPath = Y29tcG9uZW50ZXNcQ29tZXJjaWFsQ2FyZHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-nilh05x4c5
+
+[C:/Inforcavado/GOTinforcavado/componentes/Cookies.razor]
+build_metadata.AdditionalFiles.TargetPath = Y29tcG9uZW50ZXNcQ29va2llcy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-i103gbv6iu
+
+[C:/Inforcavado/GOTinforcavado/componentes/Introdutoria.razor]
+build_metadata.AdditionalFiles.TargetPath = Y29tcG9uZW50ZXNcSW50cm9kdXRvcmlhLnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-av9hrelvtk
+
+[C:/Inforcavado/GOTinforcavado/componentes/Rodape.razor]
+build_metadata.AdditionalFiles.TargetPath = Y29tcG9uZW50ZXNcUm9kYXBlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-txnsjueod0

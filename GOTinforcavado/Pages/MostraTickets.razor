@@ -1,0 +1,407 @@
+﻿@page "/MostraTikcets"
+@inject HttpClient HttpClient
+@using GOTinforcavado.Services
+@using Microsoft.AspNetCore.Components.Authorization
+@using Microsoft.AspNetCore.Components.Forms
+@inject NavigationManager NavigationManager
+@using Shared.models
+@inject TicketService TicketService
+@inject UtilizadorService UtilizadorService
+@inject ComentarioService ComentarioService
+@inject EventoService EventoService
+@using MudBlazor
+@using System.Security.Cryptography
+@using System.Text
+@using System.Globalization
+@using System.Text.RegularExpressions
+@using Microsoft.AspNetCore.Components
+@using Microsoft.AspNetCore.Components.Web
+@using System.Security.Claims
+@inject AuthenticationStateProvider AuthenticationStateProvider
+
+<Cabecalho imagem="false" botoes="Cabecalho.Botoes.Novo" />
+<div class="mostratickets">
+    <div class="titulo">Tickets</div>
+    <div class="Buttons">
+        <MudPopover Target="departamentoButton" Open="@isDepartamentoPopoverOpen">
+            <MudPaper Class="popover-container">
+                <MudButton Variant="Variant.Text" Color="Color.Primary" Style="color: #19235699;" OnClick="() => FiltrarPorDepartamento(null)">
+                    Todos
+                </MudButton>
+                @foreach (var departamento in Departamentos)
+                {
+                    <MudButton Variant="Variant.Text" Color="Color.Primary" Style="color: #19235699;" OnClick="() => FiltrarPorDepartamento(departamento)">
+                        @departamento
+                    </MudButton>
+                }
+            </MudPaper>
+        </MudPopover>
+        <MudPopover Target="Topico" Open="@isTopicoPopoverOpen">
+            <MudPaper Class="popover-container">
+                <MudButton Variant="Variant.Text" Color="Color.Primary" Style="color: #19235699;" OnClick="() => FiltrarPorTopico(null)">
+                    Todos
+                </MudButton>
+                @foreach (var escolhaInicial in Topicos)
+                {
+                    <MudButton Variant="Variant.Text" Color="Color.Primary" Style="color: #19235699;" OnClick="() => FiltrarPorTopico(escolhaInicial)">
+                        @escolhaInicial
+                    </MudButton>
+                }
+            </MudPaper>
+        </MudPopover>
+        <button id="departamentoButton" class="Departamento" @onclick="ToggleDepartamentoPopover">
+            <span class="material-symbols-outlined">apps</span>
+            Departamento
+            <span class="material-symbols-outlined">arrow_drop_down</span>
+        </button>
+        <button class="Topico" @onclick="ToggleTopicoPopover">
+            <span class="material-symbols-outlined">help</span>
+            Topico
+            <span class="material-symbols-outlined">arrow_drop_down</span>
+        </button>
+        <div class="ButtonsRight">
+            <button class="button @(visualizacaoAtual == Visualizacao.Tabela ? "ButtonPressed" : "")"
+                    @onclick="() => MudarVisualizacao(Visualizacao.Tabela)">
+                <span class="material-symbols-outlined">table</span>
+            </button>
+            <button class="button @(visualizacaoAtual == Visualizacao.Lista ? "ButtonPressed" : "")"
+                    @onclick="() => MudarVisualizacao(Visualizacao.Lista)">
+                <span class="material-symbols-outlined">format_list_bulleted</span>
+            </button>
+            <button class="button @(visualizacaoAtual == Visualizacao.Cards ? "ButtonPressed" : "")"
+                    @onclick="() => MudarVisualizacao(Visualizacao.Cards)">
+                <span class="material-symbols-outlined">dashboard</span>
+            </button>
+        </div>
+
+
+    </div>
+    @if (isLoading)
+    {
+        <div class="loading-message">Aguarde, a carregar tickets...</div>
+    }
+    else
+    {
+        @if (visualizacaoAtual == Visualizacao.Tabela)
+        {
+            <table class="ticket-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Assunto</th>
+                        <th>Data de Criacao</th>
+                        <th>Departamento</th>
+                        <th>Topico</th>
+                        <th>Estado</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var ticket in GridData)
+                    {
+                        <tr>
+                            <td>@ticket.Id</td>
+                            <td>@ticket.Assunto</td>
+                            <td>@ticket.Data.ToString("dd/MM/yyyy")</td>
+                            <td>@ticket.Departamento</td>
+                            <td>@ticket.EscolhaInicial</td>
+                            <td>
+                                <span class="estado-badge @ObterClasseEstado(ticket.EstadoTarefa)">
+                                    @ticket.EstadoTarefa
+                                </span>
+                            </td>
+                            <td>
+                                <span class="material-symbols-outlined" style="color: #758A8A">
+                                    outgoing_mail
+                                </span>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else if (visualizacaoAtual == Visualizacao.Lista)
+        {
+            <MudList T="string">
+                @foreach (var ticket in GridData)
+                {
+                    <MudListItem T="string">
+                        <MudGrid>
+                            <!-- Primeira Divisão: Apenas o ID -->
+                            <MudItem xs="12" class="font-weight-bold">
+                                ID: @ticket.Id
+                            </MudItem>
+
+                            <!-- Segunda Divisão: Assunto, Departamento, Escolha Inicial, Estado da Tarefa -->
+                            <MudItem xs="12">
+                                <strong>@ticket.Assunto</strong> - @ticket.Departamento - @ticket.EscolhaInicial
+                                <span class="estado-badge @ObterClasseEstado(ticket.EstadoTarefa)">
+                                    @ticket.EstadoTarefa
+                                </span>
+                            </MudItem>
+
+                            <!-- Terceira Divisão: Data de Criação -->
+                            <MudItem xs="12" class="text-muted">
+                                Criado em: @ticket.Data.ToString("dd/MM/yyyy")
+                            </MudItem>
+                        </MudGrid>
+                    </MudListItem>
+                }
+            </MudList>
+
+        }
+        else if (visualizacaoAtual == Visualizacao.Cards)
+        {
+            <div class="cards-container">
+                @foreach (var ticket in GridData)
+                {
+                    <MudCard Class="ticket-card">
+                        <MudCardContent>
+                            <div><strong>Codigo:</strong> @ticket.Id</div>
+                            <div><strong>Assunto:</strong> @ticket.Assunto</div>
+                            <div><strong>Departamento:</strong> @ticket.Departamento</div>
+                            <div><strong>Tópico:</strong> @ticket.EscolhaInicial</div>
+                            <div><strong>Data:</strong> @ticket.Data.ToString("dd/MM/yyyy")</div>
+                            <span class="estado-badge @ObterClasseEstado(ticket.EstadoTarefa)">
+                                @ticket.EstadoTarefa
+                            </span>
+                        </MudCardContent>
+                    </MudCard>
+                }
+            </div>
+
+        }
+    }
+</div>
+
+
+<Rodape />
+<Cookies />
+
+@code {
+    private List<Ticket> GridData = new();
+    private List<Ticket> TodosTickets = new();
+    private List<string> Departamentos = new();
+    private List<string> Topicos = new();
+    private bool isLoading = true;
+    private bool isDepartamentoPopoverOpen = false;
+    private bool isTopicoPopoverOpen = false;
+    private Visualizacao visualizacaoAtual = Visualizacao.Tabela;
+
+    private void MudarVisualizacao(Visualizacao novaVisualizacao)
+    {
+        visualizacaoAtual = novaVisualizacao;
+    }
+
+    private enum Visualizacao
+    {
+        Tabela,
+        Lista,
+        Cards
+    }
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        TodosTickets = await TicketService.GetTicketsAsync();
+        GridData = new List<Ticket>(TodosTickets);
+        Departamentos = TodosTickets.Select(t => t.Departamento).Distinct().ToList();
+        Topicos = TodosTickets.Select(t => t.EscolhaInicial).Distinct().ToList();
+        isLoading = false;
+    }
+
+    private void FiltrarPorDepartamento(string departamento)
+    {
+        GridData = departamento == null ? new List<Ticket>(TodosTickets) : TodosTickets.Where(t => t.Departamento == departamento).ToList();
+        isDepartamentoPopoverOpen = false;
+    }
+
+    private void FiltrarPorTopico(string topico)
+    {
+        GridData = string.IsNullOrEmpty(topico) ? new List<Ticket>(TodosTickets) : TodosTickets.Where(t => t.EscolhaInicial == topico).ToList();
+        isTopicoPopoverOpen = false;
+    }
+
+    private void ToggleDepartamentoPopover()
+    {
+        isDepartamentoPopoverOpen = !isDepartamentoPopoverOpen;
+    }
+
+    private void ToggleTopicoPopover()
+    {
+        isTopicoPopoverOpen = !isTopicoPopoverOpen;
+    }
+
+    private string ObterClasseEstado(EstadoTarefa estado)
+    {
+        return estado switch
+        {
+            EstadoTarefa.PorIniciar => "estado-por-iniciar",
+            EstadoTarefa.EmCurso => "estado-em-curso",
+            EstadoTarefa.Concluido => "estado-concluido",
+            EstadoTarefa.Publicado => "estado-publicado",
+            EstadoTarefa.Arquivado => "estado-arquivado",
+            EstadoTarefa.EmEspera => "estado-em-espera",
+            _ => ""
+        };
+    }
+}
+
+
+<style>
+    .mostratickets {
+        background-color: #FFFF;
+        padding: 16px 140px;
+    }
+
+    .titulo {
+        width: 92px;
+        color: #12444A;
+        font-family: "Poppins";
+        font-size: 24px;
+        font-weight: 600;
+        padding-bottom: 16px;
+    }
+
+    .Departamento, .Topico {
+        background-color: white;
+        width: 156px;
+        display: flex;
+        flex-direction: row;
+        color: #19235699;
+        font-family: "Poppins";
+        font-size: 13px;
+        font-weight: 500;
+        border: 1px solid #22658933;
+        border-radius: 8px;
+        margin-right: 8px;
+    }
+
+    .Buttons {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .ButtonsRight {
+        display: flex;
+        flex-direction: row;
+        color: #19235699;
+        margin-left: auto;
+    }
+
+    .button {
+        background-color: transparent;
+        color: #19235699;
+        border: none;
+        cursor: pointer;
+        padding: 10px;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+    }
+
+        .button:hover {
+            background-color: #19235633; 
+        }
+
+    .ButtonPressed {
+        background-color: #E8F2F3; 
+        color: #1B7C87; 
+        transform: scale(0.95); 
+        font-weight: bold;
+    }
+
+
+
+    .ticket-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+        .ticket-table th, .ticket-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .ticket-table th {
+            background-color: #f2f2f2;
+        }
+
+    .estado-badge {
+        display: inline-block;
+        padding: 4px 8px;
+        border-radius: 12px;
+        font-size: 14px;
+        font-weight: 500;
+        min-width: 100px;
+        text-align: center;
+    }
+
+
+    .estado-por-iniciar {
+        background-color: #1923560D;
+        color: #192356;
+    }
+
+    .estado-em-curso {
+        background-color: #8BB7311A;
+        color: #8BB731;
+    }
+
+    .estado-concluido {
+        background-color: #33A3631A;
+        color: #33A363;
+    }
+
+    .estado-publicado {
+        background-color: #5D22891A;
+        color: #5D2289;
+    }
+
+    .estado-arquivado {
+        background-color: #192356;
+        color: white;
+    }
+
+    .estado-em-espera {
+        background-color: #192356;
+        color: white;
+    }
+
+
+    .ticket-table th {
+        background-color: #1923560D;
+        color: #19235699;
+    }
+
+    .ticket-table th, .ticket-table td {
+        border: 1px solid #2265891A;
+        padding: 8px;
+        text-align: left;
+    }
+
+    .loading-message {
+        text-align: center;
+        font-size: 18px;
+        font-weight: bold;
+        color: #12444A;
+        padding: 20px;
+    }
+
+    .ticket-card{
+        width: calc(25% - 10px); 
+        min-width: 266px; 
+        height: 178px;
+        padding: 10px;
+        box-sizing: border-box; 
+    }
+
+    .cards-container{
+        display: flex;
+        flex-wrap: wrap; 
+        justify-content: flex-start; 
+        gap: 12px; 
+</style>
+

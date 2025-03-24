@@ -1,0 +1,112 @@
+﻿<div class="header-line1">
+    <a href="/" style="text-decoration:none">
+        <p class="TextosAnteriores">Inicio ></p>
+    </a>
+    <a href="/@EscolhaInicial" style="text-decoration:none">
+        <p class="TextosAnteriores2">@EscolhaInicial ></p>
+    </a>
+    <p class="TextoAtual" style="margin-left: @(EscolhaInicial == "Apoio" ? "8px" : EscolhaInicial == "Comercial" ? "38px" : "18px");">
+        @Departamento
+    </p>
+
+</div>
+<div class="header-line2">
+    <a href="/@EscolhaInicial">
+        <div class="SetaTras">
+            <span class="material-symbols-outlined">arrow_back</span>
+        </div>
+    </a>
+    <div class="TituloPagina">@Departamento</div>
+</div>
+
+@code {
+
+    [Parameter]
+    public string EscolhaInicial { get; set; } = string.Empty;
+
+    [Parameter]
+    public string Departamento { get; set; } = string.Empty;
+}
+
+
+
+
+<style>
+    .TextosAnteriores {
+        width: 55px;
+        height: 18px;
+        color: #758A8A;
+        opacity: 1;
+        font-family: "Sora", sans-serif;
+        white-space: nowrap;
+        margin-top: 32px;
+    }
+
+
+    .TextosAnteriores2 {
+        width: 55px;
+        height: 18px;
+        color: #758A8A;
+        opacity: 1;
+        font-family: "Sora", sans-serif;
+        margin-left: 8px;
+        white-space: nowrap;
+        margin-top: 32px;
+    }
+
+    .TextoAtual {
+        width: 117px;
+        height: 18px;
+        color: #272E2E;
+        opacity: 1;
+        font-family: "Sora", sans-serif;
+        white-space: nowrap;
+        margin-left: 18px;
+        margin-top: 32px;
+    }
+
+    .CaixaSucesso {
+        height: 212px;
+        width: 536px;
+        background-color: #A2C8501A;
+        border-radius: 24px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center !important;
+    }
+
+    .header-line1 {
+        display: flex;
+        align-items: flex-start;
+        width: 100%;
+    }
+
+    .header-line2 {
+        display: flex;
+        align-items: flex-start;
+        width: 100%;
+    }
+
+    .SetaTras {
+        width: 24px;
+        height: 24px;
+        color: grey;
+        margin-top: 12px;
+    }
+
+    .TituloPagina {
+        width: 262px;
+        height: 45px;
+        letter-spacing: 0px;
+        color: #12444A;
+        opacity: 1;
+        font-family: "Poppins", sans-serif;
+        font-size: 32px;
+        font-weight: 500;
+        white-space: nowrap;
+        margin-left: 8px;
+        font-weight: 600;
+        padding-bottom: 72px;
+    }
+</style>
