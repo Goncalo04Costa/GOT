@@ -1,0 +1,349 @@
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\appsettings.Development.json
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\appsettings.json
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\APIGOTinforcavado.staticwebassets.runtime.json
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\APIGOTinforcavado.exe
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\APIGOTinforcavado.deps.json
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\APIGOTinforcavado.runtimeconfig.json
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\APIGOTinforcavado.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\APIGOTinforcavado.pdb
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\Azure.Core.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\Azure.Identity.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\Blazored.LocalStorage.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\Blazored.SessionStorage.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\Humanizer.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\Microsoft.AspNetCore.Authorization.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\Microsoft.AspNetCore.Components.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\Microsoft.AspNetCore.Components.Forms.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\Microsoft.AspNetCore.Components.Web.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\Microsoft.AspNetCore.Metadata.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\Microsoft.CodeAnalysis.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\Microsoft.CodeAnalysis.Workspaces.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\Microsoft.Data.SqlClient.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\Microsoft.Extensions.Localization.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\Microsoft.Extensions.Localization.Abstractions.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\Microsoft.Identity.Client.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\Microsoft.Identity.Client.Extensions.Msal.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\Microsoft.JSInterop.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\Microsoft.OpenApi.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\Microsoft.SqlServer.Server.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\Mono.TextTemplating.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\MudBlazor.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\System.CodeDom.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\System.Composition.AttributedModel.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\System.Composition.Convention.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\System.Composition.Hosting.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\System.Composition.Runtime.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\System.Composition.TypedParts.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\System.Configuration.ConfigurationManager.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\System.Drawing.Common.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\System.Memory.Data.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\System.Runtime.Caching.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\System.Security.Permissions.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\System.Windows.Extensions.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.resources.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.resources.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.resources.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.resources.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.resources.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.resources.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.resources.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.resources.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.resources.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.resources.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.resources.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.resources.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.resources.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\runtimes\unix\lib\net6.0\Microsoft.Data.SqlClient.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\runtimes\win\lib\net6.0\Microsoft.Data.SqlClient.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\runtimes\win\lib\net6.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\runtimes\unix\lib\net6.0\System.Drawing.Common.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\Shared.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\bin\Debug\net8.0\Shared.pdb
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\obj\Debug\net8.0\APIGOTinforcavado.csproj.AssemblyReference.cache
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\obj\Debug\net8.0\APIGOTinforcavado.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\obj\Debug\net8.0\APIGOTinforcavado.AssemblyInfoInputs.cache
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\obj\Debug\net8.0\APIGOTinforcavado.AssemblyInfo.cs
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\obj\Debug\net8.0\APIGOTinforcavado.csproj.CoreCompileInputs.cache
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\obj\Debug\net8.0\APIGOTinforcavado.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\obj\Debug\net8.0\APIGOTinforcavado.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\obj\Debug\net8.0\staticwebassets.build.json
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\obj\Debug\net8.0\staticwebassets.development.json
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\obj\Debug\net8.0\staticwebassets\msbuild.APIGOTinforcavado.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\obj\Debug\net8.0\staticwebassets\msbuild.build.APIGOTinforcavado.props
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.APIGOTinforcavado.props
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.APIGOTinforcavado.props
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\obj\Debug\net8.0\staticwebassets.pack.json
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\obj\Debug\net8.0\scopedcss\bundle\APIGOTinforcavado.styles.css
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\obj\Debug\net8.0\APIGOTin.410360AE.Up2Date
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\obj\Debug\net8.0\APIGOTinforcavado.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\obj\Debug\net8.0\refint\APIGOTinforcavado.dll
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\obj\Debug\net8.0\APIGOTinforcavado.pdb
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\obj\Debug\net8.0\APIGOTinforcavado.genruntimeconfig.cache
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\APIGOTinforcavado\obj\Debug\net8.0\ref\APIGOTinforcavado.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\appsettings.Development.json
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\appsettings.json
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\APIGOTinforcavado.staticwebassets.runtime.json
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\APIGOTinforcavado.exe
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\APIGOTinforcavado.deps.json
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\APIGOTinforcavado.runtimeconfig.json
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\APIGOTinforcavado.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\APIGOTinforcavado.pdb
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\Azure.Core.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\Azure.Identity.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\Blazored.LocalStorage.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\Blazored.SessionStorage.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\Humanizer.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\Microsoft.AspNetCore.Authorization.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\Microsoft.AspNetCore.Components.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\Microsoft.AspNetCore.Components.Forms.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\Microsoft.AspNetCore.Components.Web.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\Microsoft.AspNetCore.Metadata.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\Microsoft.CodeAnalysis.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\Microsoft.CodeAnalysis.Workspaces.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\Microsoft.Data.SqlClient.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\Microsoft.Extensions.DependencyModel.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\Microsoft.Extensions.Localization.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\Microsoft.Extensions.Localization.Abstractions.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\Microsoft.Identity.Client.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\Microsoft.Identity.Client.Extensions.Msal.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\Microsoft.JSInterop.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\Microsoft.OpenApi.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\Microsoft.SqlServer.Server.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\Microsoft.Win32.SystemEvents.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\Mono.TextTemplating.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\MudBlazor.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\System.CodeDom.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\System.Composition.AttributedModel.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\System.Composition.Convention.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\System.Composition.Hosting.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\System.Composition.Runtime.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\System.Composition.TypedParts.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\System.Configuration.ConfigurationManager.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\System.Drawing.Common.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\System.Memory.Data.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\System.Runtime.Caching.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\System.Security.Cryptography.ProtectedData.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\System.Security.Permissions.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\System.Windows.Extensions.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.resources.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.resources.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.resources.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.resources.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.resources.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.resources.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.resources.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.resources.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.resources.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.resources.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.resources.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.resources.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.resources.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\runtimes\unix\lib\net6.0\Microsoft.Data.SqlClient.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\runtimes\win\lib\net6.0\Microsoft.Data.SqlClient.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\runtimes\win\lib\net6.0\Microsoft.Win32.SystemEvents.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\runtimes\unix\lib\net6.0\System.Drawing.Common.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\Shared.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\Shared.pdb
+C:\Inforcavado\APIGOTinforcavado\obj\Debug\net8.0\APIGOTinforcavado.csproj.AssemblyReference.cache
+C:\Inforcavado\APIGOTinforcavado\obj\Debug\net8.0\APIGOTinforcavado.GeneratedMSBuildEditorConfig.editorconfig
+C:\Inforcavado\APIGOTinforcavado\obj\Debug\net8.0\APIGOTinforcavado.AssemblyInfoInputs.cache
+C:\Inforcavado\APIGOTinforcavado\obj\Debug\net8.0\APIGOTinforcavado.AssemblyInfo.cs
+C:\Inforcavado\APIGOTinforcavado\obj\Debug\net8.0\APIGOTinforcavado.csproj.CoreCompileInputs.cache
+C:\Inforcavado\APIGOTinforcavado\obj\Debug\net8.0\APIGOTinforcavado.MvcApplicationPartsAssemblyInfo.cs
+C:\Inforcavado\APIGOTinforcavado\obj\Debug\net8.0\APIGOTinforcavado.MvcApplicationPartsAssemblyInfo.cache
+C:\Inforcavado\APIGOTinforcavado\obj\Debug\net8.0\staticwebassets.build.json
+C:\Inforcavado\APIGOTinforcavado\obj\Debug\net8.0\staticwebassets.development.json
+C:\Inforcavado\APIGOTinforcavado\obj\Debug\net8.0\staticwebassets\msbuild.APIGOTinforcavado.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Inforcavado\APIGOTinforcavado\obj\Debug\net8.0\staticwebassets\msbuild.build.APIGOTinforcavado.props
+C:\Inforcavado\APIGOTinforcavado\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.APIGOTinforcavado.props
+C:\Inforcavado\APIGOTinforcavado\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.APIGOTinforcavado.props
+C:\Inforcavado\APIGOTinforcavado\obj\Debug\net8.0\staticwebassets.pack.json
+C:\Inforcavado\APIGOTinforcavado\obj\Debug\net8.0\scopedcss\bundle\APIGOTinforcavado.styles.css
+C:\Inforcavado\APIGOTinforcavado\obj\Debug\net8.0\APIGOTin.410360AE.Up2Date
+C:\Inforcavado\APIGOTinforcavado\obj\Debug\net8.0\APIGOTinforcavado.dll
+C:\Inforcavado\APIGOTinforcavado\obj\Debug\net8.0\refint\APIGOTinforcavado.dll
+C:\Inforcavado\APIGOTinforcavado\obj\Debug\net8.0\APIGOTinforcavado.pdb
+C:\Inforcavado\APIGOTinforcavado\obj\Debug\net8.0\APIGOTinforcavado.genruntimeconfig.cache
+C:\Inforcavado\APIGOTinforcavado\obj\Debug\net8.0\ref\APIGOTinforcavado.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\DevExpress.Blazor.v24.2.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\DevExpress.Blazor.Resources.v24.2.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\DevExpress.Data.v24.2.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\DevExpress.Drawing.v24.2.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\DevExpress.Pdf.v24.2.Core.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\DevExpress.Pdf.v24.2.Drawing.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\DevExpress.Printing.v24.2.Core.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\DevExtreme.AspNet.Data.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\System.Reactive.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\System.Security.Cryptography.Pkcs.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\System.ServiceModel.Http.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\System.ServiceModel.Primitives.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\cs\System.ServiceModel.Http.resources.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\de\System.ServiceModel.Http.resources.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\es\System.ServiceModel.Http.resources.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\fr\System.ServiceModel.Http.resources.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\it\System.ServiceModel.Http.resources.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\ja\System.ServiceModel.Http.resources.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\ko\System.ServiceModel.Http.resources.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\pl\System.ServiceModel.Http.resources.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\pt-BR\System.ServiceModel.Http.resources.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\ru\System.ServiceModel.Http.resources.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\tr\System.ServiceModel.Http.resources.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\zh-Hans\System.ServiceModel.Http.resources.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\zh-Hant\System.ServiceModel.Http.resources.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\cs\System.ServiceModel.Primitives.resources.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\de\System.ServiceModel.Primitives.resources.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\es\System.ServiceModel.Primitives.resources.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\fr\System.ServiceModel.Primitives.resources.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\it\System.ServiceModel.Primitives.resources.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\ja\System.ServiceModel.Primitives.resources.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\ko\System.ServiceModel.Primitives.resources.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\pl\System.ServiceModel.Primitives.resources.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\pt-BR\System.ServiceModel.Primitives.resources.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\ru\System.ServiceModel.Primitives.resources.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\tr\System.ServiceModel.Primitives.resources.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\zh-Hans\System.ServiceModel.Primitives.resources.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\zh-Hant\System.ServiceModel.Primitives.resources.dll
+C:\Inforcavado\APIGOTinforcavado\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Security.Cryptography.Pkcs.dll

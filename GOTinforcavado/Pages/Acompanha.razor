@@ -1,0 +1,702 @@
+﻿@page "/AcompanhaTicket"
+@inject HttpClient HttpClient
+@using GOTinforcavado.Services
+@using Microsoft.AspNetCore.Components.Authorization
+@using Microsoft.AspNetCore.Components.Forms
+@inject NavigationManager NavigationManager
+@using Shared.models
+@inject TicketService TicketService
+@inject UtilizadorService UtilizadorService
+@inject ComentarioService ComentarioService
+@inject EventoService EventoService
+@using System.Security.Cryptography
+@using System.Text
+@using System.Globalization
+@using System.Text.RegularExpressions
+@using MudBlazor.Components
+@using Microsoft.AspNetCore.Components
+@using Microsoft.AspNetCore.Components.Web
+@using System.Security.Claims
+@inject AuthenticationStateProvider AuthenticationStateProvider
+
+<Cabecalho imagem="false" botoes="Cabecalho.Botoes.Novo" />
+
+<div class="AcompanhaTicket">
+    <div class="TituloAcompnha">Acompanhe o seu ticket</div>
+    <div class="Subtitulo">O número do seu ticket permite-nos fornecer-lhe informações atualizadas sobre o estado do pedido que efetuou.</div>
+
+    <div class="InputWrapper">
+        <input @bind="codigo" type="text" class="caixaDETexto" placeholder="Introduza o ID do ticket aqui" />
+        <button class="BotaoSubscrever" @onclick="ProcurarTicket">Procurar</button>
+    </div>
+    @if (isLoading)
+    {
+        <div class="loading-message">Aguarde, a procurar o seu ticket...</div>
+    }
+    else @if (ticketEncontrado != null)
+    {
+        
+        <div class="cards-container">
+            <div class="VerEstado @ObterClasseEstado()">@ticketEncontrado.EstadoTarefa</div>
+            <div class="VerDepartamento1">@ticketEncontrado.EscolhaInicial</div>
+            <div class="VerDepartamento2">@ticketEncontrado.Departamento</div>
+            <div class="VerHorasss">@ticketEncontrado.Data.ToString("HH:mm")</div>
+
+            <MudTooltip Class="custom-tooltip" Text="Sujeito a alterações até que o ticket esteja fechado" Placement="Placement.Bottom" Arrow="true" Style="background: #0E384E">
+                <span class="material-symbols-outlined">info</span>
+            </MudTooltip>
+        </div>
+
+        <div class="ticket-info">
+            <div class="ticketcode">#@ticketEncontrado.Id</div>
+            <div class="ticketassunto">@ticketEncontrado.Assunto</div>
+        </div>
+
+        <div class="ticketMensagem">@ticketEncontrado.Mensagem</div>
+        <div class="ticketMensagem">@ticketEncontrado.Data.ToString("dd/MM/yyyy")</div>
+
+        <div class="ticket-detalhes">
+            <span class="ticket-info-item"><strong>Nome<br /></strong> @ticketEncontrado.Nome</span>
+            <span class="ticket-info-item"><strong>Email<br /></strong> @ticketEncontrado.Email</span>
+            <span class="ticket-info-item"><strong>Empresa<br /></strong> @ticketEncontrado.Empresa</span>
+            <span class="ticket-info-item"><strong>Telefone<br /></strong> @ticketEncontrado.Telefone</span>
+        </div>
+
+        <div class="caixaComentarios">
+            @if (registrosAtividades != null && registrosAtividades.Any())
+            {
+                var registosPorDia = registrosAtividades.GroupBy(r => r.Data.Date);
+                @foreach (var grupo in registosPorDia)
+                {
+                    <div class="dataseparador">
+                        <strong>@grupo.Key.ToString("dd/MM/yyyy")</strong>
+                       
+                    </div>
+                    <hr class="dividedatas" />
+                    var criacaoTicketRegistro = grupo.FirstOrDefault(r => r.Tipo == "criacaoTicket");
+                    var outrosRegistros = grupo
+                    .Where(r => r.Tipo != "criacaoTicket")
+                    .OrderByDescending(r => r.Data);
+                    @foreach (var registro in outrosRegistros)
+                    {
+                        if (registro.Tipo == "comentario" && registro.Comentario != null)
+                        {
+                            var comentario = registro.Comentario;
+                            <div class="umcomentario">
+                                @if (comentario.Utilizador != null)
+                                {
+                                    <div class="nomecomentario">@GerarUsername(comentario.Utilizador.Email) <span class="hora-comentario">@(comentario.Data.ToString("HH:mm"))</span></div>
+                                    <div class="emailcomentario">@comentario.Utilizador.Email</div>
+                                }
+                                else
+                                {
+                                    <div class="nomecomentario">Convidado <span class="hora-comentario">@(comentario.Data.ToString("HH:mm"))</span></div>
+                                    <div class="emailcomentario">convidado@exemplo.com</div>
+                                }
+                                <div class="textocomentario">@comentario.Conteudo</div>
+                            </div>
+                        }
+                        else if (registro.Tipo == "evento" && registro.Evento != null)
+                        {
+                            var evento = registro.Evento;
+                            var nomeCompleto = nomesUtilizadores.GetValueOrDefault(evento.UtilizadorId, "Utilizador desconhecido");
+                            var username = FormatarNome(nomeCompleto);
+                            <div class="criouticket">
+                                <div class="point"> • </div>
+                                <div class="username">@username</div>
+                                <div class="textocriouticket">@evento.evento</div>
+                                <div class="horariocriacaoticket">@evento.Data.ToString("HH:mm")</div>
+                            </div>
+                        }
+                    }
+
+                    if (criacaoTicketRegistro != null)
+                    {
+                        <div class="criouticket">
+                            <div class="point"> • </div>
+                            <div class="username">@GerarUsername(ticketEncontrado.Email)</div>
+                            <div class="textocriouticket">criou o ticket</div>
+                            <div class="horariocriacaoticket">@ticketEncontrado.Data.ToString("HH:mm")</div>
+                        </div>
+                    }
+                }
+            }
+            <div class="semmaisdados">Não existem mais dados</div>
+        </div>
+    }
+    @if (!string.IsNullOrEmpty(erro))
+    {
+        <div class="alert alert-danger" style="margin-top: 20px;">@erro</div>
+    }
+    
+</div>
+
+<Rodape />
+<Cookies />
+
+<style>
+    .AcompanhaTicket {
+        background-color: white;
+        padding: 40px 20px 50px 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .TituloAcompnha {
+        display: flex;
+        width: 82%;
+        color: #414D4D;
+        font-family: "Sora";
+        font-size: 18px;
+        padding-bottom: 8px;
+        color: #12444A;
+        font-family: "Poppins";
+        font-size: 32px;
+        font-weight: 700;
+        justify-content: flex-start;
+        flex-direction: row;
+    }
+
+    .Subtitulo {
+        display: flex;
+        color: #414D4D;
+        font-family: "Sora";
+        font-size: 18px;
+        font-weight: 500;
+        padding-bottom: 8px;
+        width: 82%;
+        justify-content: flex-start;
+    }
+
+    .InputWrapper {
+        width: 82%;
+        height: 48px;
+        margin-bottom: 28px;
+        display: flex;
+        align-items: center;
+    }
+
+    .caixaDETexto {
+        width: 82%;
+        height: 48px;
+        background: #FFFFFF;
+        border: 1px solid #D1D8D8;
+        border-radius: 8px;
+        padding: 16px;
+    }
+
+    .BotaoSubscrever {
+        top: 1px;
+        margin-left: calc(100% - 121%);
+        bottom: 4px;
+        width: 20%;
+        height: 40px;
+        background: #1B7C87;
+        border: none;
+        border-radius: 8px;
+        color: #fff;
+        cursor: pointer;
+        opacity: 1;
+    }
+
+    .cards-container {
+        display: flex;
+        align-items: center;
+        width: 82%;
+        gap: 8px;
+    }
+
+    .VerEstado,
+    .VerDepartamento1,
+    .VerDepartamento2,
+    .VerHorasss {
+        width: auto;
+        height: 24px;
+        font-family: "Poppins";
+        font-size: 13px;
+        font-weight: 500;
+        border-radius: 8px;
+        display: flex;
+        color: #414D4D;
+        font-family: "Sora";
+        font-size: 18px;
+        font-weight: 500;
+        padding-bottom: 8px;
+        text-align: center;
+        justify-content: flex-start;
+    }
+    }
+
+    .estado-por-iniciar {
+        background-color: #1923560D;
+    }
+
+    .estado-em-curso {
+        background-color: #8BB7311A;
+    }
+
+    .estado-concluido {
+        background-color: #33A3631A;
+    }
+
+    .estado-publicado {
+        background-color: #5D22891A;
+    }
+
+    .estado-arquivado {
+        background-color: #192356;
+        color: white;
+    }
+
+    .estado-em-espera {
+        background-color: #192356;
+        color: white;
+    }
+
+    .VerDepartamento1,
+    .VerDepartamento2,
+    .VerHorasss {
+        border: 1px solid #B9D6DA;
+        color: #192356;
+    }
+
+    .ticket-info {
+        display: flex;
+        gap: 8px;
+        width: 82%;
+        padding-top: 16px;
+        align-items: center;
+    }
+
+    .ticketcode, .ticketassunto {
+        color: #0D3439;
+        font-family: "Poppins";
+        font-size: 24px;
+        font-weight: 600;
+    }
+
+    .ticketMensagem {
+        width: 82%;
+        font-family: "Sora";
+        font-size: 13px;
+        color: #414D4D;
+        margin-top: 8px;
+     
+    }
+
+        .ticketMensagem:last-of-type {
+            width: 4.19%; 
+            height: 14px;
+            font-family: "Sora";
+            font-size: 11px;
+            color: #758A8A;
+            margin-top: 8px;
+        }
+
+    .ticket-detalhes {
+        display: flex;
+        gap: 8px;
+        width: 82%;
+        margin-top: 8px;
+        margin-bottom: 8px;
+        font-family: "Sora";
+        font-size: 13px;
+        color: #414D4D;
+        justify-content: space-between;
+    }
+
+    .caixaComentarios {
+        background: #E8F2F380;
+        width: 82.78%;
+        padding: 16px 0px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .semmaisdados {
+        width: 8.94%; 
+        height: 13px;
+        color: #758A8A;
+        font-family: "Sora";
+        font-size: 10px;
+        padding-bottom: 24px;
+        text-align: center;
+        margin: 0 auto;
+        white-space: nowrap;
+    }
+
+    .criouticket {
+        width: 49.78%; 
+        height: 32px;
+        display: inline-flex;
+        align-items: center;
+    }
+
+    .point {
+        width: 5px;
+        height: 19px;
+        font-family: "Poppins";
+        color: #192356;
+        margin-left: 14px;
+    }
+
+    .username {
+        margin-top: 10px;
+        padding-left: 6px;
+        font-family: "Poppins";
+        color: #226589;
+        font-size: 10px;
+    }
+
+    .textocriouticket {
+        margin-top: 10px;
+        padding-left: 0px;
+        font-family: "Poppins";
+        color: #192356;
+        font-size: 10px;
+        margin-left: 4px;
+        white-space: nowrap;
+    }
+
+    .horariocriacaoticket {
+        margin-top: 12px;
+        color: #19235699;
+        font-size: 10px;
+        font-family: "Sora";
+    }
+
+    .comentario-form {
+        margin-top: 24px;
+        padding-top: 16px;
+        border-top: 1px solid #D1D8D8;
+        width: 52%; 
+    }
+
+        .comentario-form h4 {
+            color: #12444A;
+        }
+
+        .comentario-form textarea {
+            width: 100%;
+            min-height: 80px;
+            border-radius: 8px;
+            border: 1px solid #D1D8D8;
+            padding: 8px;
+            font-family: "Sora";
+        }
+
+        .comentario-form .switch-container {
+            display: flex;
+            align-items: center;
+            justify-content: start;
+            min-width: 120px;
+            gap: 8px;
+        }
+
+            .comentario-form .switch-container span {
+                margin-left: 8px;
+                font-family: "Sora";
+            }
+
+        .comentario-form button {
+            margin-top: 12px;
+            padding: 8px 16px;
+            background-color: #1B7C87;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+    .umcomentario {
+        display: flex;
+        flex-direction: column;
+        gap: 1px;
+        width: 100%;
+        margin-top: 16px;
+        padding: 8px;
+        background-color: #19235608;
+    }
+    .nomecomentario {
+        width: 8.59%; 
+        font-family: "Poppins";
+        color: #192356;
+        font-size: 12px;
+        padding-bottom: 2px;
+    }
+
+    .emailcomentario {
+        width: 7.64%; 
+        font-family: "Poppins";
+        color: #192356;
+        font-size: 10px;
+        padding-bottom: 2px;
+    }
+
+    .textocomentario {
+        font-family: "Poppins";
+        color: #192356;
+        font-size: 10px;
+        flex-grow: 1;
+        padding-bottom: 2px;
+    }
+
+    .hora-comentario {
+        margin-left: 15px;
+        font-size: 10px;
+        color: #758A8A;
+    }
+
+    .umevento {
+        padding: 8px;
+        border: 1px solid #192356;
+        border-radius: 8px;
+        margin-top: 16px;
+    }
+
+    .nomeevento {
+        font-family: "Poppins";
+        color: #192356;
+        font-size: 12px;
+        margin-bottom: 4px;
+    }
+
+    .hora-evento {
+        margin-left: 15px;
+        font-size: 10px;
+        color: #758A8A;
+    }
+
+    .descricaoevento {
+        font-family: "Poppins";
+        color: #192356;
+        font-size: 10px;
+    }
+
+    .dataseparador {
+        width: 7.87%;
+        height: 16px;
+        font-family: "Poppins";
+        font-size: 11px;
+        color: #226589;
+        padding-top: 5px;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    .dividedatas {
+        width: 100%;
+        height: 0px;
+        border: 1px solid #226589;
+        opacity: 0.2;
+    }
+
+    .loading-message {
+        text-align: center;
+        font-size: 18px;
+        font-weight: bold;
+        color: #12444A;
+        padding: 20px;
+    }
+
+    @@media(max-width: 752px){
+        .ticket-detalhes {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+            width: 82%;
+            margin-top: 8px;
+            margin-bottom: 8px;
+            font-family: "Sora";
+            font-size: 13px;
+            color: #414D4D;
+        }
+    }
+</style>
+
+@code {
+    private bool isLoading = true;
+    private string codigo ="";
+    private Ticket ticketEncontrado;
+    private string erro;
+    private Comentario novoComentario = new Comentario();
+    private List<Comentario> comentarios;
+    private List<Evento> Eventos;
+    private string nomeUtilizador;
+    private string userEmail;
+    private Dictionary<int, string> nomesUtilizadores = new Dictionary<int, string>();
+    private List<RegistroAtividade> registrosAtividades = new List<RegistroAtividade>();
+    
+    public class RegistroAtividade
+    {
+        public DateTime Data { get; set; }
+        public string Tipo { get; set; } 
+        public Comentario Comentario { get; set; }
+        public Evento Evento { get; set; }
+    }
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        isLoading = false;
+        var uri = new Uri(NavigationManager.Uri);
+        var query = Microsoft.AspNetCore.WebUtilities.QueryHelpers.ParseQuery(uri.Query);
+        if (query.TryGetValue("codigo", out var codigoValor))
+        {
+            codigo = codigoValor;
+            await ProcurarTicket(); 
+        }
+    }
+
+
+    private string ObterClasseEstado()
+    {
+        return ticketEncontrado?.EstadoTarefa switch
+        {
+            EstadoTarefa.PorIniciar => "estado-por-iniciar",
+            EstadoTarefa.EmCurso => "estado-em-curso",
+            EstadoTarefa.Concluido => "estado-concluido",
+            EstadoTarefa.Publicado => "estado-publicado",
+            EstadoTarefa.Arquivado => "estado-arquivado",
+            EstadoTarefa.EmEspera => "estado-em-espera",
+            _ => ""
+        };
+    }
+
+    private async Task ProcurarTicket()
+    {
+        erro = null;
+        ticketEncontrado = null;
+        comentarios = null;
+        Eventos = null;
+        isLoading = true;
+        registrosAtividades.Clear();
+
+        try
+        {
+            ticketEncontrado = await TicketService.GetTicketByIdAsync(codigo);
+            if (ticketEncontrado != null)
+            {
+                comentarios = await ComentarioService.GetComentariosByTicketIdAsync(ticketEncontrado.Id);
+                Eventos = await EventoService.GetEventosByTicketIdAsync(ticketEncontrado.Id);
+                await CarregarNomesUtilizadores();
+
+          
+                if (comentarios != null)
+                {
+                    foreach (var comentario in comentarios)
+                    {
+                        registrosAtividades.Add(new RegistroAtividade
+                            {
+                                Data = comentario.Data,
+                                Tipo = "comentario",
+                                Comentario = comentario
+                            });
+                    }
+                }
+
+            
+                if (Eventos != null)
+                {
+                    foreach (var evento in Eventos)
+                    {
+                        registrosAtividades.Add(new RegistroAtividade
+                            {
+                                Data = evento.Data,
+                                Tipo = "evento",
+                                Evento = evento
+                            });
+                    }
+                }
+
+             
+                registrosAtividades.Add(new RegistroAtividade
+                    {
+                        Data = ticketEncontrado.Data,
+                        Tipo = "criacaoTicket"
+                    });
+
+               
+                registrosAtividades = registrosAtividades.OrderByDescending(r => r.Data).ToList();
+            }
+            else
+            {
+                erro = "Ticket não encontrado.";
+            }
+        }
+        catch (Exception ex)
+        {
+           
+        }
+        finally
+        {
+            isLoading = false; 
+        }
+    }
+
+    private async Task CarregarNomesUtilizadores()
+    {
+        if (Eventos != null)
+        {
+            foreach (var evento in Eventos)
+            {
+                if (!nomesUtilizadores.ContainsKey(evento.UtilizadorId))
+                {
+                    var nomeCompleto = await ObterNomeUtilizador(evento.UtilizadorId);
+                    nomesUtilizadores[evento.UtilizadorId] = nomeCompleto;
+                }
+            }
+        }
+    }
+
+    private async Task<string> ObterNomeUtilizador(int utilizadorId)
+    {
+        if (utilizadorId == 0)
+        {
+            return "Utilizador desconhecido";
+        }
+
+        try
+        {
+            var utilizador = await UtilizadorService.GetUtilizadorByIdAsync(utilizadorId);
+            if (utilizador == null)
+            {
+                return "Utilizador desconhecido";
+            }
+
+            return $"{utilizador.PrimeiroNome} {utilizador.UltimoNome}";
+        }
+        catch
+        {
+            return "Utilizador desconhecido";
+        }
+    }
+    private string GerarUsername(string email)
+    {
+        if (string.IsNullOrEmpty(email)) return "Utilizador desconhecido";
+
+        var index = email.IndexOf('@');
+        return index > 0 ? email.Substring(0, index) : email;
+    }
+
+    private string FormatarNome(string nome)
+    {
+        var palavrasRemover = new[] { "de", "da", "do", "dos", "das" };
+        var normalizedString = nome.Normalize(NormalizationForm.FormD);
+        var stringBuilder = new StringBuilder();
+
+        foreach (var c in normalizedString)
+        {
+            if (CharUnicodeInfo.GetUnicodeCategory(c) != UnicodeCategory.NonSpacingMark)
+            {
+                stringBuilder.Append(c);
+            }
+        }
+
+        var nomeArray = stringBuilder.ToString().Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+        var nomeFinalArray = nomeArray.Where(word => !palavrasRemover.Contains(word.ToLower())).ToArray();
+        return "@" + string.Join("", nomeFinalArray).ToLower();
+    }
+
+}

@@ -1,0 +1,80 @@
+﻿@using GOTinforcavado.Services
+@using Shared.models
+
+<style>
+    .ddAtribuicao {
+        width: 320px;
+        border-radius: 8px;
+        background: #ffff;
+        opacity: 1;
+        box-shadow: 0px 3px 6px #00000029;
+    }
+
+    .InputWrapper {
+        width: 100%;
+        height: 40px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .caixaDETexto {
+        width: 100%;
+        height: 40px;
+        background: #FFFFFF;
+        border: 1px solid #D1D8D8;
+        border-radius: 8px;
+        opacity: 1;
+        padding: 16px 0 16px 16px;
+    }
+</style>
+
+<div class="ddAtribuicao">
+    <div class="InputWrapper">
+        <input type="text" class="caixaDETexto" placeholder="Pesquise por departamento..." @bind="searchQuery" @oninput="OnSearchInput">
+    </div>
+
+    <ul>
+        @foreach (var departamento in departamentosFiltrados)
+        {
+            <li>@departamento</li>
+        }
+    </ul>
+</div>
+
+@code {
+    private string searchQuery { get; set; } = string.Empty;
+    private List<Departamento> departamentosFiltrados = new();
+
+    private enum Departamento
+    {
+        PROTextil,
+        ATOMgest,
+        Financeiro,
+        IT,
+        Comercial,
+    }
+
+    protected override void OnInitialized()
+    {
+        departamentosFiltrados = Enum.GetValues(typeof(Departamento)).Cast<Departamento>().ToList();
+    }
+
+    private void OnSearchInput(ChangeEventArgs e)
+    {
+        searchQuery = e.Value.ToString().ToLower();
+
+        if (string.IsNullOrWhiteSpace(searchQuery))
+        {
+            departamentosFiltrados = Enum.GetValues(typeof(Departamento)).Cast<Departamento>().ToList();
+        }
+        else
+        {
+            departamentosFiltrados = Enum.GetValues(typeof(Departamento))
+                                         .Cast<Departamento>()
+                                         .Where(d => d.ToString().ToLower().Contains(searchQuery))
+                                         .ToList();
+        }
+    }
+}

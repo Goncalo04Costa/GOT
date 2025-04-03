@@ -1,0 +1,155 @@
+﻿<style>
+    .introdutor {
+        height: 296px;
+        background: #E8F2F3;
+        display: flex;
+        justify-content: space-between;
+        padding: 0 140px;
+    }
+
+    .introdutorsec {
+    }
+
+    .primeirotexto {
+        padding-top: 62px;
+        white-space: nowrap;
+        font-family: "Sora";
+        font-size: 18px;
+        font-weight: 500;
+        color: #6ACFC7;
+        width: 296px;
+    }
+
+    .titulo {
+        margin: 0;
+        font-family: "Poppins";
+        font-size: 56px;
+        font-weight: 600;
+        color: #12444A;
+        width: 684px;
+        white-space: nowrap;
+        padding-bottom: 8px;
+    }
+
+    .descricao {
+        font-family: "Sora";
+        font-size: 18px;
+        font-weight: 500;
+        color: #414D4D;
+        width: 544px;
+    }
+
+    .imagem {
+        display: flex;   
+        margin-top: 20px;
+    
+    }
+
+
+    @@media (max-width: 1280px) and (min-width: 1025px) {
+    .introdutor {
+        height: 296px;
+        background: #E8F2F3;
+        display: flex;
+        justify-content: space-between;
+        padding: 0 96px;
+    }
+    }
+
+
+    @@media(max-width: 1024px) and (min-width: 769px) {
+        .introdutor {
+            height: 296px;
+            background: #E8F2F3;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 40px;
+        }
+
+        .imagem {
+            display: flex;
+            margin-top: 20px;
+            padding-bottom: 20px;
+        }
+        .titulo {
+            margin: 0;
+            font-family: "Poppins";
+            font-size: 44px;
+            font-weight: 600;
+            color: #12444A;
+            width: 684px;
+            white-space: > nowrap;
+            padding-bottom: 8px;
+            margin-right: -57px;
+        }
+    }
+
+   @@media (max-width: 768px) {
+    .introdutor {
+        height: 548px;
+        background: #E8F2F3;
+        display: flex;
+        justify-content: space-between;
+        padding: 0 0px 0 40px;
+        flex-direction: column;
+    }
+
+    .primeirotexto {
+        padding-top: 62px;
+        white-space: nowrap;
+        font-family: "Sora";
+        font-size: 18px;
+        font-weight: 500;
+        color: #6ACFC7;
+        width: 296px;
+    }
+
+    .titulo {
+        margin: 0;
+        font-family: "Poppins";
+        font-size: 44px;
+        font-weight: 600;
+        color: #12444A;
+        white-space: nowrap;
+        padding-bottom: 8px;   
+    }
+
+    .descricao {
+        font-family: "Sora";
+        font-size: 18px;
+        font-weight: 500;
+        color: #414D4D;
+        width: 544px;
+    }
+
+    .imagem {
+        justify-content: center;
+        display: flex;
+        margin-top: 20px;
+        padding-bottom: 20px;
+        width: 260px;
+    }
+
+
+    .imagem img {
+        height: 296px;
+    }
+}
+
+</style>
+
+<header class="introdutor">
+    <div class="introdutorsec">
+        <p class="primeirotexto">Bem-vindo ao Growing Together.</p>
+        <p class="titulo">A solução começa aqui.</p>
+        <p class="descricao">Estamos disponíveis para ajudá-lo com qualquer dúvida ou problema que tenha.</p>
+    </div>
+
+    <div class="imagem" style="width: auto;">
+        <img src="/imagens/Login GOT image (896x1017).png" alt="Imagem de login" />
+    </div>
+</header>
+
+@code {
+
+}

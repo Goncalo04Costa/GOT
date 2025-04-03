@@ -1,0 +1,701 @@
+﻿@inject NavigationManager Navigation
+<style>
+    .cabecalho {
+        height: 72px;
+        background: #E8F2F3;
+        display: flex;
+        align-items: center;
+        padding: 0 130px;
+        justify-content: space-between;
+        position: relative;
+    }
+
+    .cabecalhoesq {
+        display: flex;
+        align-items: center;
+    }
+
+    .logoGOT {
+        padding-right: 20px;
+    }
+
+    .byinforcavadologo {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .byInforcavado {
+        margin: 0;
+        font-family: "Poppins";
+        font-size: 10px;
+        font-weight: 500;
+        color: #17585F;
+    }
+
+    .verticket, .criarticket {
+        width: fit-content;
+        height: 40px;
+        background: #17585F;
+        color: white;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 16px;
+        margin-right: 8px;
+        cursor: pointer;
+        border: none;
+    }
+
+    .menu {
+        border-radius: 20px;
+        display: none;
+        cursor: pointer;
+    }
+
+    .verticket p, .website p, .criarticket p {
+        font-family: "Sora";
+        font-weight: 500;
+        font-size: 14px;
+    }
+
+    .website {
+        width: fit-content;
+        border: 1px solid #B2BEBE;
+        height: 40px;
+        color: var(--neutral-500);
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 16px;
+    }
+
+    .popup-menu {
+        display: none;
+        position: absolute;
+        top: 60px;
+        right: 0px;
+        background: white;
+        padding: 18px 14px;
+        width: 100%;
+        z-index: 1000;
+    }
+
+        .popup-menu.show {
+            display: block;
+        }
+
+        .popup-menu a {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            font-family: "Sora";
+            font-weight: 500;
+            font-size: 14px;
+            color: #17585F;
+            padding: 5px 10px;
+        }
+
+            .popup-menu a:hover {
+                border-radius: 5px;
+            }
+
+    @@media (max-width: 1280px) {
+        .cabecalho {
+            padding: 0 96px;
+        }
+    }
+
+    @@media (max-width: 1024px) {
+        .cabecalho {
+            padding: 0 40px;
+        }
+    }
+
+    @@media (max-width: 768px) {
+        .cabecalho {
+            padding: 0 40px;
+        }
+
+        .menu {
+            display: inline;
+        }
+
+        .website {
+            display: none;
+        }
+
+        .popup-menu a.popup-ticket {
+            display: none;
+        }
+    }
+
+    @@media (max-width: 640px) {
+        .cabecalho {
+            padding: 0 40px;
+        }
+
+        .menu {
+            display: inline;
+        }
+
+        .website {
+            display: none;
+        }
+
+        .verticket {
+            display: none;
+        }
+
+        .popup-menu {
+            top: 60px;
+            right: 0px;
+            height: 112px;
+            background: white;
+            padding: 18px 14px;
+            width: 100%;
+            z-index: 1000;
+        }
+
+            .popup-menu a.popup-ticket {
+                display: flex;
+            }
+    }
+
+   
+    .code-popup {
+        position: absolute;
+        top: 58px;
+        right: 130px;
+        background: #fff;
+        padding: 16px;
+        width: 476px;
+        border-radius: 8px;
+    }
+
+    .input-container {
+        position: relative;
+        width: 100%;
+    }
+
+        .input-container input {
+            width: 100%;
+            height: 48px;
+            border: 1px solid #758A8A;
+            border-radius: 8px;
+            padding: 0 10px;
+            font-size: 14px;
+        }
+
+        .input-container button {
+            position: absolute;
+            right: 4px;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 40px;
+            background: #1B7C87;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-size: 14px;
+            padding: 0 12px;
+            cursor: pointer;
+            width: 124px;
+        }
+
+    /* Estilos para o modal centralizado */
+    .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 2000;
+    }
+
+    .modal-content {
+        background: #fff;
+        width: 90%;
+        max-width: 600px;
+        border-radius: 8px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+        position: relative;
+    }
+
+     
+
+    .close-modal {
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        background: transparent;
+        border: none;
+        font-size: 20px;
+        cursor: pointer;
+    }
+
+    
+
+        .tittlecriarticket{
+        width: 74px;
+        font-family: "Poppins";
+        text-align: left;
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 0px;
+        color: #226589;
+        opacity: 1;
+        white-space: nowrap;
+        padding-left: 16px;
+        padding-top: 16px;
+        padding-bottom: 16px;
+        }
+
+
+        .estilohr {
+        width: 656px;
+        height: 0px;
+        border: 1px solid #226589;
+        opacity: 0.2;
+        }
+
+        .contactoszone {
+        margin-top: 16px;
+        width: 120px;
+        height: 24px;
+        background: #D6EEF299;
+        border-radius: 8px;
+        }
+
+        .textocontacto{
+        color: #226589;
+        opacity: 1;
+        font-family:"Poppins";
+        font-size: 13px;
+        font-weight: 500;
+        }
+
+    .departamentozone {
+        margin-top: 16px;
+        width: 150px;
+        height: 24px;
+        background: #D6EEF299;
+        border-radius: 8px;
+    }
+
+    .clienteszone {
+        margin-top: 16px;
+        width: 116px;
+        height: 24px;
+        background: #D6EEF299;
+        border-radius: 8px;
+    }
+
+    .textassunto{
+        padding-left: 8px;
+        width: 100%;
+        font-family:"Poppins";
+        font-size: 18px;
+        font-weight: 600;
+        text-align: left;
+        letter-spacing: 0px;
+        color: #19235666;
+        opacity: 1;
+    }
+
+    .textmensagem{
+        margin-left: 18px;
+        width: 100%;
+        font-family: "Poppins";
+        font-size: 13px;
+        font-weight: 500;
+        text-align: left;
+        letter-spacing: 0px;
+        color: #19235666;
+        opacity: 1;
+    }
+
+
+
+    .estabelecimentozone {
+        width: 166px;
+        height: 24px;
+        border: 1px solid #22658933;
+        border-radius: 8px;
+    }
+
+    .poratribuirzone {
+        width: 132px;
+        height: 24px;
+        border: 1px solid #22658933;
+        border-radius: 8px;
+    }
+
+    .atribuicaozone {
+        width: 128px;
+        height: 24px;
+        border: 1px solid #22658933;
+        border-radius: 8px;
+    }
+
+    .tarefazone {
+        width: 102px;
+        height: 24px;
+        border: 1px solid #22658933;
+        border-radius: 8px;
+    }
+
+    .topicozone {
+        width: 104px;
+        height: 24px;
+        border: 1px solid #22658933;
+        border-radius: 8px;
+    }
+
+    .opcoeszone {
+        width: 56px;
+        height: 24px;
+        border: 1px solid #22658933;
+        border-radius: 8px;
+    }
+
+
+    .CC {
+        padding-top: 4px;
+        color: #226589;
+        opacity: 1;
+        font-family:"Poppins";
+        font-size: 13px;
+        font-weight: 500;
+        text-align: left;
+        margin-left: 18px;
+        letter-spacing: 0px;
+        padding-left: 8px;
+    }
+
+
+    .anexostittle {
+        width: 74px;
+        font-family: "Poppins";
+        text-align: left;
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 0px;
+        color: #226589;
+        opacity: 1;
+    }
+
+    .buttonszone{
+        padding-top: 16px;
+        display: flex;
+        padding-bottom: 16px;
+        padding-right: 12px;
+        justify-content: flex-end;
+        gap: 8px;
+    }
+
+    .buttoncriarticket{
+        width: 104px;
+        height: 40px;
+        background: #226589 0% 0% no-repeat padding-box;
+        border-radius: 8px;
+        opacity: 1;
+        border: none;
+        color: white;
+    }
+
+    .buttoncancelar{
+        width: 92px;
+        height: 40px;
+        border: 1px solid #19235633;
+        border-radius: 8px;
+        opacity: 1;
+        background: none;
+    }
+</style>
+
+<header class="cabecalho">
+    <div class="cabecalhoesq">
+        <img class="logoGOT" src="../imagens/Logo-growing-together-prioritario-cores.svg" alt="Logo GOT" />
+        @if (imagem)
+        {
+            <div class="byinforcavadologo">
+                <img class="logoInfor" src="../imagens/inforcavado.svg" alt="Logo Inforcavado" style="width:24px; height:24px" />
+                <p class="byInforcavado">By Inforcávado</p>
+            </div>
+        }
+    </div>
+
+    <div class="cabecalhoesq">
+        @if (botoesrf != null)
+        {
+            @botoesrf
+        }
+        else
+        {
+            @if (botoes == Botoes.Acompanhamento)
+            {
+                <button class="verticket" @onclick="ToggleCodePopup">
+                    <span class="material-symbols-outlined">confirmation_number</span>
+                    <p>Acompanhar Ticket</p>
+                </button>
+
+                <a href="https://inforcavado.com" class="website" target="_blank" style="text-decoration: none;">
+                    <p>Website Inforcavado</p>
+                </a>
+
+                <div class="menu" @onclick="ToggleMenu">
+                    <span class="material-symbols-outlined">menu</span>
+                </div>
+
+                <div class="popup-menu @(isMenuOpen ? "show" : "")">
+                    <a href="/AcompanhaTicket" target="_blank" style="text-decoration: none;" class="popup-ticket">
+                        <span class="material-symbols-outlined">confirmation_number</span>
+                        <p>Acompanhar Ticket</p>
+                    </a>
+                    <a href="https://inforcavado.com" target="_blank">
+                        <span class="material-symbols-outlined">language</span>
+                        <span>Website Inforcavado</span>
+                    </a>
+                </div>
+            }
+            else if (botoes == Botoes.Novo)
+            {
+                <button class="criarticket" @onclick="ToggleCreateTicketPopup">
+                    <span class="material-symbols-outlined">add</span>
+                    <p>Novo Ticket</p>
+                </button>
+            }
+        }
+    </div>
+
+    @if (isCodePopupOpen)
+    {
+        <div class="code-popup">
+            <div class="input-container">
+                <input type="text" @bind="ticketCode" placeholder="Introduza o código..." />
+                <button @onclick="SubmitCode">Acompanhar</button>
+            </div>
+        </div>
+
+    }
+</header>
+
+@if (isCreateTicketPopupOpen)
+{
+    <div class="modal-overlay">
+        <div class="modal-content">
+            <button class="close-modal" @onclick="ToggleCreateTicketPopup">&times;</button>
+            <div class="tittlecriarticket">Novo Ticket</div>
+            <hr class="estilohr" />
+            <div style="padding-left: 16px; padding-bottom:16px">
+                <button class="contactoszone" @onclick='() => ToggleDropdown("contactos")'>
+                    <span class="material-symbols-outlined" style="color: #226589;">
+                        contacts
+                    </span>
+                    <div class="textocontacto">Contactos</div>
+                    <span class="material-symbols-outlined" style="color: #226589;">
+                        @GetIcon("contactos")
+                    </span>
+                </button>
+                <button class="clienteszone" @onclick='() => ToggleDropdown("clientes")'>
+                    <span class="material-symbols-outlined" style="color: #226589;">
+                        group
+                    </span>
+                    <div class="textocontacto">Clientes</div>
+                    <span class="material-symbols-outlined" style="color: #226589;">
+                        @GetIcon("clientes")
+                    </span>
+                </button>
+                <button class="departamentozone" @onclick='() => ToggleDropdown("departamentos")'>
+                    <span class="material-symbols-outlined" style="color: #226589;">
+                        apps
+                    </span>
+                    <div class="textocontacto">Departamentos</div>
+                    <span class="material-symbols-outlined" style="color: #226589;">
+                        @GetIcon("departamentos")
+                    </span>
+                </button>
+            </div>
+            <div style="display:flex; padding-bottom: 12px;">
+                <span class="material-symbols-outlined" style="color:#BCE3E9; margin-left: 18px;">
+                    radio_button_checked
+                </span>
+                <div class="form-group">
+                    <label class="textassunto">Assunto:<br /></label>
+                    <br />
+                </div>
+            </div>
+            <div style="padding-bottom: 12px;">
+                <div class="form-group">
+                    <label class="textmensagem">Descricao:<br /></label>
+                    <br />
+                </div>
+            </div>
+            <div style="margin-left: 18px; margin-bottom: 18px">
+                <button class="estabelecimentozone" style="margin-bottom:8px" @onclick='() => ToggleDropdown("estabelecimento")'>
+                    <span class="material-symbols-outlined" style="color: #19235699;">
+                        domain
+                    </span>
+                    <div class="textocontacto">Estabelecimento</div>
+                    <span class="material-symbols-outlined" style="color: #19235699;">
+                        @GetIcon("estabelecimento")
+                    </span>
+                </button>
+                <button class="poratribuirzone" style="margin-bottom:8px" @onclick='() => ToggleDropdown("porAtribuir")'>
+                    <span class="material-symbols-outlined" style="color:#BCE3E9;">
+                        radio_button_checked
+                    </span>
+                    <div class="textocontacto">Por Atribuir</div>
+                    <span class="material-symbols-outlined" style="color: #19235699;">
+                        @GetIcon("porAtribuir")
+                    </span>
+                </button>
+                <button class="atribuicaozone" style="margin-bottom:8px" @onclick='() => ToggleDropdown("atribuido")'>
+                    <span class="material-symbols-outlined" style="color: #19235699;">
+                        linked_services
+                    </span>
+                    <div class="textocontacto">Atribuido</div>
+                    <span class="material-symbols-outlined" style="color: #19235699;">
+                        @GetIcon("atribuido")
+                    </span>
+                </button>
+                <button class="tarefazone" style="margin-bottom:8px" @onclick='() => ToggleDropdown("tarefa")'>
+                    <span class="material-symbols-outlined" style="color: #19235699;">
+                        list_alt
+                    </span>
+                    <div class="textocontacto">Tarefa</div>
+                    <span class="material-symbols-outlined" style="color: #226589;">
+                        @GetIcon("tarefa")
+                    </span>
+                </button>
+                <button class="topicozone" @onclick='() => ToggleDropdown("topico")'>
+                    <span class="material-symbols-outlined">
+                        help
+                    </span>
+                    <div class="textocontacto">Topico</div>
+                    <span class="material-symbols-outlined" style="color: #226589;">
+                        @GetIcon("topico")
+                    </span>
+                </button>
+                <button class="opcoeszone" @onclick='() => ToggleDropdown("opcoes")'>
+                    <span class="material-symbols-outlined">
+                        more_vert
+                    </span>
+                    <div class="textocontacto"></div>
+                    <span class="material-symbols-outlined" style="color: #226589;">
+                        @GetIcon("opcoes")
+                    </span>
+                </button>
+            </div>
+            <div style="display:flex;">
+                <div class="CC">CC</div>
+                <span class="material-symbols-outlined" style="color: #226589;">
+                    error
+                </span>
+            </div>
+            <div style="width:100%; display:flex; padding-bottom:16px;">
+               
+            </div>
+            <div>
+                <hr class="estilohr" />
+                <div style="display:flex; cursor: pointer;" @onclick='() => ToggleDropdown("Anexos")'>
+                    <span class="material-symbols-outlined" style="margin-top:4px;">
+                        @GetIcon("Anexos")
+                    </span>
+                    <div class="anexostittle" style="padding-top:8px;">Anexos</div>
+                </div>
+            </div>
+
+
+            <div class="buttonszone">
+                <button class="buttoncriarticket">Criar Ticket</button>
+                <button class="buttoncancelar" @onclick="CloseCreateTicketPopup">Cancelar</button>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter] public bool imagem { get; set; }
+    [Parameter] public Botoes botoes { get; set; } = Botoes.Acompanhamento;
+    [Parameter] public RenderFragment? botoesrf { get; set; }
+
+    private Dictionary<string, bool> dropdownStates = new Dictionary<string, bool>();
+
+    private bool isMenuOpen = false;
+    private bool isCodePopupOpen = false;
+    private bool isCreateTicketPopupOpen = false;
+    private string ticketCode = string.Empty;
+    private string novoTicketTitulo = string.Empty;
+
+    private void ToggleDropdown(string key)
+    {
+        if (dropdownStates.ContainsKey(key))
+        {
+            dropdownStates[key] = !dropdownStates[key];
+        }
+        else
+        {
+            dropdownStates[key] = true;
+        }
+    }
+
+    private string GetIcon(string key)
+    {
+        return dropdownStates.ContainsKey(key) && dropdownStates[key] ? "arrow_drop_up" : "arrow_drop_down";
+    }
+
+    private void ToggleMenu()
+    {
+        isMenuOpen = !isMenuOpen;
+    }
+
+    private void ToggleCodePopup()
+    {
+        isCodePopupOpen = !isCodePopupOpen;
+    }
+
+    private void ToggleCreateTicketPopup()
+    {
+        isCreateTicketPopupOpen = !isCreateTicketPopupOpen;
+    }
+
+    private void CloseCreateTicketPopup()
+    {
+        isCreateTicketPopupOpen = false;
+    }
+
+    private void SubmitCode()
+    {
+        if (!string.IsNullOrWhiteSpace(ticketCode))
+        {
+            Console.WriteLine($"Código inserido: {ticketCode}");
+            isCodePopupOpen = false;
+            Navigation.NavigateTo($"/AcompanhaTicket?codigo={ticketCode}");
+        }
+    }
+
+   
+
+    private void SubmitNovoTicket()
+    {
+        if (!string.IsNullOrWhiteSpace(novoTicketTitulo))
+        {
+            Console.WriteLine($"Novo Ticket criado com o título: {novoTicketTitulo}");
+            isCreateTicketPopupOpen = false;
+        }
+    }
+
+    public enum Botoes
+    {
+        Acompanhamento = 1,
+        Novo = 2
+    }
+}

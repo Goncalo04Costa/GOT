@@ -1,0 +1,271 @@
+﻿@using Blazored.SessionStorage
+@inject ISessionStorageService SessionStorage
+
+<style>
+    .cookie {
+        height: 56px;
+        background: #D1F0EE;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 140px;
+    }
+
+    .texto-container {
+        display: flex;
+        gap: 5px;
+        align-items: center;
+    }
+
+    .texto {
+        font-family: "Sora";
+        font-size: 14px;
+        letter-spacing: 0px;
+        font-weight: 400;
+        color: #0D3439;
+    }
+
+    .sublinhado {
+        margin: 0;
+        font-family: "Sora";
+        font-size: 14px;
+        font-weight: 400;
+        color: #1B7C87;
+        text-decoration: underline #1B7C87;
+    }
+
+    .fechar-avisocookies {
+        margin-left: 78px;
+        width: 116px;
+        height: 40px;
+        top: 38%;
+        color: #3A726D;
+        transform: translateY(-50%);
+        background-color: #F0FAF9;
+        border: none;
+        border-radius: 8px;
+        font-family: "Sora";
+        font-size: 14px;
+        color: #0D3439;
+        cursor: pointer;
+    }
+
+
+
+
+    @@media (max-width: 1280px) and (min-width: 1025px) {
+        .cookie {
+            height: 56px;
+            background: #D1F0EE;
+            display: flex;
+            justify-content: center;
+            padding: 0 130px;
+        }
+
+        .texto-container {
+            display: flex;
+            gap: 5px;
+            align-items: center;
+        }
+
+        .texto {
+            font-family: "Sora";
+            font-size: 14px;
+            letter-spacing: 0px;
+            font-weight: 400;
+            color: #0D3439;
+        }
+
+        .sublinhado {
+            margin: 0;
+            font-family: "Sora";
+            font-size: 14px;
+            font-weight: 400;
+            color: #1B7C87;
+            text-decoration: underline #1B7C87;
+        }
+
+        .fechar-avisocookies {
+            margin-left: 78px;
+            width: 116px;
+            height: 40px;
+            top: 40%;
+            color: #3A726D;
+            background-color: #F0FAF9;
+            border: none;
+            border-radius: 8px;
+            font-family: "Sora";
+            font-size: 14px;
+            color: #0D3439;
+            cursor: pointer;
+        }
+    }
+
+    @@media(max-width: 1024px) and (min-width: 769px) {
+
+        .cookie {
+            padding: 0 40px;
+        }
+        
+        .texto-container {
+            display: flex;
+            gap: 5px;
+            align-items: center;
+            white-space: nowrap;
+        }
+
+        .texto {
+            font-family: "Sora";
+            font-size: 14px;
+            letter-spacing: 0px;
+            font-weight: 400;
+            color: #0D3439;
+        }
+
+        .sublinhado {
+            margin: 0;
+            font-family: "Sora";
+            font-size: 14px;
+            font-weight: 400;
+            color: #1B7C87;
+            text-decoration: underline #1B7C87;
+        }
+
+        .fechar-avisocookies {
+            white-space: nowrap;
+            width: 116px;
+            height: 40px;
+            top: 40%;
+            background-color: #F0FAF9;
+            border: none;
+            border-radius: 8px;
+            font-family: "Sora";
+            font-size: 14px;
+            color: #0D3439;
+            cursor: pointer;
+        }
+    }
+
+
+    @@media (max-width: 768px) {
+        .cookie {
+            height: 56px;
+            background: #D1F0EE;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 40px;
+        }
+
+        .texto-container {
+            display: flex;
+            gap: 5px;
+            align-items: center;
+        }
+
+        .fechar-avisocookies {
+            margin-left: 78px;
+            width: 116px;
+            height: 40px;
+            top: 38%;
+            color: #3A726D;
+            transform: translateY(-50%);
+            background-color: #F0FAF9;
+            border: none;
+            border-radius: 8px;
+            font-family: "Sora";
+            font-size: 14px;
+            color: #0D3439;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .News {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: #4C969E;
+            padding: 61px 40px 34px 40px;
+        }
+    }
+
+
+    @@media(max-width: 640px) {
+        .cookie {
+            height: 144px;
+            background: #D1F0EE;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 40px;
+            flex-direction: column;
+        }
+
+        .texto-container {
+            display: flex;
+            gap: 5px;
+            align-items: center;
+        }
+
+        .texto {
+            font-family: "Sora";
+            font-size: 14px;
+            letter-spacing: 0px;
+            font-weight: 400;
+            color: #0D3439;
+            width: 308px;
+        }
+
+        .fechar-avisocookies {
+            margin-left: 0px;
+            width: 116px;
+            height: 40px;
+            top: 38%;
+            color: #3A726D;
+            transform: translateY(-100%);
+            background-color: #F0FAF9;
+            border: none;
+            border-radius: 8px;
+            font-family: "Sora";
+            font-size: 14px;
+            color: #0D3439;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+    }
+</style>
+
+@if (CookieVisivel)
+{
+    <div class="cookie">
+        <div class="texto-container">
+            <span class="texto">
+                Utilizamos cookies para melhorar a sua experiência. Ao continuar, concorda com a utilização de cookies.
+                <a href="https://inforcavado.com" class="sublinhado" target="_blank">
+                    Saiba mais
+                </a>
+            </span>
+        </div>
+        <button class="fechar-avisocookies" @onclick="Desaparece">Ok, entendi</button>
+    </div>
+}
+
+@code {
+    private bool CookieVisivel = true;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var accepted = await SessionStorage.GetItemAsync<string>("cookiesAccepted");
+        if (accepted == "true")
+        {
+            CookieVisivel = false;
+        }
+    }
+
+    private async Task Desaparece()
+    {
+        CookieVisivel = false;
+        await SessionStorage.SetItemAsync("cookiesAccepted", "true");
+    }
+}
