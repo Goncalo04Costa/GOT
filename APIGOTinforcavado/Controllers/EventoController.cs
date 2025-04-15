@@ -17,7 +17,7 @@ namespace APIGOTinforcavado.Controllers
             _eventoService = eventoService;
         }
 
-        // Criar novo Evento
+
         [HttpPost]
         public async Task<IActionResult> CreateEvento([FromBody] Evento evento)
         {
@@ -28,7 +28,7 @@ namespace APIGOTinforcavado.Controllers
             return CreatedAtAction(nameof(GetEventoById), new { id = createdEvento.Id }, createdEvento);
         }
 
-        // Obter evento por ID
+
         [HttpGet("{id}")]
         public async Task<IActionResult> GetEventoById(int id)
         {
@@ -49,7 +49,6 @@ namespace APIGOTinforcavado.Controllers
             return Ok(eventos);
         }
 
-        // Listar todos os eventos
         [HttpGet]
         public async Task<IActionResult> GetEventos()
         {
@@ -57,7 +56,7 @@ namespace APIGOTinforcavado.Controllers
             return Ok(eventos);
         }
 
-        // Atualizar evento
+
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateEvento(int id, [FromBody] Evento evento)
         {
@@ -71,7 +70,7 @@ namespace APIGOTinforcavado.Controllers
             return Ok(updatedEvento);
         }
 
-        // Excluir evento
+
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteEvento(int id)
         {

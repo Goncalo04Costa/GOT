@@ -185,7 +185,7 @@
 
 
     .final-text {
-        width: 678px;
+        width: 662px;
         margin-top: 28px;
         font-family: "Sora";
         font-size: 10px;
@@ -256,6 +256,19 @@
         font-family: "Sora", sans-serif;
         white-space: nowrap;
         margin-left: 8px;
+    }
+
+    @@media(max-width: 745px) {
+
+        .container-boxes {
+        }
+
+        .boxes {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-direction: column;
+        }
     }
 
     @@media(max-width: 640px){

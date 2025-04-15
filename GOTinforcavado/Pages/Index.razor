@@ -1,6 +1,9 @@
 ﻿@page "/"
 @using GOTinforcavado.Auxiliar
 @using Blazored.SessionStorage
+@using GOTinforcavado.Services
+@using Shared.models
+@inject NewsLetterService NewsLetterService
 @inject ISessionStorageService SessionStorage
 
 <Cabecalho imagem="true" />
@@ -60,24 +63,27 @@
     </div>
 </div>
 
-<div class="News">
-    <div class="TituloNewsLetter">
-        Newsletter Inforcávado
+
+<div class="Noticia">
+    <div class="TituloNoticias">
+        <p>Newsletter Inforcávado</p>
+    </div>
+    <div class="SubtituloNoticias">
+        <p>Novidades sobre os nossos softwares, legislação e muito mais.</p>
     </div>
 
-    <div class="Subtitulo">
-        Novidades sobre os nossos softwares, legislação e muito mais.
-    </div>
-
-    <div class="InputWrapper">
-        <input type="text" class="caixaDETexto" placeholder="Introduza o seu e-mail aqui">
-        <button class="BotaoSubscrever">Subscrever</button>
+    <div class="ContainerEmail">
+        <div class="EmailInputWrapper">
+            <input type="email" placeholder="Coloque aqui o seu e-mail" class="EmailInput" @bind="email" />
+            <button class="SubscribeButton" @onclick="Subscrever">Subscrever</button>
+        </div>
     </div>
 </div>
 
 <Rodape />
 
 <Cookies />
+
 
 @code {
 
@@ -117,7 +123,43 @@
         AvisoVisivel = false;
         await SessionStorage.SetItemAsync("avisoOculto", true);
     }
+
+
+    private string email;
+
+        private async Task Subscrever()
+        {
+            if (string.IsNullOrWhiteSpace(email))
+            {
+                // Exibir uma mensagem de erro se o e-mail estiver vazio
+                return;
+            }
+
+            // Criar o objeto de newsletter
+            var newsLetter = new NewsLetter
+            {
+                Email = email
+            };
+
+            try
+            {
+                // Chamar o serviço para adicionar a newsletter
+                await NewsLetterService.AddAsync(newsLetter);
+
+                // Exibir uma mensagem de sucesso
+                // (pode ser uma notificação ou algo semelhante)
+
+                // Limpar o campo de e-mail após a subscrição
+                email = string.Empty;
+            }
+            catch (Exception ex)
+            {
+                // Exibir mensagem de erro caso algo dê errado
+                // (mostrar uma notificação ou mensagem de erro para o usuário)
+            }
+        }
     
+
 }
 
 <style>
@@ -149,7 +191,7 @@
         font-size: 18px;
         font-weight: 400;
         color: #414D4D;
-        width: 906px;
+        max-width: 904px;
         text-align: center;
         padding-bottom: 24px;
         padding-top: 16px;
@@ -180,60 +222,71 @@
         align-self: center;
     }
 
+    .Noticia {
+        width: 100%;
+        height: 280px;
+        background: #4C969E;
+        padding: 60px 0;
+    }
 
-
-    .TituloNewsLetter {
+    .TituloNoticias {
+        color: #0D3439;
         font-family: "Poppins";
         font-size: 32px;
         font-weight: 600;
-        color: #0D0F0F;
-        width: 684px;
-        text-align: center;
+        display: flex;
+        justify-content: center;
     }
 
-    .Subtitulo {
-        width: 578px;
+    .SubtituloNoticias {
+        padding-top: 16px;
+        display: flex;
+        justify-content: center;
         color: #F2F4F4;
         font-family: "Sora";
         font-size: 18px;
-        font-weight: 400;
-        text-align: center;
-        padding-bottom: 32px;
-        padding-top: 16px;
-        white-space: nowrap;
+        font-weight: 500;
     }
 
-    .InputWrapper {
-        width: 538px;
-        height: 48px;
-        margin: 0 auto;
+    .ContainerEmail {
+        margin-top: 32px;
+        display: flex;
+        justify-content: center;
     }
 
-    .caixaDETexto {
-        width: 538px;
-        height: 48px;
-        background: #FFFFFF;
-        border: 1px solid #D1D8D8;
-        border-radius: 8px;
-        opacity: 1;
-        padding: 16px 0 16px 16px;
-    }
-
-    .BotaoSubscrever {
+    .EmailInputWrapper {
         position: relative;
-        top: -44px;
-        left: calc(100% - 118px);
-        bottom: 4px;
+        width: 538px;
+    }
+
+    .EmailInput {
+        width: 100%;
+        padding: 12px 126px 12px 16px;
+        border-radius: 8px;
+        font-size: 16px;
+        font-family: "Sora";
+        outline: none;
+        box-sizing: border-box;
+        color: #94A4A4;
+        opacity: 1;
+    }
+
+    .SubscribeButton {
+        position: absolute;
+        top: 4px;
+        right: 4px;
         width: 113px;
         height: 40px;
         background: #1B7C87;
-        border: none;
         border-radius: 8px;
-        color: #fff;
+        border: none;
+        color: white;
+        font-weight: 600;
         cursor: pointer;
-        opacity: 1;
+        font-family: "Sora";
     }
 
+   
     .aviso {
         height: 32px;
         background: #0D3439;
@@ -262,14 +315,7 @@
         font-size: 16px;
     }
 
-    .News {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        background: #4C969E;
-        padding: 60px 140px 60px 140px;
-    }
+   
 
     @@media(max-width: 1280px){
         .aviso {
@@ -289,27 +335,7 @@
      
         }
 
-        .TituloNewsLetter {
-            font-family: "Poppins";
-            font-size: 32px;
-            font-weight: 600;
-            color: #0D3439;
-            width: 380px;
-            text-align: center;
-            white-space: nowrap;
-        }
-
-        .Subtitulo {
-            width: 578px;
-            color: #F2F4F4;
-            font-family: "Sora";
-            font-size: 18px;
-            font-weight: 400;
-            text-align: center;
-            padding-bottom: 32px;
-            padding-top: 16px;
-            white-space: nowrap;
-        }
+       
     }
 
     @@media(max-width: 1024px) {
@@ -349,7 +375,19 @@
         padding: 32px 60px 60px 60px;
     }
 
-
+        .final-text {
+            width: 664px;
+            height: 13px;
+            margin-top: 28px;
+            font-family: "Sora";
+            font-size: 10px;
+            font-weight: 400;
+            letter-spacing: 0px;
+            color: #758A8A;
+            opacity: 1;
+            text-align: center;
+            align-self: center;
+        }
         
     }
 
@@ -371,7 +409,7 @@
             font-size: 18px;
             font-weight: 400;
             color: #414D4D;
-            width: 672px;
+            max-width: 662px;
             text-align: center;
             padding-bottom: 24px;
             padding-top: 16px;
@@ -384,13 +422,46 @@
             padding: 28px 24px 60px 24px;
         }
 
-        .News {
+        .final-text {
+            width: 664px;
+            height: 13px;
+            margin-top: 28px;
+            font-family: "Sora";
+            font-size: 10px;
+            font-weight: 400;
+            letter-spacing: 0px;
+            color: #758A8A;
+            opacity: 1;
+            text-align: center;
+            align-self: center;
+        }
+    }
+
+
+    @@media(max-width: 745px){
+
+        .container-boxes {
+        }
+
+        .boxes {
             display: flex;
-            flex-direction: column;
-            align-items: center;
+            gap: 16px;
             justify-content: center;
-            background: #4C969E;
-            padding: 60px 40px 60px 40px;
+            flex-direction: column;
+        }
+
+        .final-text {
+            width: 664px;
+            height: 13px;
+            margin-top: 28px;
+            font-family: "Sora";
+            font-size: 10px;
+            font-weight: 400;
+            letter-spacing: 0px;
+            color: #758A8A;
+            opacity: 1;
+            text-align: center;
+            align-self: center;
         }
     }
 
@@ -456,6 +527,19 @@
             justify-content: center;
         }
 
+        .final-text {
+            width: 664px;
+            height: 13px;
+            margin-top: 28px;
+            font-family: "Sora";
+            font-size: 10px;
+            font-weight: 400;
+            letter-spacing: 0px;
+            color: #758A8A;
+            opacity: 1;
+            text-align: center;
+            align-self: center;
+        }
         .textoaviso {
             font-family: "Poppins";
             font-size: 16px;
@@ -467,67 +551,7 @@
             justify-content: center;
         }
 
-        .News {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            background: #4C969E;
-            padding: 60px 40px 60px 40px;
-        }
-
-        .TituloNewsLetter {
-            font-family: "Poppins";
-            font-size: 32px;
-            font-weight: 600;
-            color: #0D3439;
-            width: 380px;
-            text-align: center;
-        }
-
-        .Subtitulo {
-            width: 348px;
-            color: #F2F4F4;
-            font-family: "Sora";
-            font-size: 18px;
-            font-weight: 400;
-            text-align: center;
-            padding-bottom: 32px;
-            padding-top: 16px;
-            white-space: normal;
-        }
-
-        .InputWrapper {
-            width: 348px;
-            height: 48px;
-            margin: 0 auto;
-        }
-
-        .caixaDETexto {
-            width: 348px;
-            height: 48px;
-            background: #FFFFFF;
-            border: 1px solid #D1D8D8;
-            border-radius: 8px;
-            opacity: 1;
-            padding: 16px 0 16px 16px;
-        }
-
-        .BotaoSubscrever {
-            position: relative;
-            top: -44px;
-            left: calc(100% - 118px);
-            bottom: 4px;
-            width: 113px;
-            height: 40px;
-            background: #1B7C87;
-            border: none;
-            border-radius: 8px;
-            color: #fff;
-            cursor: pointer;
-            opacity: 1;
-        }
-
+        
 
         .card {
             background-color: #FFFF;
@@ -554,8 +578,9 @@
             flex-direction: column;
         }
 
+
         .final-text {
-            width: 344px;
+            width: 340px;
             height: 13px;
             margin-top: 28px;
             font-family: "Sora";
@@ -568,6 +593,35 @@
             align-self: center;
         }
 
+        .Noticia {
+            height: auto;
+            padding: 40px 0;
+        }
+
+        .TituloNoticias,
+        .SubtituloNoticias,
+        .ContainerEmail {
+            width: 348px;
+            margin: 0 auto;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .EmailInputWrapper {
+            width: 348px;
+        }
+
+        .EmailInput {
+            padding: 12px 126px 12px 16px;
+            font-size: 14px;
+        }
+
+        .SubscribeButton {
+            width: 100px;
+            height: 36px;
+            font-size: 14px;
+        }
     }
     
             

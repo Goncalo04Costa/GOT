@@ -5,6 +5,11 @@
     using System.Security.Cryptography;
     using System.Text;
     using System.Threading.Tasks;
+    using Microsoft.AspNetCore.Http;
+    using System.Linq;
+    using System.Collections.Generic;
+    using System;
+    using static MudBlazor.Colors;
 
     public class TicketService
     {
@@ -17,8 +22,7 @@
             _emailSender = emailSender;
         }
 
-       
-        private static string GenerateFixedRandomId(string input)
+        private static string GenerateFixedRandomCode(string input)
         {
             using (var sha256 = SHA256.Create())
             {
@@ -27,12 +31,11 @@
             }
         }
 
-      
         public async Task<Ticket> CreateTicketAsync(Ticket ticket)
         {
             if (ticket == null) throw new ArgumentNullException(nameof(ticket));
 
-            ticket.Id = GenerateFixedRandomId(ticket.Nome);
+            ticket.codigo = GenerateFixedRandomCode(ticket.Nome);
             ticket.EstadoTarefa = EstadoTarefa.PorIniciar;
             ticket.Data = DateTime.UtcNow;
 
@@ -40,9 +43,8 @@
             {
                 var createdTicket = await _ticketRepository.CreateAsync(ticket);
 
-                
                 string subject = "Confirmação de Criação de Ticket";
-                string body = $"O seu ticket foi criado com sucesso!\n\nCódigo do Ticket: {createdTicket.Id}\n\nAcompanhe o seu ticket em:\nhttps://localhost:7026/AcompanhaTicket?codigo={createdTicket.Id}";
+                string body = $"O seu ticket foi criado com sucesso!\n\nCódigo do Ticket: {createdTicket.codigo}\n\nAcompanhe o seu ticket em:\nhttps://localhost:7026/AcompanhaTicket?codigo={createdTicket.codigo}";
                 await _emailSender.SendEmailAsync(ticket.Email, subject, body);
 
                 return createdTicket;
@@ -53,29 +55,44 @@
             }
         }
 
-    
-        public async Task<Ticket> GetTicketByIdAsync(string id)
+        public async Task<Ticket> GetTicketByCodigoAsync(string codigo)
         {
-            if (string.IsNullOrEmpty(id)) throw new ArgumentException("ID do ticket não pode ser nulo ou vazio.", nameof(id));
+            if (string.IsNullOrEmpty(codigo))
+                throw new ArgumentException("Código do ticket não pode ser nulo ou vazio.", nameof(codigo));
 
             try
             {
-                return await _ticketRepository.GetByIdAsync(id);
+                return await _ticketRepository.GetByCodigoAsync(codigo); 
+            }
+            catch (Exception ex)
+            {
+                throw new InvalidOperationException($"Erro ao procurar ticket com código {codigo}.", ex);
+            }
+        }
+
+        public async Task<Ticket> GetTicketByIdAsync(int id) 
+        {
+            if (id <= 0)
+                throw new ArgumentException("ID do ticket não pode ser nulo ou menor ou igual a zero.", nameof(id));
+
+            try
+            {
+                return await _ticketRepository.GetByIdAsync(id); 
             }
             catch (Exception ex)
             {
                 throw new InvalidOperationException($"Erro ao procurar ticket com ID {id}.", ex);
             }
         }
-
-        
-        public async Task<Ticket> UpdateTicketStatusAsync(string id, EstadoTarefa status)
+ 
+        public async Task<Ticket> UpdateTicketStatusAsync(string codigo, EstadoTarefa status) 
         {
-            if (string.IsNullOrEmpty(id)) throw new ArgumentException("ID do ticket não pode ser nulo ou vazio.", nameof(id));
+            if (string.IsNullOrEmpty(codigo))
+                throw new ArgumentException("Código do ticket não pode ser nulo ou vazio.", nameof(codigo));
 
             try
             {
-                var ticket = await _ticketRepository.GetByIdAsync(id);
+                var ticket = await _ticketRepository.GetByCodigoAsync(codigo); 
                 if (ticket == null) return null;
 
                 ticket.EstadoTarefa = status;
@@ -85,11 +102,10 @@
             }
             catch (Exception ex)
             {
-                throw new InvalidOperationException($"Erro ao atualizar status do ticket com ID {id}.", ex);
+                throw new InvalidOperationException($"Erro ao atualizar status do ticket com código {codigo}.", ex);
             }
         }
 
-      
         public async Task<List<Ticket>> GetTicketsAsync()
         {
             try
@@ -102,16 +118,17 @@
             }
         }
 
-      
         public async Task<List<Ticket>> SearchTicketsByCodeAsync(string codigo)
         {
             if (string.IsNullOrWhiteSpace(codigo))
-                return new List<Ticket>();
+                return new List<Ticket>(); 
 
             try
             {
                 var tickets = await _ticketRepository.GetAllAsync();
-                return tickets.Where(t => t.Id.Equals(codigo, StringComparison.OrdinalIgnoreCase)).ToList();
+
+  
+                return tickets.Where(t => t.codigo == codigo).ToList();
             }
             catch (Exception ex)
             {
@@ -119,20 +136,22 @@
             }
         }
 
-        public async Task<Ticket> UpdateTicketAsync(string id, Ticket updatedTicket)
+
+        public async Task<Ticket> UpdateTicketAsync(int id, Ticket updatedTicket) 
         {
-            if (string.IsNullOrEmpty(id)) throw new ArgumentException("ID do ticket não pode ser nulo ou vazio.", nameof(id));
+            if (id <= 0) throw new ArgumentException("ID do ticket não pode ser nulo ou vazio.", nameof(id));
 
             try
             {
-                var existingTicket = await _ticketRepository.GetByIdAsync(id);
+                var existingTicket = await _ticketRepository.GetByIdAsync(id); 
                 if (existingTicket == null) return null;
 
+                existingTicket.codigo = updatedTicket.codigo;
                 existingTicket.Nome = updatedTicket.Nome;
                 existingTicket.Empresa = updatedTicket.Empresa;
                 existingTicket.Email = updatedTicket.Email;
                 existingTicket.Mensagem = updatedTicket.Mensagem;
-                existingTicket.EscolhaInicial = updatedTicket.EscolhaInicial;
+                existingTicket.TipoTicket = updatedTicket.TipoTicket;
                 existingTicket.Departamento = updatedTicket.Departamento;
                 existingTicket.EstadoTarefa = updatedTicket.EstadoTarefa;
                 existingTicket.Comentarios = updatedTicket.Comentarios;
@@ -147,8 +166,8 @@
             }
         }
 
-    
-        public async Task UploadFilesAsync(string ticketId, List<IFormFile> ficheiros)
+
+        public async Task UploadFilesAsync(int ticketId, List<IFormFile> ficheiros)
         {
             var ticket = await GetTicketByIdAsync(ticketId);
             if (ticket == null)
@@ -165,21 +184,22 @@
                     NomeFicheiro = ficheiro.FileName,
                     FileData = fileBytes,
                     FileType = ficheiro.ContentType,
-                    TicketId = ticketId
+                    TicketId = ticketId  
                 };
 
-                ticket.Ficheiros.Add(uploadedFile);
+
+                await _ticketRepository.AddFileToTicketAsync(uploadedFile);
             }
 
+   
             await UpdateTicketAsync(ticketId, ticket);
         }
 
-   
         public async Task<UploadedFiles> GetFileByIdAsync(int fileId)
         {
             try
             {
-                var file = await _ticketRepository.GetFileByIdAsync(fileId); 
+                var file = await _ticketRepository.GetFileByIdAsync(fileId);
                 if (file == null)
                     throw new InvalidOperationException("Ficheiro não encontrado.");
 
@@ -190,6 +210,8 @@
                 throw new InvalidOperationException($"Erro ao procurar ficheiro com ID {fileId}.", ex);
             }
         }
+
+      
 
     }
 }

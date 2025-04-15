@@ -23,6 +23,8 @@
     <Content Remove="componentes\NovoTicketComercialOutros.razor" />
     <Content Remove="componentes\NovoTicketComercialPROtextil.razor" />
     <Content Remove="componentes\VejaoSeuTicket.razor" />
+    <Content Remove="Pages\Teste.razor" />
+    <Content Remove="Pages\TesteAcompanhamento.razor" />
     <Content Remove="Pages\TicketApoioATOMgest.razor" />
     <Content Remove="Pages\TicketApoioFinanceiro.razor" />
     <Content Remove="Pages\TicketApoioHeadline.razor" />
@@ -52,9 +54,16 @@
     <PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="8.0.13" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.0.13" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="8.0.13" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.3.0" />
     <PackageReference Include="Microsoft.AspNetCore.WebUtilities" Version="8.0.13" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.6.1" />
     <PackageReference Include="System.ServiceModel.Http" Version="6.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.0" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,6 +1,10 @@
-﻿using APIGOTinforcavado.Data;
-using Microsoft.EntityFrameworkCore;
+﻿using APIGOTinforcavado.Models;
+using Microsoft.Data.SqlClient;
+using Dapper;
+using Microsoft.Extensions.Options;
 using Shared.models;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -8,32 +12,71 @@ namespace APIGOTinforcavado.Repositories
 {
     public class UtilizadorRepository
     {
-        private readonly AppDbContext _context;
+        private readonly string _connectionString;
 
-        public UtilizadorRepository(AppDbContext context)
+        public UtilizadorRepository(IOptions<ConnectionStrings> options)
         {
-            _context = context;
+            _connectionString = options.Value.DefaultConnection;
         }
 
-   
-        public async Task<Utilizador> GetByEmailAsync(string email)
+        // Obter utilizador por email
+        public async Task<Utilizador?> GetByEmailAsync(string email)
         {
-           
-            if (string.IsNullOrEmpty(email))
-                return null;  
- 
-            return await _context.utilizadores.FirstOrDefaultAsync(u => u.Email == email);
+            try
+            {
+                if (string.IsNullOrWhiteSpace(email))
+                    return null;
+
+                var sql = "SELECT * FROM Utilizadores WHERE Email = @Email";
+
+                using (var connection = new SqlConnection(_connectionString))
+                {
+                    connection.Open();
+                    return await connection.QueryFirstOrDefaultAsync<Utilizador>(sql, new { Email = email });
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro ao procurar o utilizador pelo email.", ex);
+            }
         }
 
+        // Obter utilizador por ID
         public async Task<Utilizador?> GetByIdAsync(int id)
         {
-            return await _context.utilizadores.FirstOrDefaultAsync(c => c.Id == id);
+            try
+            {
+                var sql = "SELECT * FROM Utilizadores WHERE Id = @Id";
+
+                using (var connection = new SqlConnection(_connectionString))
+                {
+                    connection.Open();
+                    return await connection.QueryFirstOrDefaultAsync<Utilizador>(sql, new { Id = id });
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro ao procurar o utilizador pelo ID.", ex);
+            }
         }
 
+        // Obter todos os utilizadores
         public async Task<List<Utilizador>> GetAllAsync()
         {
-            return await _context.utilizadores.ToListAsync();
-        }
+            try
+            {
+                var sql = "SELECT * FROM Utilizadores";
 
+                using (var connection = new SqlConnection(_connectionString))
+                {
+                    connection.Open();
+                    return (await connection.QueryAsync<Utilizador>(sql)).ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro ao procurar todos os utilizadores.", ex);
+            }
+        }
     }
 }

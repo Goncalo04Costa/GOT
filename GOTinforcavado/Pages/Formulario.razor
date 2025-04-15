@@ -3,7 +3,7 @@
 @inject NavigationManager NavigationManager
 @inject IJSRuntime JSRuntime
 @using DevExpress.Blazor.RichEdit
-@using DevExpress; 
+@using DevExpress;
 @using DevExpress.Blazor;
 @using GOTinforcavado.Services
 @using Microsoft.AspNetCore.Components.Forms
@@ -12,64 +12,72 @@
 @using System.Text
 
 
-
-
-
 <Cabecalho imagem="true" />
 
 <div class="Ticket">
-    <EditForm Model="newTicket" OnValidSubmit="HandleSubmit" enctype="multipart/form-data">
+    <EditForm Model="newTicket" OnValidSubmit="HandleSubmit" enctype="multipart/form-data" style="    display: flex
+;
+    align-items: center;">
         <DataAnnotationsValidator />
         <ValidationSummary />
 
 
-        <Headline EscolhaInicial="@newTicket.EscolhaInicial" Departamento="@newTicket.Departamento" />
+        <div style="width: 100%; max-width: 536px;">
+            <Headline EscolhaInicial="@newTicket.TipoTicket" Departamento="@newTicket.Departamento" />
+        </div>
 
-        <div class="form-group">
-           
-   
+        <div class="form-group" style="width: 100%; max-width: 536px;">
             <label class="Text">Nome:<br /></label>
             <br />
-            <InputText @bind-Value="newTicket.Nome" class="CaixaTextoIncial" placeholder="Introduza o seu nome" />
+            <InputText @bind-Value="newTicket.Nome"
+                       class="@(formFoiSubmetido && string.IsNullOrWhiteSpace(newTicket.Nome) ? "CaixaTextoIncial input-error" : "CaixaTextoIncial")"
+                       placeholder="Introduza o seu nome" />
+
         </div>
 
-        <div class="form-group">
+        <div class="form-group" style="width: 100%; max-width: 536px;">
             <label class="Text">Empresa:<br /></label>
             <br />
-            <InputText @bind-Value="newTicket.Empresa" class="CaixaTextoIncial" placeholder="Introduza a sua empresa" />
+            <InputText @bind-Value="newTicket.Empresa"
+                       class="@(formFoiSubmetido && string.IsNullOrWhiteSpace(newTicket.Empresa) ? "CaixaTextoIncial input-error" : "CaixaTextoIncial")"
+                       placeholder="Introduza a sua empresa" />
         </div>
+        <InputText @bind-Value="newTicket.Email"
+                   class="@(formFoiSubmetido && (string.IsNullOrWhiteSpace(newTicket.Email) || !IsValidEmail(newTicket.Email)) ? "CaixaTextoIncial input-error" : "CaixaTextoIncial")"
+                   placeholder="Introduza o seu email" />
 
-        <div class="form-group">
-            <label class="Text">Email:<br /></label>
-            <br />
-            <InputText @bind-Value="newTicket.Email" class="CaixaTextoIncial" placeholder="Introduza o seu email" />
-        </div>
+        <ValidationMessage For="@(() => newTicket.Email)" />
 
-        <div class="form-group">
+
+        <div class="form-group" style="width: 100%; max-width: 536px;">
             <label class="Text">Telefone:<br /></label>
             <br />
-            <InputText @bind-Value="newTicket.Telefone" class="CaixaTextoIncial" placeholder="Introduza o seu telefone" />
+            <InputText @bind-Value="newTicket.Telefone"
+                       class="@(formFoiSubmetido && string.IsNullOrWhiteSpace(newTicket.Telefone) ? "CaixaTextoIncial input-error" : "CaixaTextoIncial")"
+                       placeholder="Introduza o seu telefone" />
         </div>
 
-        <div class="form-group">
+        <div class="form-group" style="width: 100%; max-width: 536px;">
             <label class="Text">Assunto:<br /></label>
             <br />
-            <InputText @bind-Value="newTicket.Assunto" class="CaixaTextoIncial" placeholder="Introduza o assunto" />
+            <InputText @bind-Value="newTicket.Assunto"
+                       class="@(formFoiSubmetido && string.IsNullOrWhiteSpace(newTicket.Assunto) ? "CaixaTextoIncial input-error" : "CaixaTextoIncial")"
+                       placeholder="Introduza o assunto" />
         </div>
 
-        <div class="form-group">
+        <div class="form-group" style="width: 100%; max-width: 536px;">
             <label class="Text">Mensagem:<br /></label>
             <br />
-             <InputTextArea @bind-Value="newTicket.Mensagem" class="CaixaTextoMaior" placeholder="Introduza a sua mensagem" />
-            @* <DxHtmlEditor @bind-Value="newTicket.Mensagem"
-                          CssClass="CaixaTextoMaior"
-                          Placeholder="Introduza a sua mensagem"
-                          Height="196px">
-            </DxHtmlEditor> *@
+            <InputTextArea @bind-Value="newTicket.Mensagem"
+                           class="@(formFoiSubmetido && string.IsNullOrWhiteSpace(newTicket.Mensagem) ? "CaixaTextoMaior input-error" : "CaixaTextoMaior")"
+                           placeholder="Introduza a sua mensagem" />
         </div>
 
-        <div class="form-group UploadZone">
+
+        <div class="form-group UploadZone" style="width: 100%;
+    max-width: 536px;">
             <InputFile OnChange="HandleFileSelected" id="Ficheiro" multiple style="opacity: 0; width: 100%; height: 100%; cursor: pointer;" />
+
             <label for="Ficheiro" class="botaoUpload">
                 <span class="material-symbols-outlined">content_paste</span>
                 Colar Ficheiro
@@ -85,7 +93,7 @@
                         var iconPath = GetFileIcon(file.Name);
                         <li class="file-item">
                             <img src="@iconPath" alt="File Icon" class="file-icon" />
-                            <div class="file-info">
+                            <div class="file-info" style="margin-left: 8px;">
                                 <span>@file.Name</span>
                                 <span class="file-size">@(file.Size / 1024) KB</span>
                             </div>
@@ -148,13 +156,14 @@
     private bool isCheck1Checked = false;
     private bool isCheck2Checked = false;
 
+    private bool formFoiSubmetido = false;
 
-     
+
 
 
     protected override void OnParametersSet()
     {
-        newTicket.EscolhaInicial = EscolhaInicial;
+        newTicket.TipoTicket = EscolhaInicial;
         newTicket.Departamento = Departamento;
 
     }
@@ -167,9 +176,30 @@
         }
     }
 
+
+    private bool IsValidEmail(string email)
+    {
+        var emailRegex = new System.Text.RegularExpressions.Regex(@"^[^@\s]+@[^@\s]+\.[^@\s]+$");
+        return emailRegex.IsMatch(email);
+    }
+
+
     private async Task HandleSubmit()
     {
-        newTicket.Id = GenerateFixedRandomId(newTicket.Nome ?? "");
+        formFoiSubmetido = true; // <-- Ativa a validação visual
+
+        if (string.IsNullOrWhiteSpace(newTicket.Nome) ||
+            string.IsNullOrWhiteSpace(newTicket.Empresa) ||
+            string.IsNullOrWhiteSpace(newTicket.Email) ||
+            string.IsNullOrWhiteSpace(newTicket.Telefone) ||
+            string.IsNullOrWhiteSpace(newTicket.Assunto) ||
+            string.IsNullOrWhiteSpace(newTicket.Mensagem))
+        {
+            // Campos obrigatórios estão vazios — bloqueia envio
+            return;
+        }
+
+        newTicket.codigo = GenerateFixedRandomId(newTicket.Nome ?? "");
 
         using var content = new MultipartFormDataContent();
         content.Add(new StringContent(newTicket.Nome ?? ""), "Nome");
@@ -178,7 +208,7 @@
         content.Add(new StringContent(newTicket.Telefone ?? ""), "Telefone");
         content.Add(new StringContent(newTicket.Assunto ?? ""), "Assunto");
         content.Add(new StringContent(newTicket.Mensagem ?? ""), "Mensagem");
-        content.Add(new StringContent(newTicket.EscolhaInicial ?? ""), "EscolhaInicial");
+        content.Add(new StringContent(newTicket.TipoTicket ?? ""), "TipoTicket");
         content.Add(new StringContent(newTicket.Departamento ?? ""), "Departamento");
 
         foreach (var file in UploadedFiles)
@@ -197,7 +227,7 @@
             content.Add(streamContent, "ficheiros", file.Name);
         }
 
-        var url = $"/SucessoTicket/{newTicket.EscolhaInicial}/{newTicket.Departamento}" +
+        var url = $"/SucessoTicket/{newTicket.TipoTicket}/{newTicket.Departamento}" +
              $"?nome={newTicket.Nome}&empresa={newTicket.Empresa}";
 
         NavigationManager.NavigateTo(url);
@@ -249,7 +279,7 @@
 <script>
     window.registerPasteHandler = (dotNetRef) => {
         document.addEventListener("paste", function (event) {
-            let dropZone = document.getElementById("drop-zone"); 
+            let dropZone = document.getElementById("drop-zone");
 
             let items = event.clipboardData.items;
             for (let i = 0; i < items.length; i++) {
@@ -267,7 +297,7 @@
 
                     if (dropZone) {
                         dropZone.classList.add("UploadZone-hover");
-                        dropZone.focus(); 
+                        dropZone.focus();
 
                         setTimeout(() => dropZone.classList.remove("UploadZone-hover"), 1500);
                     }
@@ -281,6 +311,14 @@
 
 
 <style>
+
+    .input-error {
+        border: 2px solid #e53935; 
+        outline: none;
+        box-shadow: none;
+    }
+
+
     .Text {
         font-family: "Sora", sans-serif;
         font-size: 14px;
@@ -290,7 +328,7 @@
     }
 
     .CaixaTextoIncial {
-        width: 535px;
+        width: 100%;
         height: 48px;
         border: 1px solid #D1D8D8;
         border-radius: 8px;
@@ -301,7 +339,7 @@
     }
 
     .CaixaTextoMaior {
-        width: 535px;
+        width: 100%;
         height: 96px;
         border: 1px solid #D1D8D8;
         border-radius: 8px;
@@ -314,13 +352,11 @@
 
 
     .Ticket {
-        height: 1342px;
         background: #fff;
         display: flex;
         flex-direction: column;
-        align-items: center;
+        padding: 0 140px 60px 140px;
     }
-
 
 
     .botaoEnviarTicket {
@@ -343,13 +379,16 @@
 
 
     .UploadZone {
-        width: 536px;
+        width: 100%;
         height: 130px;
         border: 1px dashed #D1D8D8;
         border-radius: 8px;
+        display: flex;
         justify-content: center;
         align-items: center;
+        position: relative;
     }
+
 
         .UploadZone input[type="file"] {
             opacity: 0;
@@ -364,13 +403,13 @@
             transition: background 0.3s, border-color 0.3s;
         }
 
- .UploadZone-hover {
-    background: #E8F2F3;
-    border: 2px dashed #1B7C87;
-    transition: background 0.3s, border-color 0.3s;
-}
+    .UploadZone-hover {
+        background: #E8F2F3;
+        border: 2px dashed #1B7C87;
+        transition: background 0.3s, border-color 0.3s;
+    }
 
-    .UploadZone:focus{
+    .UploadZone:focus {
         border: 2px dashed var(--primary-500-r-);
         background: #B9D6DA7F 0% 0% no-repeat padding-box;
         border-radius: 8px;
@@ -380,23 +419,25 @@
 
 
     .botaoUpload {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    align-self: center;
-    width: 154px;
-    height: 40px;
-    font: normal normal normal 14px / 18px Sora;
-    letter-spacing: 0px;
-    color: #758A8A;
-    text-align: center;
-    background-color: #f0f0f0;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-top: -15%;
-    margin-left: 192px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 154px;
+        height: 40px;
+        font: normal normal normal 14px / 18px Sora;
+        letter-spacing: 0px;
+        color: #758A8A;
+        text-align: center;
+        background-color: #f0f0f0;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        cursor: pointer;
     }
+
 
 
     form {
@@ -406,7 +447,7 @@
     }
 
 
-   
+
     .TextoDeInformacao {
         margin-top: 8px;
         width: 536px;
@@ -512,7 +553,42 @@
         }
 
 
+    @@media(max-width: 1280px) {
+        .Ticket {
+            background: #fff;
+            display: flex;
+            flex-direction: column;
+            padding: 0 96px 60px 96px;
+        }
+    }
 
-  
+    @@media(max-width: 1024px) {
+        .Ticket {
+            background: #fff;
+            display: flex;
+            flex-direction: column;
+            padding: 0 60px 60px 60px;
+        }
+    }
 
+
+    @@media(max-width: 768px) {
+
+        .Ticket {
+            background: #fff;
+            display: flex;
+            flex-direction: column;
+            padding: 0 48px 60px 48px;
+        }
+    }
+
+    @@media(max-width: 640px) {
+
+        .Ticket {
+            background: #fff;
+            display: flex;
+            flex-direction: column;
+            padding: 0 24px 60px 24px;
+        }
+    }
 </style>

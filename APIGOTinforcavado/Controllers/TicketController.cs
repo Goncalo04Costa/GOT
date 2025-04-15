@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using APIGOTinforcavado.Services;
 using Shared.models;
+using Microsoft.EntityFrameworkCore;
 
 namespace APIGOTinforcavado.Controllers
 {
@@ -15,6 +16,7 @@ namespace APIGOTinforcavado.Controllers
             _ticketService = ticketService;
         }
 
+    
         [HttpPost]
         public async Task<IActionResult> CreateTicket([FromForm] Ticket ticket, [FromForm] List<IFormFile> ficheiros)
         {
@@ -25,16 +27,15 @@ namespace APIGOTinforcavado.Controllers
 
             if (ficheiros != null && ficheiros.Count > 0)
             {
-                await _ticketService.UploadFilesAsync(createdTicket.Id, ficheiros);
+                await _ticketService.UploadFilesAsync(createdTicket.Id, ficheiros);  // Save files
             }
 
             return CreatedAtAction(nameof(GetTicketById), new { id = createdTicket.Id }, createdTicket);
         }
 
-
         // Procurar ticket por ID
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetTicketById(string id)
+        public async Task<IActionResult> GetTicketById(int id)
         {
             var ticket = await _ticketService.GetTicketByIdAsync(id);
             if (ticket == null)
@@ -43,7 +44,6 @@ namespace APIGOTinforcavado.Controllers
             return Ok(ticket);
         }
 
-        // Atualizar os estados dos tickets
         [HttpPut("{id}/status")]
         public async Task<IActionResult> UpdateTicketStatus(string id, [FromBody] EstadoTarefa status)
         {
@@ -54,6 +54,7 @@ namespace APIGOTinforcavado.Controllers
             return Ok(updatedTicket);
         }
 
+
         // Obter todos os tickets
         [HttpGet]
         public async Task<IActionResult> GetTickets()
@@ -62,12 +63,34 @@ namespace APIGOTinforcavado.Controllers
             return Ok(tickets);
         }
 
-        // Procurar tickets pelo código
-        [HttpGet("search")]
-        public async Task<IActionResult> SearchTicketsByCode([FromQuery] string codigo)
+        [HttpGet("search/{codigo}")]
+        public async Task<ActionResult<Ticket>> GetTicketByCodigo(string codigo)
         {
-            var tickets = await _ticketService.SearchTicketsByCodeAsync(codigo);
-            return Ok(tickets);
+            var ticket = await _ticketService.GetTicketByCodigoAsync(codigo);
+
+            if (ticket == null)
+                return NotFound();
+
+            return ticket;
+        }
+
+
+        // Download de ficheiro
+        [HttpGet("ficheiro/{fileId}")]
+        public async Task<IActionResult> DownloadFile(int fileId)
+        {
+            try
+            {
+                var file = await _ticketService.GetFileByIdAsync(fileId);
+                if (file == null)
+                    return NotFound();
+
+                return File(file.FileData, file.FileType, file.NomeFicheiro);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Erro ao fazer download do ficheiro: {ex.Message}");
+            }
         }
     }
 }

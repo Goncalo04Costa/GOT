@@ -17,17 +17,22 @@ namespace APIGOTinforcavado.Controllers
             _comentarioService = comentarioService;
         }
 
-        // Criar novo Comentário
         [HttpPost]
-        public async Task<IActionResult> CreateComentario([FromBody] Comentario comentario)
+        public async Task<IActionResult> CriarComentario([FromBody] Comentario comentario)
         {
             if (comentario == null)
-                return BadRequest("Os dados do comentário são inválidos.");
+            {
+                return BadRequest("Comentário inválido.");
+            }
+            var resultado = await _comentarioService.CreateComentarioAsync(comentario);
 
-            var createdComentario = await _comentarioService.CreateComentarioAsync(comentario);
-            return CreatedAtAction(nameof(GetComentarioById), new { id = createdComentario.Id }, createdComentario);
+            if (resultado == null)
+            {
+                return BadRequest("Erro ao criar o comentário.");
+            }
+
+            return CreatedAtAction(nameof(GetComentarioById), new { id = resultado.Id }, resultado);
         }
-
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetComentarioById(int id)
@@ -39,7 +44,7 @@ namespace APIGOTinforcavado.Controllers
             return Ok(comentario);
         }
 
-   
+  
         [HttpGet]
         public async Task<IActionResult> GetComentarios()
         {
@@ -47,35 +52,19 @@ namespace APIGOTinforcavado.Controllers
             return Ok(comentarios);
         }
 
-        // Atualizar comentário
-        [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateComentario(int id, [FromBody] Comentario comentario)
-        {
-            if (id != comentario.Id)
-                return BadRequest("O ID do comentário não confere.");
 
-            var updatedComentario = await _comentarioService.UpdateComentarioAsync(id, comentario);
-            if (updatedComentario == null)
+        [HttpGet("ticket/{codigo}")]
+        public async Task<IActionResult> GetComentariosPorCodigoTicket(string codigo)
+        {
+            var comentarios = await _comentarioService.GetComentariosPorCodigoTicketAsync(codigo);
+
+            if (comentarios == null || comentarios.Count == 0)
                 return NotFound();
-
-            return Ok(updatedComentario);
-        }
-
-     
-
-        [HttpGet("ticket/{ticketId}")]
-        public async Task<IActionResult> GetComentariosByTicketId(string ticketId)
-        {
-            var comentarios = await _comentarioService.GetComentariosByTicketIdAsync(ticketId);
-            if (comentarios == null || !comentarios.Any())
-                return NotFound(new { Message = $"Nenhum comentário encontrado para o TicketId {ticketId}." });
 
             return Ok(comentarios);
         }
 
 
-
-        // Excluir comentário
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteComentario(int id)
         {

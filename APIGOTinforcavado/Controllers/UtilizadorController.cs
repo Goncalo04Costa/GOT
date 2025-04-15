@@ -34,7 +34,7 @@ namespace APIGOTinforcavado.Controllers
             return Ok(new { Token = token });
         }
 
-        // Obter comentário por ID
+
         [HttpGet("{id}")]
         public async Task<IActionResult> GetUtilizadorById(int id)
         {

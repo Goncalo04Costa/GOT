@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Inforcavado\\APIGOTinforcavado\\APIGOTinforcavado.csproj": {}
+    "C:\\Users\\gonca\\OneDrive\\Ambiente de Trabalho\\GOT\\GOT\\APIGOTinforcavado\\APIGOTinforcavado.csproj": {}
   },
   "projects": {
-    "C:\\Inforcavado\\APIGOTinforcavado\\APIGOTinforcavado.csproj": {
+    "C:\\Users\\gonca\\OneDrive\\Ambiente de Trabalho\\GOT\\GOT\\APIGOTinforcavado\\APIGOTinforcavado.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Inforcavado\\APIGOTinforcavado\\APIGOTinforcavado.csproj",
+        "projectUniqueName": "C:\\Users\\gonca\\OneDrive\\Ambiente de Trabalho\\GOT\\GOT\\APIGOTinforcavado\\APIGOTinforcavado.csproj",
         "projectName": "APIGOTinforcavado",
-        "projectPath": "C:\\Inforcavado\\APIGOTinforcavado\\APIGOTinforcavado.csproj",
+        "projectPath": "C:\\Users\\gonca\\OneDrive\\Ambiente de Trabalho\\GOT\\GOT\\APIGOTinforcavado\\APIGOTinforcavado.csproj",
         "packagesPath": "C:\\Users\\gonca\\.nuget\\packages\\",
-        "outputPath": "C:\\Inforcavado\\APIGOTinforcavado\\obj\\",
+        "outputPath": "C:\\Users\\gonca\\OneDrive\\Ambiente de Trabalho\\GOT\\GOT\\APIGOTinforcavado\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -34,8 +34,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Inforcavado\\Shared\\Shared.csproj": {
-                "projectPath": "C:\\Inforcavado\\Shared\\Shared.csproj"
+              "C:\\Users\\gonca\\OneDrive\\Ambiente de Trabalho\\GOT\\GOT\\Shared\\Shared.csproj": {
+                "projectPath": "C:\\Users\\gonca\\OneDrive\\Ambiente de Trabalho\\GOT\\GOT\\Shared\\Shared.csproj"
               }
             }
           }
@@ -49,7 +49,8 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        }
+        },
+        "SdkAnalysisLevel": "9.0.200"
       },
       "frameworks": {
         "net8.0": {
@@ -62,6 +63,10 @@
             "Blazored.SessionStorage": {
               "target": "Package",
               "version": "[2.4.0, )"
+            },
+            "Dapper": {
+              "target": "Package",
+              "version": "[2.1.66, )"
             },
             "DevExpress.Blazor": {
               "target": "Package",
@@ -119,18 +124,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.407/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Inforcavado\\Shared\\Shared.csproj": {
+    "C:\\Users\\gonca\\OneDrive\\Ambiente de Trabalho\\GOT\\GOT\\Shared\\Shared.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Inforcavado\\Shared\\Shared.csproj",
+        "projectUniqueName": "C:\\Users\\gonca\\OneDrive\\Ambiente de Trabalho\\GOT\\GOT\\Shared\\Shared.csproj",
         "projectName": "Shared",
-        "projectPath": "C:\\Inforcavado\\Shared\\Shared.csproj",
+        "projectPath": "C:\\Users\\gonca\\OneDrive\\Ambiente de Trabalho\\GOT\\GOT\\Shared\\Shared.csproj",
         "packagesPath": "C:\\Users\\gonca\\.nuget\\packages\\",
-        "outputPath": "C:\\Inforcavado\\Shared\\obj\\",
+        "outputPath": "C:\\Users\\gonca\\OneDrive\\Ambiente de Trabalho\\GOT\\GOT\\Shared\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -164,7 +169,8 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        }
+        },
+        "SdkAnalysisLevel": "9.0.200"
       },
       "frameworks": {
         "net8.0": {
@@ -207,7 +213,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.407/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

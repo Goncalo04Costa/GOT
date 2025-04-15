@@ -41,6 +41,7 @@ namespace GOTinforcavado
             builder.Services.AddScoped<ComentarioService>();
             builder.Services.AddScoped<UtilizadorService>();
             builder.Services.AddScoped<EventoService>();
+            builder.Services.AddScoped<NewsLetterService>();
 
             builder.Services.AddOptions();
             builder.Services.AddAuthorizationCore();

@@ -1,34 +1,35 @@
 ﻿using System.Net.Http;
+using Microsoft.AspNetCore.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
 using Shared.models;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Components.Forms;
+using System.Net;
 
 namespace GOTinforcavado.Services
 {
     public class TicketService
     {
         private readonly HttpClient _httpClient;
-        private const string BaseUrl = "api/ticket";
+        private const string BaseUrl = "api/Ticket";
 
         public TicketService(HttpClient httpClient)
         {
             _httpClient = httpClient;
         }
 
+        // Criar um novo Ticket
         public async Task<Ticket> CreateTicketAsync(Ticket ticket)
         {
             var response = await _httpClient.PostAsJsonAsync(BaseUrl, ticket);
 
             if (!response.IsSuccessStatusCode)
             {
-               
                 var errorMessage = await response.Content.ReadAsStringAsync();
                 throw new Exception($"Erro ao criar ticket. Código: {response.StatusCode}, Mensagem: {errorMessage}");
             }
 
-           
             var ticketResponse = await response.Content.ReadFromJsonAsync<Ticket>();
 
             if (ticketResponse == null)
@@ -39,48 +40,83 @@ namespace GOTinforcavado.Services
             return ticketResponse;
         }
 
-
-        public async Task<Ticket> GetTicketByIdAsync(string id)
+        // procura um Ticket pelo codigo
+        public async Task<Ticket?> GetTicketByIdAsync(string codigo)
         {
-            return await _httpClient.GetFromJsonAsync<Ticket>($"{BaseUrl}/{id}");
+            var response = await _httpClient.GetAsync($"{BaseUrl}/{codigo}");
+            if (response.IsSuccessStatusCode)
+            {
+                return await response.Content.ReadFromJsonAsync<Ticket>();
+            }
+
+
+            return null;
         }
 
+        // Obter todos os Tickets
         public async Task<List<Ticket>> GetTicketsAsync()
         {
             return await _httpClient.GetFromJsonAsync<List<Ticket>>(BaseUrl);
         }
 
+        // Atualizar um Ticket
         public async Task<Ticket> UpdateTicketAsync(string id, Ticket updatedTicket)
         {
             var response = await _httpClient.PutAsJsonAsync($"{BaseUrl}/{id}", updatedTicket);
-            response.EnsureSuccessStatusCode();
+            if (!response.IsSuccessStatusCode)
+            {
+                var errorMessage = await response.Content.ReadAsStringAsync();
+                throw new Exception($"Erro ao atualizar ticket. Código: {response.StatusCode}, Mensagem: {errorMessage}");
+            }
+
             return await response.Content.ReadFromJsonAsync<Ticket>();
         }
 
+        // Atualizar o Status de um Ticket
         public async Task<Ticket> UpdateTicketStatusAsync(string id, EstadoTarefa status)
         {
             var response = await _httpClient.PatchAsJsonAsync($"{BaseUrl}/{id}/status", status);
-            response.EnsureSuccessStatusCode();
+            if (!response.IsSuccessStatusCode)
+            {
+                var errorMessage = await response.Content.ReadAsStringAsync();
+                throw new Exception($"Erro ao atualizar status do ticket. Código: {response.StatusCode}, Mensagem: {errorMessage}");
+            }
+
             return await response.Content.ReadFromJsonAsync<Ticket>();
         }
 
-        public async Task<List<Ticket>> SearchTicketsByCodeAsync(string codigo)
+        public async Task<Ticket?> SearchTicketByCodeAsync(string codigo)
         {
-            return await _httpClient.GetFromJsonAsync<List<Ticket>>($"{BaseUrl}/search/{codigo}");
+            var encodedCodigo = Uri.EscapeDataString(codigo);
+            return await _httpClient.GetFromJsonAsync<Ticket>($"{BaseUrl}/search/{encodedCodigo}");
         }
 
-        public async Task UploadFilesAsync(string ticketId, List<IBrowserFile> files)
+        public async Task UploadFilesAsync(string ticketId, List<IFormFile> ficheiros)
         {
-            var content = new MultipartFormDataContent();
+            var ticket = await GetTicketByIdAsync(ticketId);
+            if (ticket == null)
+                return;
 
-            foreach (var file in files)
+            foreach (var ficheiro in ficheiros)
             {
-                var stream = file.OpenReadStream();
-                content.Add(new StreamContent(stream), "files", file.Name);
+                using var memoryStream = new MemoryStream();
+                await ficheiro.CopyToAsync(memoryStream);
+                byte[] fileBytes = memoryStream.ToArray();
+
+                var uploadedFile = new UploadedFiles
+                {
+                    NomeFicheiro = ficheiro.FileName,
+                    FileData = fileBytes,
+                    FileType = ficheiro.ContentType,
+                    TicketId = int.Parse(ticketId)
+
+                };
+
+                ticket.Ficheiros.Add(uploadedFile);
             }
 
-            var response = await _httpClient.PostAsync($"{BaseUrl}/{ticketId}/upload", content);
-            response.EnsureSuccessStatusCode();
+            await UpdateTicketAsync(ticketId, ticket);
         }
+
     }
 }

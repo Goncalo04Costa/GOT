@@ -96,7 +96,7 @@
         background: #fff;
         display: flex;
         justify-content: center;
-        padding: 32px 140px 60px 140px;
+        padding: 0px 140px 0px 140px;
     }
 
     .cardsec {
@@ -184,7 +184,7 @@
 
 
     .final-text {
-        width: 678px;
+        width: 662px;
         margin-top: 28px;
         font-family: "Sora";
         font-size: 10px;
@@ -203,6 +203,7 @@
         justify-content: center;
         align-items: center;
         flex-direction: column;
+        padding: 32px 140px 60px 140px;
     }
 
     .header-line1 {
@@ -257,7 +258,27 @@
         margin-left: 8px;
     }
 
+    @@media(max-width: 745px) {
+
+        .container-boxes {
+        }
+
+        .boxes {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-direction: column;
+        }
+    }
+
     @@media(max-width: 640px) {
+
+        .card {
+            background: #fff;
+            display: flex;
+            justify-content: center;
+            padding: 32px 24px 60px 24px;
+        }
         .boxes {
             display: flex;
             grid-template-columns: auto auto;

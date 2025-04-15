@@ -1,0 +1,23 @@
+wwwroot\css\app.css
+wwwroot\imagens\atomgest- Prioritária Horizontal Cores (positiva.svg
+wwwroot\imagens\close_20dp_E8EAED_FILL0_wght400_GRAD0_opsz20.svg
+wwwroot\imagens\default.png
+wwwroot\imagens\financeiro.PNG
+wwwroot\imagens\i-docs-text.svg
+wwwroot\imagens\i-excel.svg
+wwwroot\imagens\i-facebook.svg
+wwwroot\imagens\i-instagram.svg
+wwwroot\imagens\i-linkedin.svg
+wwwroot\imagens\inforcavado.svg
+wwwroot\imagens\Inforcávado-monocromática-negativa-secundária.svg
+wwwroot\imagens\i-other.svg
+wwwroot\imagens\i-preview-artdocs.svg
+wwwroot\imagens\it.PNG
+wwwroot\imagens\i-youtube.svg
+wwwroot\imagens\Login GOT image (896x1017).png
+wwwroot\imagens\Logo-growing-together-mono-negativo.svg
+wwwroot\imagens\Logo-growing-together-prioritario-cores.svg
+wwwroot\imagens\outros.PNG
+wwwroot\imagens\Protextil- Prioritário Horizontal Cores (positivo).svg
+wwwroot\imagens\smile.png
+wwwroot\index.html

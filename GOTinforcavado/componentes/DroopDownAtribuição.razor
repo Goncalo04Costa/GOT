@@ -43,7 +43,7 @@
 <ul>
     @foreach (var utilizador in filteredUtilizadores)
     {
-        <li>@utilizador.PrimeiroNome - @utilizador.Email</li>
+        <li>@utilizador.Nome - @utilizador.Email</li>
     }
 </ul>
 
@@ -67,7 +67,7 @@
         else
         {
             filteredUtilizadores = utilizadores
-                .Where(u => u.PrimeiroNome.Contains(searchQuery, StringComparison.OrdinalIgnoreCase) ||
+                .Where(u => u.Nome.Contains(searchQuery, StringComparison.OrdinalIgnoreCase) ||
                             u.Email.Contains(searchQuery, StringComparison.OrdinalIgnoreCase))
                 .ToList();
         }

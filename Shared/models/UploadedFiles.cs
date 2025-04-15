@@ -17,7 +17,7 @@ namespace Shared.models
         [Required] 
         public DateTime Data { get; set; } = DateTime.UtcNow;
 
-        public string? TicketId { get; set; }
+        public int TicketId { get; set; }
         public virtual Ticket? Ticket { get; set; }
 
         public int? ComentarioId { get; set; }

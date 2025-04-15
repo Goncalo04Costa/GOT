@@ -3,6 +3,7 @@ using Shared.models;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using static MudBlazor.Colors;
 
 namespace APIGOTinforcavado.Services
 {
@@ -41,7 +42,7 @@ namespace APIGOTinforcavado.Services
         }
 
 
-        
+
         public async Task<Comentario> GetComentarioByIdAsync(int id)
         {
             if (id <= 0)
@@ -85,35 +86,20 @@ namespace APIGOTinforcavado.Services
         }
 
 
- 
-        public async Task<Comentario> UpdateComentarioAsync(int id, Comentario updatedComentario)
+        public async Task<List<Comentario>> GetComentariosPorCodigoTicketAsync(string codigoTicket)
         {
-            if (id != updatedComentario.Id)
-                throw new ArgumentException("IDs não coincidem.", nameof(id));
-
             try
             {
-                var existingComentario = await _comentarioRepository.GetByIdAsync(id);
-                if (existingComentario == null)
-                    return null;
-
-                
-                existingComentario.Conteudo = updatedComentario.Conteudo;
-                existingComentario.publico = updatedComentario.publico;
-                existingComentario.TicketId = updatedComentario.TicketId;
-                existingComentario.UtilizadorId = updatedComentario.UtilizadorId;
-              
-
-                var success = await _comentarioRepository.UpdateAsync(existingComentario);
-                return success ? existingComentario : null;
+                return await _comentarioRepository.GetComentariosByCodigoTicketAsync(codigoTicket);
             }
             catch (Exception ex)
             {
-                throw new InvalidOperationException($"Erro ao atualizar o comentário com ID {id}.", ex);
+                throw new InvalidOperationException($"Erro ao procurar comentários para o ticket com código {codigoTicket}.", ex);
             }
         }
+        
 
-       
+
         public async Task<bool> DeleteComentarioAsync(int id)
         {
             try
@@ -122,7 +108,7 @@ namespace APIGOTinforcavado.Services
                 if (comentario == null)
                     return false;
 
-                return await _comentarioRepository.DeleteAsync(comentario);
+                return await _comentarioRepository.DeleteAsync(id);
             }
             catch (Exception ex)
             {

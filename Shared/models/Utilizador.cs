@@ -18,13 +18,16 @@ namespace Shared.models
         public string Role { get; set; }
 
         [Required]
-        public string PrimeiroNome { get; set; }
+        public string Nome { get; set; }
 
         [Required]
-        public string UltimoNome { get; set; }
+        public string Login {  get; set; }
        
         public List<Comentario> Comentarios { get; set; } = new List<Comentario>();
 
         public List<Ticket> Tickets { get; set; } = new List<Ticket>();
+
+     
+        public ICollection<UtilizadorEquipa> UtilizadorEquipas { get; set; } = new List<UtilizadorEquipa>();
     }
 }

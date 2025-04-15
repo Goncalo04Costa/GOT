@@ -446,7 +446,7 @@
                     <p>Acompanhar Ticket</p>
                 </button>
 
-                <a href="https://inforcavado.com" class="website" target="_blank" style="text-decoration: none;">
+                <a href="https://inforcavado.com" class="website"  style="text-decoration: none;">
                     <p>Website Inforcavado</p>
                 </a>
 
@@ -680,6 +680,11 @@
             isCodePopupOpen = false;
             Navigation.NavigateTo($"/AcompanhaTicket?codigo={ticketCode}");
         }
+    }
+
+    private void RedirectINFORCAVADO()
+    {
+        Navigation.NavigateTo("https://inforcavado.com");
     }
 
    

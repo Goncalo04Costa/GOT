@@ -14,7 +14,7 @@ namespace Shared.models
         public string evento { get; set; }
 
         [ForeignKey("Ticket")]
-        public string TicketId { get; set; }
+        public int TicketId { get; set; }
         public virtual Ticket Ticket { get; set; }
         public int UtilizadorId { get; set; }
 

@@ -98,11 +98,11 @@
             <MudTh>Ações</MudTh>
         </HeaderContent>
         <RowTemplate Context="ticket">
-            <MudTd DataLabel="ID">@ticket.Id</MudTd>
+            <MudTd DataLabel="ID">@ticket.codigo</MudTd>
             <MudTd DataLabel="Assunto">@ticket.Assunto</MudTd>
             <MudTd DataLabel="Data de Criacao">@ticket.Data.ToString("dd/MM/yyyy")</MudTd>
             <MudTd DataLabel="Departamento">@ticket.Departamento</MudTd>
-            <MudTd DataLabel="Topico">@ticket.EscolhaInicial</MudTd>
+            <MudTd DataLabel="Topico">@ticket.TipoTicket</MudTd>
             <MudTd DataLabel="Estado">
                 <MudChip T="string" Class="@ObterClasseEstado(ticket.EstadoTarefa)">
                     @ticket.EstadoTarefa
@@ -126,7 +126,7 @@
                     <MudListItem T="string" Class="no-padding">
                         <MudGrid Class="mud-grid-spacing-xs-0">
                             <MudItem xs="12" class="tittleline" style="padding-top:8px">
-                                #@ticket.Id
+                                #@ticket.codigo
                             </MudItem>
                             <MudItem xs="12" class="mudgrid" style="padding-top:8px; display:flex; justify-content: space-between;">
                                 @ticket.Assunto
@@ -134,7 +134,7 @@
                                     <div class="noscards">
                                         @ticket.Departamento
                                     </div> <div class="noscards">
-                                         @ticket.EscolhaInicial
+                                         @ticket.TipoTicket
                                          </div>
                                     <span class="estado-badge @ObterClasseEstado(ticket.EstadoTarefa)">
                                         @ticket.EstadoTarefa
@@ -170,7 +170,7 @@
                                     outgoing_mail
                                 </span>
                             </div>
-                            <div>@ticket.Id</div>
+                            <div>@ticket.codigo</div>
                             <div class="cardtext">@ticket.Mensagem</div>
                             <div class="datacard">@ticket.Data.ToString("dd/MM/yyyy")</div>
                             <div class="cardbottom">
@@ -178,7 +178,7 @@
                                     @ticket.Departamento
                                 </div>
                                 <div class="noscards">
-                                    @ticket.EscolhaInicial
+                                    @ticket.TipoTicket
                                 </div>
                             </div>
 
@@ -222,8 +222,17 @@
     {
         TodosTickets = await TicketService.GetTicketsAsync();
         GridData = new List<Ticket>(TodosTickets);
-        Departamentos = TodosTickets.Select(t => t.Departamento).Distinct().ToList();
-        Topicos = TodosTickets.Select(t => t.EscolhaInicial).Distinct().ToList();
+        Departamentos = TodosTickets
+     .Select(t => t.Departamento != null ? t.Departamento : "") // Ajuste conforme o nome real do campo no Departamento
+     .Distinct()
+     .ToList();
+
+      
+        Topicos = TodosTickets
+            .Select(t => t.TipoTicket != null ? t.TipoTicket : "") // Ajuste conforme o nome real do campo no TipoTicket
+            .Distinct()
+            .ToList();
+
         isLoading = false;
     }
 
@@ -235,7 +244,7 @@
 
     private void FiltrarPorTopico(string topico)
     {
-        GridData = string.IsNullOrEmpty(topico) ? new List<Ticket>(TodosTickets) : TodosTickets.Where(t => t.EscolhaInicial == topico).ToList();
+        GridData = string.IsNullOrEmpty(topico) ? new List<Ticket>(TodosTickets) : TodosTickets.Where(t => t.TipoTicket == topico).ToList();
         isTopicoPopoverOpen = false;
     }
 
