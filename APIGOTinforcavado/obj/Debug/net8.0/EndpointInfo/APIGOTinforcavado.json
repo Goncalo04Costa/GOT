@@ -360,10 +360,12 @@
                 "required": [
                   "Assunto",
                   "Data",
+                  "Email",
                   "Empresa",
                   "Id",
                   "Mensagem",
-                  "Nome"
+                  "Nome",
+                  "Telefone"
                 ],
                 "type": "object",
                 "properties": {
@@ -385,8 +387,7 @@
                     "type": "string"
                   },
                   "Email": {
-                    "type": "string",
-                    "format": "email"
+                    "type": "string"
                   },
                   "Telefone": {
                     "type": "string"
@@ -837,10 +838,12 @@
         "required": [
           "assunto",
           "data",
+          "email",
           "empresa",
           "id",
           "mensagem",
-          "nome"
+          "nome",
+          "telefone"
         ],
         "type": "object",
         "properties": {
@@ -865,13 +868,12 @@
             "type": "string"
           },
           "email": {
-            "type": "string",
-            "format": "email",
-            "nullable": true
+            "minLength": 1,
+            "type": "string"
           },
           "telefone": {
-            "type": "string",
-            "nullable": true
+            "minLength": 1,
+            "type": "string"
           },
           "assunto": {
             "minLength": 1,
