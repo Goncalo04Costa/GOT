@@ -16,22 +16,22 @@ namespace Shared.models
         [Required] 
         public DateTime Data { get; set; } = DateTime.UtcNow;
 
-        [Required]
+        [Required(ErrorMessage = "O campo Nome é obrigatório.")]
         public string Nome { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "O campo Empresa é obrigatório.")]
         public string Empresa { get; set; }
 
-        [Required] 
+        [Required(ErrorMessage = "O campo Email é obrigatório.")]
         public string Email { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "O campo Telefone é obrigatório.")]
         public string Telefone { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "O campo Assunto é obrigatório.")]
         public string Assunto { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "O campo Mensagem é obrigatório.")]
         public string Mensagem { get; set; }
      
         public string Departamento { get; set; }

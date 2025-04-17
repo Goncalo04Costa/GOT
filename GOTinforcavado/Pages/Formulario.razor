@@ -22,19 +22,16 @@
         </div>
 
         <div class="form-group" style="width: 100%; max-width: 536px; position: relative;">
-            <label for="nome" class="Text">Nome:<br /></label>
-            <div class="input-container" style="position: relative;">
-             
-                <InputText id="nome"
-                           @bind-Value="newTicket.Nome"
-                           class="@GetFieldCssClass(nameof(newTicket.Nome))"
-                           placeholder="Introduza o seu nome" />
-                           @if (!string.IsNullOrWhiteSpace(ErrorMessage))
-                           {
-                    <span class="material-symbols-outlined" style="position: absolute; right: 10px; transform: translateY(-50%); color: red;">
-                        error
-                    </span>
-                }
+            <div class="form-group" style="width: 100%; max-width: 536px;">
+                <label for="nome" class="Text">Nome:<br /></label>
+                <div class="input-container">
+                    <InputText id="nome"
+                               @bind-Value="newTicket.Nome"
+                               class="@GetFieldCssClass(nameof(newTicket.Nome))"
+                               placeholder="Introduza o seu nome" />
+                    
+                    <ValidationMessage For="@(() => newTicket.Nome)" class="validation-message" />
+                </div>
             </div>
         </div>
 
@@ -48,6 +45,7 @@
                       style="display: @(IsFieldInvalid(nameof(newTicket.Empresa)) ? "inline" : "none");">
                     error
                 </span>
+                <ValidationMessage For="@(() => newTicket.Empresa)" class="validation-message" />
             </div>
         </div>
 
@@ -61,6 +59,7 @@
                       style="display: @(IsFieldInvalid(nameof(newTicket.Email)) ? "inline" : "none");">
                     error
                 </span>
+                <ValidationMessage For="@(() => newTicket.Email)" class="validation-message" />
             </div>
         </div>
 
@@ -74,6 +73,7 @@
                       style="display: @(IsFieldInvalid(nameof(newTicket.Telefone)) ? "inline" : "none");">
                     error
                 </span>
+                <ValidationMessage For="@(() => newTicket.Telefone)" class="validation-message" />
             </div>
         </div>
 
@@ -87,6 +87,7 @@
                       style="display: @(IsFieldInvalid(nameof(newTicket.Assunto)) ? "inline" : "none");">
                     error
                 </span>
+                <ValidationMessage For="@(() => newTicket.Assunto)" class="validation-message" />
             </div>
         </div>
 
@@ -100,6 +101,7 @@
                       style="display: @(IsFieldInvalid(nameof(newTicket.Mensagem)) ? "inline" : "none");">
                     error
                 </span>
+                <ValidationMessage For="@(() => newTicket.Mensagem)" class="validation-message" />
             </div>
         </div>
 
@@ -374,7 +376,20 @@
 
 <style>
 
+    .validation-message {
+        letter-spacing: 0px;
+        color: #791E30;
+        opacity: 1;
+        font-family: "Sora", sans-serif;
+        font-size: 10px;
+        font-weight: 500;
+        margin-top: 5px; 
+    }
+
+
     .input-container {
+        display: flex;
+        flex-direction: column;
         position: relative;
         display: flex;
         align-items: center;
