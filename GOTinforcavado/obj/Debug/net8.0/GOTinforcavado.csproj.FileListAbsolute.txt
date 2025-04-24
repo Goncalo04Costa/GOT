@@ -4518,6 +4518,6 @@ C:\Users\gonca\OneDrive\Ambiente de Trabalho\GOT\GOT\GOTinforcavado\obj\Debug\ne
 C:\Users\gonca\OneDrive\Ambiente de Trabalho\GOT\GOT\GOTinforcavado\bin\Debug\net8.0\libman.json
 C:\Users\gonca\OneDrive\Ambiente de Trabalho\GOT\GOT\GOTinforcavado\obj\Debug\net8.0\compressed\6fmiw8dfhg-2w9wq3lff8.gz
 C:\Users\gonca\OneDrive\Ambiente de Trabalho\GOT\GOT\GOTinforcavado\obj\Debug\net8.0\compressed\balru5nokg-yv6ubkqidy.gz
-C:\Users\gonca\OneDrive\Ambiente de Trabalho\GOT\GOT\GOTinforcavado\obj\Debug\net8.0\compressed\lh48ge3804-br3w6c8edb.gz
-C:\Users\gonca\OneDrive\Ambiente de Trabalho\GOT\GOT\GOTinforcavado\obj\Debug\net8.0\compressed\1uhyo0sdkw-jw8ebdom0j.gz
-C:\Users\gonca\OneDrive\Ambiente de Trabalho\GOT\GOT\GOTinforcavado\obj\Debug\net8.0\compressed\z5h69tlmac-etymq0gjs5.gz
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\GOT\GOT\GOTinforcavado\obj\Debug\net8.0\compressed\lh48ge3804-m8amjzbblz.gz
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\GOT\GOT\GOTinforcavado\obj\Debug\net8.0\compressed\1uhyo0sdkw-wpbvxi5l05.gz
+C:\Users\gonca\OneDrive\Ambiente de Trabalho\GOT\GOT\GOTinforcavado\obj\Debug\net8.0\compressed\z5h69tlmac-f98bawaoup.gz

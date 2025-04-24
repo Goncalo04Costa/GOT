@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GOTinforcavado")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e86f4ee6022c90c0d890cf177024f63c19e559d2")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+db1a8f4b8bedd7b0eccfc5e21c24b67ba87db216")]
 [assembly: System.Reflection.AssemblyProductAttribute("GOTinforcavado")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GOTinforcavado")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

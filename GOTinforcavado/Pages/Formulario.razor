@@ -29,7 +29,10 @@
                                @bind-Value="newTicket.Nome"
                                class="@GetFieldCssClass(nameof(newTicket.Nome))"
                                placeholder="Introduza o seu nome" />
-                    
+                    <span class="material-symbols-outlined error-icon"
+                          style="display: @(IsFieldInvalid(nameof(newTicket.Nome)) ? "inline" : "none");">
+                        error
+                    </span>
                     <ValidationMessage For="@(() => newTicket.Nome)" class="validation-message" />
                 </div>
             </div>

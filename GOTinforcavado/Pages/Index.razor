@@ -131,11 +131,11 @@
         {
             if (string.IsNullOrWhiteSpace(email))
             {
-                // Exibir uma mensagem de erro se o e-mail estiver vazio
+   
                 return;
             }
 
-            // Criar o objeto de newsletter
+         
             var newsLetter = new NewsLetter
             {
                 Email = email
@@ -143,19 +143,15 @@
 
             try
             {
-                // Chamar o serviço para adicionar a newsletter
+                
                 await NewsLetterService.AddAsync(newsLetter);
 
-                // Exibir uma mensagem de sucesso
-                // (pode ser uma notificação ou algo semelhante)
-
-                // Limpar o campo de e-mail após a subscrição
+             
                 email = string.Empty;
             }
             catch (Exception ex)
             {
-                // Exibir mensagem de erro caso algo dê errado
-                // (mostrar uma notificação ou mensagem de erro para o usuário)
+                
             }
         }
     
@@ -474,7 +470,6 @@
             justify-content: flex-start;
             padding: 32px 40px 130px 40px;
             flex-direction: column;
-            /* align-items: stretch; */
         }
 
         .primeirotexto {

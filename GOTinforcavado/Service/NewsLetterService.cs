@@ -16,13 +16,13 @@ namespace GOTinforcavado.Services
             _httpClient = httpClient;
         }
 
-        // Método para obter todos os NewsLetters
+        // Método para obter todos os emails da NewsLetters
         public async Task<List<NewsLetter>> GetAllAsync()
         {
             return await _httpClient.GetFromJsonAsync<List<NewsLetter>>(BaseUrl);
         }
 
-        // Método para adicionar um novo NewsLetter
+        // Método para adicionar um novo email a  NewsLetter
         public async Task AddAsync(NewsLetter newsLetter)
         {
             var response = await _httpClient.PostAsJsonAsync(BaseUrl, newsLetter);
@@ -34,7 +34,7 @@ namespace GOTinforcavado.Services
             }
         }
 
-        // Método para excluir um NewsLetter pelo email
+        // Método para excluir um email da Newsletter
         public async Task<bool> DeleteAsync(string email)
         {
             var response = await _httpClient.DeleteAsync($"{BaseUrl}/{email}");

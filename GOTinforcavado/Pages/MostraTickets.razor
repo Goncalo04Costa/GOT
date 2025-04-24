@@ -223,13 +223,13 @@
         TodosTickets = await TicketService.GetTicketsAsync();
         GridData = new List<Ticket>(TodosTickets);
         Departamentos = TodosTickets
-     .Select(t => t.Departamento != null ? t.Departamento : "") // Ajuste conforme o nome real do campo no Departamento
+     .Select(t => t.Departamento != null ? t.Departamento : "") 
      .Distinct()
      .ToList();
 
       
         Topicos = TodosTickets
-            .Select(t => t.TipoTicket != null ? t.TipoTicket : "") // Ajuste conforme o nome real do campo no TipoTicket
+            .Select(t => t.TipoTicket != null ? t.TipoTicket : "") 
             .Distinct()
             .ToList();
 

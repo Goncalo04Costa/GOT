@@ -72,7 +72,7 @@ namespace GOTinforcavado.Services
             return await response.Content.ReadFromJsonAsync<Ticket>();
         }
 
-        // Atualizar o Status de um Ticket
+        // Atualizar o Estado de um Ticket
         public async Task<Ticket> UpdateTicketStatusAsync(string id, EstadoTarefa status)
         {
             var response = await _httpClient.PatchAsJsonAsync($"{BaseUrl}/{id}/status", status);

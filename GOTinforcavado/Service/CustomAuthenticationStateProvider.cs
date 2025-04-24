@@ -16,31 +16,31 @@ namespace GOTinforcavado.Service
 
         public override async Task<AuthenticationState> GetAuthenticationStateAsync()
         {
-            // Tenta obter o token do localStorage
+           
             var token = await _localStorageService.GetItemAsync<string>("authToken");
 
-            // Se o token não for encontrado, o usuário é anônimo
+           
             if (string.IsNullOrEmpty(token))
             {
                 var anonymous = new ClaimsPrincipal(new ClaimsIdentity());
-                return new AuthenticationState(anonymous);  // Retorna um estado anônimo
+                return new AuthenticationState(anonymous); 
             }
 
-            // Se o token for encontrado, o usuário está autenticado
+            
             var jwtHandler = new JwtSecurityTokenHandler();
             var jwtToken = jwtHandler.ReadJwtToken(token);
 
-            // Extraindo as claims do token
+           
             var claims = jwtToken.Claims.ToList();
 
-            // Crie um ClaimsPrincipal com as claims extraídas do token
+           
             var identity = new ClaimsIdentity(claims, "Bearer");
             var user = new ClaimsPrincipal(identity);
 
             return new AuthenticationState(user);
         }
 
-        // Este método pode ser usado para notificar os componentes que o estado de autenticação mudou
+       
         public void NotifyUserAuthentication(string token, string nome, string email)
         {
          
@@ -53,7 +53,7 @@ namespace GOTinforcavado.Service
             var user = new ClaimsPrincipal(identity);
 
             var authState = new AuthenticationState(user);
-            NotifyAuthenticationStateChanged(Task.FromResult(authState));  // Notifica a mudança de estado de autenticação
+            NotifyAuthenticationStateChanged(Task.FromResult(authState)); 
         }
 
         // Método para notificar que o usuário fez logout
