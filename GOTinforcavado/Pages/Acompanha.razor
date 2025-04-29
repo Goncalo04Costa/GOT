@@ -8,7 +8,6 @@
 @inject TicketService TicketService
 @inject UtilizadorService UtilizadorService
 @inject ComentarioService ComentarioService
-@inject EventoService EventoService
 @using System.Security.Cryptography
 @using System.Text
 @using System.Globalization
@@ -18,19 +17,15 @@
 @using Microsoft.AspNetCore.Components.Web
 @using System.Security.Claims
 @inject AuthenticationStateProvider AuthenticationStateProvider
-
 <Cabecalho imagem="false" botoes="Cabecalho.Botoes.Novo" />
 
 <div class="AcompanhaTicket">
     <div class="TituloAcompnha">Acompanhe o seu ticket</div>
     <div class="Subtitulo">O número do seu ticket permite-nos fornecer-lhe informações atualizadas sobre o estado do pedido que efetuou.</div>
 
-
-    <div class="ContainerEmail">
-        <div class="EmailInputWrapper">
-            <input type="email" placeholder="Coloque aqui o codigo do seu ticket" class="EmailInput" @bind="codigo" />
-            <button class="SubscribeButton" @onclick="ProcurarTicket">Procurar</button>
-        </div>
+    <div class="InputWrapper">
+        <input @bind="codigo" type="text" class="caixaDETexto" placeholder="Introduza o ID do ticket aqui" />
+        <button class="BotaoSubscrever" @onclick="ProcurarTicket">Procurar</button>
     </div>
     @if (isLoading)
     {
@@ -38,7 +33,7 @@
     }
     else @if (ticketEncontrado != null)
     {
-        
+
         <div class="cards-container">
             <div class="VerEstado @ObterClasseEstado()">@ticketEncontrado.EstadoTarefa</div>
             <div class="VerDepartamento1">@ticketEncontrado.TipoTicket</div>
@@ -73,7 +68,7 @@
                 {
                     <div class="dataseparador">
                         <strong>@grupo.Key.ToString("dd/MM/yyyy")</strong>
-                       
+
                     </div>
                     <hr class="dividedatas" />
                     var criacaoTicketRegistro = grupo.FirstOrDefault(r => r.Tipo == "criacaoTicket");
@@ -124,6 +119,12 @@
                     }
                 }
             }
+            <div class="criouticket">
+                <div class="point"> • </div>
+                <div class="username">@GerarUsername(ticketEncontrado.Email)</div>
+                <div class="textocriouticket">criou o ticket</div>
+                <div class="horariocriacaoticket">@ticketEncontrado.Data.ToString("HH:mm")</div>
+            </div>
             <div class="semmaisdados">Não existem mais dados</div>
         </div>
     }
@@ -131,7 +132,7 @@
     {
         <div class="alert alert-danger" style="margin-top: 20px;">@erro</div>
     }
-    
+
 </div>
 
 <Rodape />
@@ -344,7 +345,7 @@
     }
 
     .username {
-        margin-top: 10px;
+      /*   margin-top: 10px; */
         padding-left: 6px;
         font-family: "Poppins";
         color: #226589;
@@ -352,7 +353,7 @@
     }
 
     .textocriouticket {
-        margin-top: 10px;
+        /* margin-top: 10px; */
         padding-left: 0px;
         font-family: "Poppins";
         color: #192356;
@@ -362,10 +363,11 @@
     }
 
     .horariocriacaoticket {
-        margin-top: 12px;
+        margin-top: 1px;
         color: #19235699;
         font-size: 10px;
         font-family: "Sora";
+        margin-left: 4px;
     }
 
     .comentario-form {
@@ -665,8 +667,7 @@
             ticketEncontrado = await TicketService.SearchTicketByCodeAsync(codigo);
             if (ticketEncontrado != null)
             {
-                comentarios = await ComentarioService.GetComentariosByTicketIdAsync(ticketEncontrado.codigo);
-                Eventos = await EventoService.GetEventosByTicketIdAsync(ticketEncontrado.codigo);
+                comentarios = await ComentarioService.GetComentariosPorCodigoTicketAsync(ticketEncontrado.codigo);
                 await CarregarNomesUtilizadores();
 
           

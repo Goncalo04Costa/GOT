@@ -72,6 +72,36 @@ namespace GOTinforcavado.Services
             return comentarios;
         }
 
+        public async Task<List<Comentario>> GetComentariosPorCodigoTicketAsync(string codigoTicket)
+        {
+            try
+            {
+                // Fazendo a requisição HTTP ao backend passando o código do ticket
+                var response = await _httpClient.GetAsync($"{BaseUrl}/ticket/codigo/{codigoTicket}");
+
+                // Se a resposta não for bem-sucedida, lance uma exceção com a mensagem de erro
+                if (!response.IsSuccessStatusCode)
+                {
+                    var errorMessage = await response.Content.ReadAsStringAsync();
+                    throw new Exception($"Erro ao buscar comentários. Código: {response.StatusCode}, Mensagem: {errorMessage}");
+                }
+
+                // Se a resposta for bem-sucedida, leia o conteúdo JSON e converta em uma lista de Comentarios
+                var comentarios = await response.Content.ReadFromJsonAsync<List<Comentario>>();
+
+                if (comentarios == null)
+                {
+                    throw new Exception($"Erro ao processar a resposta da API. A lista de comentários para o código {codigoTicket} é nula.");
+                }
+
+                return comentarios;
+            }
+            catch (Exception ex)
+            {
+                throw new InvalidOperationException($"Erro ao procurar comentários para o ticket com código {codigoTicket}.", ex);
+            }
+        }
+
         public async Task DeleteComentarioAsync(int id)
         {
             var response = await _httpClient.DeleteAsync($"{BaseUrl}/{id}");

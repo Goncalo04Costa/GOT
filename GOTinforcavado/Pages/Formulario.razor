@@ -330,7 +330,7 @@
         using (var sha256 = SHA256.Create())
         {
             byte[] hashBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(input + DateTime.UtcNow.Ticks));
-            return BitConverter.ToString(hashBytes.Take(8).ToArray()).Replace("-", "").ToLower();
+            return BitConverter.ToString(hashBytes.Take(/* 8 */4).ToArray()).Replace("-", "").ToLower();
         }
     }
 
