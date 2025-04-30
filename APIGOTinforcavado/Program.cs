@@ -1,4 +1,4 @@
-using APIGOTinforcavado.Data;
+
 using APIGOTinforcavado.Repositories;
 using APIGOTinforcavado.Services;
 using Microsoft.EntityFrameworkCore;
@@ -21,9 +21,6 @@ namespace APIGOTinforcavado
             );
 
 
-            builder.Services.AddDbContext<AppDbContext>(options =>
-                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
-            );
 
             builder.Services.AddScoped<ComentarioRepository>();
             builder.Services.AddScoped<EventoRepository>();
@@ -32,7 +29,6 @@ namespace APIGOTinforcavado
             builder.Services.AddScoped<ComentarioService>();
             builder.Services.AddScoped<TicketService>();
             builder.Services.AddScoped<EmailSender>();
-            builder.Services.AddScoped<JwtGenerator>();
             builder.Services.AddScoped<UtilizadorService>();
             builder.Services.AddScoped<EventoService>();
             builder.Services.AddScoped<NewsLetterRepository>();

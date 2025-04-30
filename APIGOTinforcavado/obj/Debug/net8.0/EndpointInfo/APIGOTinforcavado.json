@@ -14,17 +14,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Comentario"
+                "$ref": "#/components/schemas/ComentarioTicket"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/Comentario"
+                "$ref": "#/components/schemas/ComentarioTicket"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/Comentario"
+                "$ref": "#/components/schemas/ComentarioTicket"
               }
             }
           }
@@ -408,13 +408,13 @@
                     "type": "integer",
                     "format": "int32"
                   },
-                  "EstadoTarefa": {
-                    "$ref": "#/components/schemas/EstadoTarefa"
+                  "Estadodoticket": {
+                    "$ref": "#/components/schemas/EstadoTicket"
                   },
-                  "Comentarios": {
+                  "ComentarioTicket": {
                     "type": "array",
                     "items": {
-                      "$ref": "#/components/schemas/Comentario"
+                      "$ref": "#/components/schemas/ComentarioTicket"
                     }
                   },
                   "Ficheiros": {
@@ -469,10 +469,10 @@
                 "UtilizadorId": {
                   "style": "form"
                 },
-                "EstadoTarefa": {
+                "Estadodoticket": {
                   "style": "form"
                 },
-                "Comentarios": {
+                "ComentarioTicket": {
                   "style": "form"
                 },
                 "Ficheiros": {
@@ -538,27 +538,15 @@
             "schema": {
               "type": "string"
             }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/EstadoTarefa"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/EstadoTarefa"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/EstadoTarefa"
-              }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/EstadoTicket"
             }
           }
-        },
+        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -628,37 +616,6 @@
         }
       }
     },
-    "/api/Utilizador/login": {
-      "post": {
-        "tags": [
-          "Utilizador"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/LoginRequest"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/LoginRequest"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/LoginRequest"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
     "/api/Utilizador/{id}": {
       "get": {
         "tags": [
@@ -697,7 +654,7 @@
   },
   "components": {
     "schemas": {
-      "Comentario": {
+      "ComentarioTicket": {
         "type": "object",
         "properties": {
           "id": {
@@ -732,32 +689,7 @@
         },
         "additionalProperties": false
       },
-      "Equipas": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "descricao": {
-            "type": "string",
-            "nullable": true
-          },
-          "dataCriacao": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "utilizadorEquipas": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/UtilizadorEquipa"
-            },
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "EstadoTarefa": {
+      "EstadoTicket": {
         "enum": [
           0,
           1,
@@ -798,24 +730,6 @@
           },
           "utilizador": {
             "$ref": "#/components/schemas/Utilizador"
-          }
-        },
-        "additionalProperties": false
-      },
-      "LoginRequest": {
-        "required": [
-          "email",
-          "password"
-        ],
-        "type": "object",
-        "properties": {
-          "email": {
-            "minLength": 1,
-            "type": "string"
-          },
-          "password": {
-            "minLength": 1,
-            "type": "string"
           }
         },
         "additionalProperties": false
@@ -896,13 +810,13 @@
             "format": "int32",
             "nullable": true
           },
-          "estadoTarefa": {
-            "$ref": "#/components/schemas/EstadoTarefa"
+          "estadodoticket": {
+            "$ref": "#/components/schemas/EstadoTicket"
           },
-          "comentarios": {
+          "comentarioTicket": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/Comentario"
+              "$ref": "#/components/schemas/ComentarioTicket"
             },
             "nullable": true
           },
@@ -956,7 +870,7 @@
             "nullable": true
           },
           "comentario": {
-            "$ref": "#/components/schemas/Comentario"
+            "$ref": "#/components/schemas/ComentarioTicket"
           }
         },
         "additionalProperties": false
@@ -998,7 +912,7 @@
           "comentarios": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/Comentario"
+              "$ref": "#/components/schemas/ComentarioTicket"
             },
             "nullable": true
           },
@@ -1008,33 +922,6 @@
               "$ref": "#/components/schemas/Ticket"
             },
             "nullable": true
-          },
-          "utilizadorEquipas": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/UtilizadorEquipa"
-            },
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "UtilizadorEquipa": {
-        "type": "object",
-        "properties": {
-          "utilizadorId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "utilizador": {
-            "$ref": "#/components/schemas/Utilizador"
-          },
-          "equipaId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "equipas": {
-            "$ref": "#/components/schemas/Equipas"
           }
         },
         "additionalProperties": false

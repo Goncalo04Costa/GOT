@@ -21,6 +21,6 @@ namespace Shared.models
         public virtual Ticket? Ticket { get; set; }
 
         public int? ComentarioId { get; set; }
-        public virtual Comentario? Comentario { get; set; }
+        public virtual ComentarioTicket? Comentario { get; set; }
     }
 }

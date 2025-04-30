@@ -17,7 +17,7 @@ namespace APIGOTinforcavado.Services
         }
 
         
-        public async Task<Comentario> CreateComentarioAsync(Comentario comentario)
+        public async Task<ComentarioTicket> CreateComentarioAsync(ComentarioTicket comentario)
         {
             if (comentario == null)
                 throw new ArgumentNullException(nameof(comentario));
@@ -43,7 +43,7 @@ namespace APIGOTinforcavado.Services
 
 
 
-        public async Task<Comentario> GetComentarioByIdAsync(int id)
+        public async Task<ComentarioTicket> GetComentarioByIdAsync(int id)
         {
             if (id <= 0)
                 throw new ArgumentException("ID inválido.", nameof(id));
@@ -59,7 +59,7 @@ namespace APIGOTinforcavado.Services
         }
 
       
-        public async Task<List<Comentario>> GetComentariosAsync()
+        public async Task<List<ComentarioTicket>> GetComentariosAsync()
         {
             try
             {
@@ -73,7 +73,7 @@ namespace APIGOTinforcavado.Services
 
 
 
-        public async Task<List<Comentario>> GetComentariosByTicketIdAsync(string ticketId)
+        public async Task<List<ComentarioTicket>> GetComentariosByTicketIdAsync(string ticketId)
         {
             try
             {
@@ -86,7 +86,7 @@ namespace APIGOTinforcavado.Services
         }
 
 
-        public async Task<List<Comentario>> GetComentariosPorCodigoTicketAsync(string codigoTicket)
+        public async Task<List<ComentarioTicket>> GetComentariosPorCodigoTicketAsync(string codigoTicket)
         {
             try
             {

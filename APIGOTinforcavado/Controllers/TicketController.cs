@@ -2,6 +2,7 @@
 using APIGOTinforcavado.Services;
 using Shared.models;
 using Microsoft.EntityFrameworkCore;
+using static Shared.models.Ticket;
 
 namespace APIGOTinforcavado.Controllers
 {
@@ -45,7 +46,7 @@ namespace APIGOTinforcavado.Controllers
         }
 
         [HttpPut("{id}/status")]
-        public async Task<IActionResult> UpdateTicketStatus(string id, [FromBody] EstadoTarefa status)
+        public async Task<IActionResult> UpdateTicketStatus(string id, EstadoTicket status)
         {
             var updatedTicket = await _ticketService.UpdateTicketStatusAsync(id, status);
             if (updatedTicket == null)
@@ -53,6 +54,7 @@ namespace APIGOTinforcavado.Controllers
 
             return Ok(updatedTicket);
         }
+
 
 
         // Obter todos os tickets

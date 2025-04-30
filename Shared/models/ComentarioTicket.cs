@@ -1,7 +1,7 @@
 ﻿using Shared.models;
 using System.ComponentModel.DataAnnotations.Schema;
 
-public class Comentario
+public class ComentarioTicket
 {
     public int Id { get; set; }
     public DateTime Data { get; set; }

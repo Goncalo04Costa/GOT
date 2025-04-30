@@ -9,7 +9,7 @@
     "Parameters": [
       {
         "Name": "comentario",
-        "Type": "Comentario",
+        "Type": "ComentarioTicket",
         "IsRequired": true
       }
     ],
@@ -289,13 +289,13 @@
         "IsRequired": false
       },
       {
-        "Name": "EstadoTarefa",
+        "Name": "Estadodoticket",
         "Type": "System.String",
         "IsRequired": false
       },
       {
-        "Name": "Comentarios",
-        "Type": "System.Collections.Generic.List\u00601[[Comentario, Shared, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Name": "ComentarioTicket",
+        "Type": "System.Collections.Generic.List\u00601[[ComentarioTicket, Shared, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "IsRequired": false
       },
       {
@@ -353,7 +353,7 @@
       {
         "Name": "status",
         "Type": "System.String",
-        "IsRequired": true
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []
@@ -421,22 +421,6 @@
       {
         "Name": "id",
         "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "APIGOTinforcavado.Controllers.UtilizadorController",
-    "Method": "Login",
-    "RelativePath": "api/Utilizador/login",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "request",
-        "Type": "APIGOTinforcavado.Controllers.LoginRequest",
         "IsRequired": true
       }
     ],

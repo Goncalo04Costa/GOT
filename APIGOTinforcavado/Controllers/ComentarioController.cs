@@ -18,7 +18,7 @@ namespace APIGOTinforcavado.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CriarComentario([FromBody] Comentario comentario)
+        public async Task<IActionResult> CriarComentario([FromBody] ComentarioTicket comentario)
         {
             if (comentario == null)
             {

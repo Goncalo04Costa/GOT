@@ -155,7 +155,8 @@
             </div>
         }
 
-        <div class="form-group" style="display: flex; flex-direction: column; gap: 5px;">
+        <div class="form-group" style="display: flex; flex-direction: column; gap: 5px; width: 100%;
+    max-width: 536px;">
             <div style="display: flex; align-items: center;">
                 <div class="@GetCheckmarkClass(isCheck1Checked)" @onclick="ToggleCheck1"></div>
                 <label class="TextoCheck1">Autorizo a Inforcávado a usar meus dados para contacto.</label>
@@ -443,6 +444,7 @@
         width: 100%;
         height: 48px;
         border: 1px solid #D1D8D8;
+        ;
         border-radius: 8px;
         font-family: "Sora", sans-serif;
         font-size: 12px;
@@ -629,7 +631,8 @@
 
     .UploadedFiles {
         margin-top: 10px;
-        width: 536px;
+        width: 100%;
+        max-width: 536px;
     }
 
         .UploadedFiles ul {

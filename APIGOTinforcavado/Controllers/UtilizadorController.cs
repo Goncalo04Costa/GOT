@@ -16,23 +16,7 @@ namespace APIGOTinforcavado.Controllers
             _utilizadorService = utilizadorService;
         }
 
-        [HttpPost("login")]
-        public async Task<IActionResult> Login([FromBody] LoginRequest request)
-        {
-            if (request == null || string.IsNullOrEmpty(request.Email) || string.IsNullOrEmpty(request.Password))
-            {
-                return BadRequest(new { Message = "Email e password são obrigatórios." });
-            }
-
-            var token = await _utilizadorService.AutenticarAsync(request.Email, request.Password);
-
-            if (string.IsNullOrEmpty(token))
-            {
-                return Unauthorized(new { Message = "Credenciais inválidas." });
-            }
-
-            return Ok(new { Token = token });
-        }
+     
 
 
         [HttpGet("{id}")]

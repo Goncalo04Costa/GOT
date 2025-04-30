@@ -16,7 +16,7 @@ namespace GOTinforcavado.Services
             _httpClient = httpClient;
         }
 
-        public async Task<Comentario> CreateComentarioAsync(Comentario comentario)
+        public async Task<ComentarioTicket> CreateComentarioAsync(ComentarioTicket comentario)
         {
             var response = await _httpClient.PostAsJsonAsync(BaseUrl, comentario);
 
@@ -26,7 +26,7 @@ namespace GOTinforcavado.Services
                 throw new Exception($"Erro ao criar comentário. Código: {response.StatusCode}, Mensagem: {errorMessage}");
             }
 
-            var comentarioResponse = await response.Content.ReadFromJsonAsync<Comentario>();
+            var comentarioResponse = await response.Content.ReadFromJsonAsync<ComentarioTicket>();
 
             if (comentarioResponse == null)
             {
@@ -36,24 +36,24 @@ namespace GOTinforcavado.Services
             return comentarioResponse;
         }
 
-        public async Task<Comentario> GetComentarioByIdAsync(int id)
+        public async Task<ComentarioTicket> GetComentarioByIdAsync(int id)
         {
-            return await _httpClient.GetFromJsonAsync<Comentario>($"{BaseUrl}/{id}");
+            return await _httpClient.GetFromJsonAsync<ComentarioTicket>($"{BaseUrl}/{id}");
         }
 
-        public async Task<List<Comentario>> GetComentariosAsync()
+        public async Task<List<ComentarioTicket>> GetComentariosAsync()
         {
-            return await _httpClient.GetFromJsonAsync<List<Comentario>>(BaseUrl);
+            return await _httpClient.GetFromJsonAsync<List<ComentarioTicket>>(BaseUrl);
         }
 
-        public async Task<Comentario> UpdateComentarioAsync(int id, Comentario updatedComentario)
+        public async Task<ComentarioTicket> UpdateComentarioAsync(int id, ComentarioTicket updatedComentario)
         {
             var response = await _httpClient.PutAsJsonAsync($"{BaseUrl}/{id}", updatedComentario);
             response.EnsureSuccessStatusCode();
-            return await response.Content.ReadFromJsonAsync<Comentario>();
+            return await response.Content.ReadFromJsonAsync<ComentarioTicket>();
         }
 
-        public async Task<List<Comentario>> GetComentariosByTicketIdAsync(string ticketId)
+        public async Task<List<ComentarioTicket>> GetComentariosByTicketIdAsync(string ticketId)
         {
             var response = await _httpClient.GetAsync($"{BaseUrl}/ticket/{ticketId}");
 
@@ -62,7 +62,7 @@ namespace GOTinforcavado.Services
                 var errorMessage = await response.Content.ReadAsStringAsync();
             }
 
-            var comentarios = await response.Content.ReadFromJsonAsync<List<Comentario>>();
+            var comentarios = await response.Content.ReadFromJsonAsync<List<ComentarioTicket>>();
 
             if (comentarios == null)
             {
@@ -72,7 +72,7 @@ namespace GOTinforcavado.Services
             return comentarios;
         }
 
-        public async Task<List<Comentario>> GetComentariosPorCodigoTicketAsync(string codigoTicket)
+        public async Task<List<ComentarioTicket>> GetComentariosPorCodigoTicketAsync(string codigoTicket)
         {
             try
             {
@@ -87,7 +87,7 @@ namespace GOTinforcavado.Services
                 }
 
                 // Se a resposta for bem-sucedida, leia o conteúdo JSON e converta em uma lista de Comentarios
-                var comentarios = await response.Content.ReadFromJsonAsync<List<Comentario>>();
+                var comentarios = await response.Content.ReadFromJsonAsync<List<ComentarioTicket>>();
 
                 if (comentarios == null)
                 {

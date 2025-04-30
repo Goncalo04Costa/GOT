@@ -23,11 +23,9 @@ namespace Shared.models
         [Required]
         public string Login {  get; set; }
        
-        public List<Comentario> Comentarios { get; set; } = new List<Comentario>();
+        public List<ComentarioTicket> Comentarios { get; set; } = new List<ComentarioTicket>();
 
         public List<Ticket> Tickets { get; set; } = new List<Ticket>();
 
-     
-        public ICollection<UtilizadorEquipa> UtilizadorEquipas { get; set; } = new List<UtilizadorEquipa>();
     }
 }

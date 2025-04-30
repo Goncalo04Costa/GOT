@@ -20,7 +20,7 @@ namespace APIGOTinforcavado.Repositories
         }
 
 
-        public async Task<Comentario> CreateAsync(Comentario comentario)
+        public async Task<ComentarioTicket> CreateAsync(ComentarioTicket comentario)
         {
             try
             {
@@ -49,7 +49,7 @@ namespace APIGOTinforcavado.Repositories
         }
 
 
-        public async Task<Comentario?> GetByIdAsync(int id)
+        public async Task<ComentarioTicket?> GetByIdAsync(int id)
         {
             try
             {
@@ -57,7 +57,7 @@ namespace APIGOTinforcavado.Repositories
                 using (var connection = new SqlConnection(_connectionString))
                 {
                     connection.Open();
-                    return await connection.QueryFirstOrDefaultAsync<Comentario>(sql, new { Id = id });
+                    return await connection.QueryFirstOrDefaultAsync<ComentarioTicket>(sql, new { Id = id });
                 }
             }
             catch (Exception ex)
@@ -67,7 +67,7 @@ namespace APIGOTinforcavado.Repositories
         }
 
         // Obter todos os comentários
-        public async Task<List<Comentario>> GetAllAsync()
+        public async Task<List<ComentarioTicket>> GetAllAsync()
         {
             try
             {
@@ -75,7 +75,7 @@ namespace APIGOTinforcavado.Repositories
                 using (var connection = new SqlConnection(_connectionString))
                 {
                     connection.Open();
-                    return (await connection.QueryAsync<Comentario>(sql)).ToList();
+                    return (await connection.QueryAsync<ComentarioTicket>(sql)).ToList();
                 }
             }
             catch (Exception ex)
@@ -85,7 +85,7 @@ namespace APIGOTinforcavado.Repositories
         }
 
         // Obter comentários por TicketId
-        public async Task<List<Comentario>> GetComentariosByTicketIdAsync(string ticketId)
+        public async Task<List<ComentarioTicket>> GetComentariosByTicketIdAsync(string ticketId)
         {
             try
             {
@@ -98,7 +98,7 @@ namespace APIGOTinforcavado.Repositories
                 using (var connection = new SqlConnection(_connectionString))
                 {
                     connection.Open();
-                    return (await connection.QueryAsync<Comentario>(sql, new { TicketId = parsedTicketId })).ToList();
+                    return (await connection.QueryAsync<ComentarioTicket>(sql, new { TicketId = parsedTicketId })).ToList();
                 }
             }
             catch (Exception ex)
@@ -108,7 +108,7 @@ namespace APIGOTinforcavado.Repositories
         }
 
         // Obter comentários por Código do Ticket
-        public async Task<List<Comentario>> GetComentariosByCodigoTicketAsync(string codigoTicket)
+        public async Task<List<ComentarioTicket>> GetComentariosByCodigoTicketAsync(string codigoTicket)
         {
             try
             {
@@ -121,7 +121,7 @@ namespace APIGOTinforcavado.Repositories
                 using (var connection = new SqlConnection(_connectionString))
                 {
                     connection.Open();
-                    return (await connection.QueryAsync<Comentario>(sql, new { CodigoTicket = codigoTicket })).ToList();
+                    return (await connection.QueryAsync<ComentarioTicket>(sql, new { CodigoTicket = codigoTicket })).ToList();
                 }
             }
             catch (Exception ex)

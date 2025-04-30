@@ -1,4 +1,4 @@
-﻿using APIGOTinforcavado.Data;
+﻿
 using APIGOTinforcavado.Models;
 using Dapper;
 using Microsoft.Data.SqlClient;
@@ -33,8 +33,8 @@ namespace APIGOTinforcavado.Repositories
             try
             {
                 var sql = @"
-            INSERT INTO Tickets (Codigo, Data, Nome, Empresa, Email, Assunto, Mensagem, Departamento, TipoTicket, EstadoTarefa, UtilizadorId, Telefone)
-            VALUES (@Codigo, @Data, @Nome, @Empresa, @Email, @Assunto, @Mensagem, @Departamento, @TipoTicket, @EstadoTarefa, @UtilizadorId, @Telefone);
+            INSERT INTO Tickets (Codigo, Data, Nome, Empresa, Email, Assunto, Mensagem, Departamento, TipoTicket, Estadodoticket, UtilizadorId, Telefone)
+            VALUES (@Codigo, @Data, @Nome, @Empresa, @Email, @Assunto, @Mensagem, @Departamento, @TipoTicket, @Estadodoticket, @UtilizadorId, @Telefone);
             SELECT CAST(SCOPE_IDENTITY() as int);";
 
                 using (var connection = new SqlConnection(_connectionString))
@@ -187,7 +187,7 @@ namespace APIGOTinforcavado.Repositories
                     Mensagem = @Mensagem,
                     Departamento = @Departamento,
                     TipoTicket = @TipoTicket,
-                    EstadoTarefa = @EstadoTarefa,
+                    Estadodoticket = @Estadodoticket,
                     UtilizadorId = @UtilizadorId,
                     Telefone = @Telefone
                 WHERE Id = @Id";

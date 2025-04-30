@@ -13,7 +13,6 @@
   <ItemGroup>
     <Content Remove="componentes\Acompanhapage.razor" />
     <Content Remove="componentes\Avisos.razor" />
-    <Content Remove="componentes\DroopDownDepartamento.razor" />
     <Content Remove="componentes\NovoTicketApoioATOMgest.razor" />
     <Content Remove="componentes\NovoTicketApoioFinanceiro.razor" />
     <Content Remove="componentes\NovoTicketApoioHeadline.razor" />
@@ -68,18 +67,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Shared\Shared.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <UpToDateCheckInput Remove="componentes\DroopDownDepartamento.razor" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <_ContentIncludedByDefault Remove="componentes\DroopDownDepartamento.razor" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="componentes\DroopDownDepartamento.razor" />
   </ItemGroup>
 
 </Project>

@@ -104,8 +104,8 @@
             <MudTd DataLabel="Departamento">@ticket.Departamento</MudTd>
             <MudTd DataLabel="Topico">@ticket.TipoTicket</MudTd>
             <MudTd DataLabel="Estado">
-                <MudChip T="string" Class="@ObterClasseEstado(ticket.EstadoTarefa)">
-                    @ticket.EstadoTarefa
+                        <MudChip T="string" Class="@ObterClasseEstado(ticket.Estadodoticket)">
+                            @ticket.Estadodoticket
                 </MudChip>
             </MudTd>
             <MudTd>
@@ -136,8 +136,8 @@
                                     </div> <div class="noscards">
                                          @ticket.TipoTicket
                                          </div>
-                                    <span class="estado-badge @ObterClasseEstado(ticket.EstadoTarefa)">
-                                        @ticket.EstadoTarefa
+                                    <span class="estado-badge @ObterClasseEstado(ticket.Estadodoticket)">
+                                        @ticket.Estadodoticket
                                     </span>
                                      <span class="material-symbols-outlined" style="color: #758A8A">
                                     outgoing_mail
@@ -163,8 +163,8 @@
                     <MudCard Class="ticket-card">
                         <MudCardContent>
                             <div class="cardtop">
-                                <span class="estado-badge @ObterClasseEstado(ticket.EstadoTarefa)">
-                                    @ticket.EstadoTarefa
+                                <span class="estado-badge @ObterClasseEstado(ticket.Estadodoticket)">
+                                    @ticket.Estadodoticket
                                 </span>
                                 <span class="material-symbols-outlined" style="color: #758A8A">
                                     outgoing_mail
@@ -258,16 +258,16 @@
         isTopicoPopoverOpen = !isTopicoPopoverOpen;
     }
 
-    private string ObterClasseEstado(EstadoTarefa estado)
+    private string ObterClasseEstado(EstadoTicket estado)
     {
         return estado switch
         {
-            EstadoTarefa.PorIniciar => "estado-por-iniciar",
-            EstadoTarefa.EmCurso => "estado-em-curso",
-            EstadoTarefa.Concluido => "estado-concluido",
-            EstadoTarefa.Publicado => "estado-publicado",
-            EstadoTarefa.Arquivado => "estado-arquivado",
-            EstadoTarefa.EmEspera => "estado-em-espera",
+            EstadoTicket.PorIniciar => "estado-por-iniciar",
+            EstadoTicket.EmCurso => "estado-em-curso",
+            EstadoTicket.Resolvido => "estado-resolvido",
+            EstadoTicket.Pendente => "estado-pendente",
+            EstadoTicket.EmAnalise => "estado-em-analise",
+            EstadoTicket.Fechado => "estado-fechado",
             _ => ""
         };
     }

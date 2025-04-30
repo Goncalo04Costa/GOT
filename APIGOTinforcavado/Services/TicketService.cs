@@ -36,7 +36,7 @@
             if (ticket == null) throw new ArgumentNullException(nameof(ticket));
 
             ticket.codigo = GenerateFixedRandomCode(ticket.Nome);
-            ticket.EstadoTarefa = EstadoTarefa.PorIniciar;
+            ticket.Estadodoticket = EstadoTicket.PorIniciar;
             ticket.Data = DateTime.UtcNow;
 
             try
@@ -85,7 +85,7 @@
             }
         }
  
-        public async Task<Ticket> UpdateTicketStatusAsync(string codigo, EstadoTarefa status) 
+        public async Task<Ticket> UpdateTicketStatusAsync(string codigo, EstadoTicket status) 
         {
             if (string.IsNullOrEmpty(codigo))
                 throw new ArgumentException("Código do ticket não pode ser nulo ou vazio.", nameof(codigo));
@@ -95,7 +95,7 @@
                 var ticket = await _ticketRepository.GetByCodigoAsync(codigo); 
                 if (ticket == null) return null;
 
-                ticket.EstadoTarefa = status;
+                ticket.Estadodoticket = status;
                 await _ticketRepository.UpdateAsync(ticket);
 
                 return ticket;
@@ -153,8 +153,8 @@
                 existingTicket.Mensagem = updatedTicket.Mensagem;
                 existingTicket.TipoTicket = updatedTicket.TipoTicket;
                 existingTicket.Departamento = updatedTicket.Departamento;
-                existingTicket.EstadoTarefa = updatedTicket.EstadoTarefa;
-                existingTicket.Comentarios = updatedTicket.Comentarios;
+                existingTicket.Estadodoticket = updatedTicket.Estadodoticket;
+                existingTicket.ComentarioTicket = updatedTicket.ComentarioTicket;
                 existingTicket.Ficheiros = updatedTicket.Ficheiros;
 
                 await _ticketRepository.UpdateAsync(existingTicket);

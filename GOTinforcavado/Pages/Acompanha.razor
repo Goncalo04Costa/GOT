@@ -35,7 +35,7 @@
     {
 
         <div class="cards-container">
-            <div class="VerEstado @ObterClasseEstado()">@ticketEncontrado.EstadoTarefa</div>
+            <div class="VerEstado @ObterClasseEstado()">@ticketEncontrado.Estadodoticket</div>
             <div class="VerDepartamento1">@ticketEncontrado.TipoTicket</div>
             <div class="VerDepartamento2">@ticketEncontrado.Departamento</div>
             <div class="VerHorasss">@ticketEncontrado.Data.ToString("HH:mm")</div>
@@ -609,8 +609,8 @@
     private string codigo ="";
     private Ticket ticketEncontrado;
     private string erro;
-    private Comentario novoComentario = new Comentario();
-    private List<Comentario> comentarios;
+    private ComentarioTicket novoComentario = new ComentarioTicket();
+    private List<ComentarioTicket> comentarios;
     private List<Evento> Eventos;
     private string nomeUtilizador;
     private string userEmail;
@@ -621,7 +621,7 @@
     {
         public DateTime Data { get; set; }
         public string Tipo { get; set; } 
-        public Comentario Comentario { get; set; }
+        public ComentarioTicket Comentario { get; set; }
         public Evento Evento { get; set; }
     }
 
@@ -641,14 +641,14 @@
 
     private string ObterClasseEstado()
     {
-        return ticketEncontrado?.EstadoTarefa switch
+        return ticketEncontrado?.Estadodoticket switch
         {
-            EstadoTarefa.PorIniciar => "estado-por-iniciar",
-            EstadoTarefa.EmCurso => "estado-em-curso",
-            EstadoTarefa.Concluido => "estado-concluido",
-            EstadoTarefa.Publicado => "estado-publicado",
-            EstadoTarefa.Arquivado => "estado-arquivado",
-            EstadoTarefa.EmEspera => "estado-em-espera",
+            EstadoTicket.PorIniciar => "estado-por-iniciar",
+            EstadoTicket.EmCurso => "estado-em-curso",
+            EstadoTicket.Resolvido => "estado-resolvido",
+            EstadoTicket.Pendente => "estado-pendente",
+            EstadoTicket.EmAnalise => "estado-em-analise",
+            EstadoTicket.Fechado => "estado-fechado",
             _ => ""
         };
     }

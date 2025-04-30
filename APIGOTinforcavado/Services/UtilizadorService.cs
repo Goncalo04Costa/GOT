@@ -7,30 +7,11 @@ namespace APIGOTinforcavado.Services
     public class UtilizadorService
     {
         private readonly UtilizadorRepository _utilizadorRepository;
-        private readonly JwtGenerator _jwtGenerator;
+    
 
-        public UtilizadorService(UtilizadorRepository utilizadorRepository, JwtGenerator jwtGenerator)
-        {
-            _utilizadorRepository = utilizadorRepository;
-            _jwtGenerator = jwtGenerator;
-        }
+     
 
-        public async Task<string> AutenticarAsync(string email, string password)
-        {
-            var utilizador = await _utilizadorRepository.GetByEmailAsync(email);
-            if (utilizador == null)
-            {
-                return null;
-            }
-
-            if (utilizador.Password != password)
-            {
-                return null;
-            }
-
-            return _jwtGenerator.GenerateJwtToken(utilizador);
-        }
-
+     
 
         public async Task<Utilizador> GetUtilizadorByIdAsync(int id)
         {
