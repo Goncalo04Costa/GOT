@@ -1,45 +1,67 @@
-@page "/Login"
-
+﻿@page "/"
 @using Blazored.LocalStorage
+@using GOTinforcavado.Auxiliar
 @using GOTinforcavado.Services
 @using Shared.models
+@using System.ComponentModel.DataAnnotations
 @inject NavigationManager NavigationManager
 @inject UtilizadorService UtilizadorService
 @inject ILocalStorageService LocalStorage
+@inject IJSRuntime JSRuntime
 
-<header class="fundo">
-    <div class="card">
-        <div class="card-left">
-            <img src="/imagens/Login GOT image (896x1017).png" />
-        </div>
-        <div class="card-right">
-            <h2>Login</h2>
-            <EditForm Model="@loginModel" OnValidSubmit="HandleLogin">
-                <DataAnnotationsValidator />
-                <ValidationSummary />
+<div class="login-container">
+    <div class="login-form">
+        <h2>Log In</h2>
+        <p class="subtitle" style="font-size:32px">Bem vindo de volta! Introduza os seus dados!</p>
+        <EditForm Model="@credentials" OnValidSubmit="HandleLogin">
+            <DataAnnotationsValidator />
+            <ValidationSummary />
 
-                <div class="input-group">
-                    <label for="email">Email</label>
-                    <InputText id="email" class="form-control" @bind-Value="loginModel.Email" placeholder="Introduza o seu email" />
+            <div class="field">
+                <label>Email</label>
+                <InputText @bind-Value="credentials.Email" placeholder="you@example.com" autocomplete="email" />
+            </div>
+            <div class="field">
+                <label>Password</label>
+                <div class="password-wrapper">
+                    <InputText @bind-Value="credentials.Password" type="password" placeholder="••••••••" autocomplete="password" />
+                    <span class="eye-icon">👁️</span>
                 </div>
-                <div class="input-group">
-                    <label for="password">Senha</label>
-                    <InputText id="password" class="form-control" @bind-Value="loginModel.Password" type="password" placeholder="Introduza a sua palavra passe" />
-                </div>
-                <button type="submit">Entrar</button>
+                <a href="#" class="forgot-link">forgot password?</a>
+            </div>
 
-                @if (!string.IsNullOrEmpty(loginError))
-                {
-                    <p class="error-message">@loginError</p>
-                }
-            </EditForm>
-        </div>
+            <button type="submit" class="btn-login">Log in</button>
+
+            @if (!string.IsNullOrEmpty(loginError))
+            {
+                <p class="error-message">@loginError</p>
+            }
+        </EditForm>
     </div>
-</header>
+
+    <div class="login-illustration">
+        <img src="imagens/Login GOT image (896x1017).png" alt="GOT" />
+    </div>
+</div>
+
+@if (!string.IsNullOrEmpty(loggedInEmail))
+{
+    <div>
+        <h4>Bem-vindo, @loggedInEmail!</h4>
+    </div>
+}
 
 @code {
-    private LoginModel loginModel = new LoginModel();
+    private Credentials credentials = new();
+    private LoginResponse loginResponse = new();
     private string loginError;
+    private string loggedInEmail;
+
+    // Recupera o email do sessionStorage quando a página é carregada
+    protected override async Task OnInitializedAsync()
+    {
+        loggedInEmail = await JSRuntime.InvokeAsync<string>("sessionStorage.getItem", "userEmail");
+    }
 
     private async Task HandleLogin()
     {
@@ -47,9 +69,14 @@
 
         try
         {
+            var loginRequest = new LoginRequest
+                {
+                    Email = credentials.Email,
+                    Password = credentials.Password
+                };
 
-            var token = await UtilizadorService.AutenticarAsync(loginModel.Email, loginModel.Password);
-
+            // Chamada ao serviço de autenticação, esperando um LoginResponse
+            var token = await UtilizadorService.AutenticarAsync(credentials.Email, credentials.Password);
 
             if (string.IsNullOrEmpty(token))
             {
@@ -57,10 +84,20 @@
                 return;
             }
 
-            await LocalStorage.SetItemAsync("authToken", token);
-            await LocalStorage.SetItemAsync("userEmail", loginModel.Email);
+            // Armazenar token e email no sessionStorage
+            await JSRuntime.InvokeVoidAsync("sessionStorage.setItem", "authToken", token);
+            await JSRuntime.InvokeVoidAsync("sessionStorage.setItem", "userEmail", credentials.Email);
+            // Se quiseres armazenar o nome, terás que o obter de outro modo
+            await JSRuntime.InvokeVoidAsync("sessionStorage.setItem", "userName", credentials.Email); 
+            Console.WriteLine($"Token recebido: {token}");
+            Console.WriteLine($"Email do usuário: {credentials.Email}");
 
-            NavigationManager.NavigateTo("/");
+            loggedInEmail = credentials.Email;
+            NavigationManager.NavigateTo("/MenuInicial");
+        }
+        catch (UnauthorizedAccessException)
+        {
+            loginError = "Email ou palavra-passe incorretos.";
         }
         catch (Exception ex)
         {
@@ -68,94 +105,117 @@
         }
     }
 
-    public class LoginModel
+    public class Credentials
     {
+        [Required, EmailAddress]
         public string Email { get; set; }
+        [Required]
         public string Password { get; set; }
     }
-}
 
-
-<style>
-    .fundo {
-        width: 100vw;
-        height: 100vh;
-        background-color: #E8F2F3;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+    public class LoginResponse
+    {
+        public string Token { get; set; }
+        public string UserName { get; set; }
+        public string Email { get; set; }
+        public int EmpresaId { get; set; }
     }
 
-    .card {
-        height: 620px;
-        width: 1300px;
-        background-color: #0D3439;
-        border-radius: 10px;
-        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+            <style>
+    .login-container {
         display: flex;
+        height: 100vh;
         overflow: hidden;
     }
 
-    .card-left {
-        width: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: #1B4D54;
-    }
-
-        .card-left img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-    .card-right {
-        width: 50%;
-        padding: 40px;
+    .login-form {
+        flex: 1;
+        background: #FFFFFF;
+        padding: 3rem 2rem;
         display: flex;
         flex-direction: column;
         justify-content: center;
-        align-items: center;
-        color: white;
     }
 
-        .card-right h2 {
-            margin-bottom: 20px;
+        .login-form h2 {
+            font-size: 2rem;
+            color: #17585F;
+            margin-bottom: 0.5rem;
         }
 
-    .input-group {
-        display: flex;
-        flex-direction: column;
-        margin-bottom: 15px;
-        width: 100%;
+    .subtitle {
+        color: #999999;
+        margin-bottom: 2rem;
     }
 
-        .input-group label {
-            margin-bottom: 5px;
-            font-size: 14px;
+    .field {
+        margin-bottom: 1.5rem;
+    }
+
+        .field label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
         }
 
-        .input-group input {
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
+        .field input {
             width: 100%;
+            padding: 0.5rem 0.75rem; /* altura reduzida */
+            border: 1px solid #DADADA;
+            border-radius: 0.375rem;
+            font-size: 0.95rem; /* texto um pouco menor */
         }
 
-    button {
-        margin-top: 10px;
-        margin-left: 50px;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 5px;
-        background-color: #2D6A6A;
-        color: white;
-        font-size: 16px;
+    .password-wrapper {
+        position: relative;
+    }
+
+    .eye-icon {
+        position: absolute;
+        right: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
         cursor: pointer;
     }
 
-        button:hover {
-            background-color: #245757;
+    .forgot-link {
+        display: inline-block;
+        margin-top: 0.25rem;
+        font-size: 0.875rem;
+        color: #17585F;
+        text-decoration: none;
+    }
+
+    .btn-login {
+        width: 100%;
+        padding: 0.75rem;
+        background: linear-gradient(135deg, #17585F);
+        color: #FFFFFF;
+        border: none;
+        border-radius: 0.375rem;
+        font-size: 1rem;
+        margin-top: 1rem;
+        cursor: pointer;
+    }
+
+    .login-illustration {
+        flex: 1;
+        background: #17585F;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+        .login-illustration img {
+            max-width: 90%;
+            height: auto;
+            object-fit: cover;
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+            border-top-right-radius: 1rem;
+            border-bottom-right-radius: 1rem;
         }
-</style>        
+
+            </style>

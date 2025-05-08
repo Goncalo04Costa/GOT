@@ -22,18 +22,16 @@ namespace APIGOTinforcavado
 
 
 
-            builder.Services.AddScoped<ComentarioRepository>();
-            builder.Services.AddScoped<EventoRepository>();
             builder.Services.AddScoped<TicketRepository>();
             builder.Services.AddScoped<UtilizadorRepository>();
-            builder.Services.AddScoped<ComentarioService>();
             builder.Services.AddScoped<TicketService>();
             builder.Services.AddScoped<EmailSender>();
             builder.Services.AddScoped<UtilizadorService>();
-            builder.Services.AddScoped<EventoService>();
             builder.Services.AddScoped<NewsLetterRepository>();
             builder.Services.AddScoped<NewsLetterService>();
-
+            builder.Services.AddScoped<JwtGenerator>();
+            builder.Services.AddScoped<ChatBotMessagesRepository>();
+            builder.Services.AddScoped<ChatBotMessagesService>();
 
             builder.Services.AddControllers().AddJsonOptions(options =>
             {

@@ -7,6 +7,7 @@ using GOTinforcavado.Service;
 using Microsoft.AspNetCore.Components.Authorization;
 using Blazored.LocalStorage;
 using DevExpress;
+using GOTinforcavado.wwwroot;
 
 namespace GOTinforcavado
 {
@@ -25,6 +26,7 @@ namespace GOTinforcavado
             builder.Services.AddBlazoredSessionStorage();
             builder.Services.AddDevExpressBlazor();
 
+
             builder.Services.AddScoped(sp => new HttpClient
             {
                 BaseAddress = new Uri(builder.HostEnvironment.IsDevelopment()
@@ -38,16 +40,14 @@ namespace GOTinforcavado
 
             builder.Services.AddAuthorizationCore();
             builder.Services.AddScoped<TicketService>();
-            builder.Services.AddScoped<ComentarioService>();
             builder.Services.AddScoped<UtilizadorService>();
-            builder.Services.AddScoped<EventoService>();
             builder.Services.AddScoped<NewsLetterService>();
+            builder.Services.AddScoped<ChatBotService>();
 
             builder.Services.AddOptions();
             builder.Services.AddAuthorizationCore();
             builder.Services.AddScoped<AuthenticationStateProvider, CustomAuthenticationStateProvider>();
-            
-
+            builder.Services.AddScoped<IHtmlEditorStringDataProvider, HtmlEditorStringDataProvider>() ;
 
             await builder.Build().RunAsync();
         }

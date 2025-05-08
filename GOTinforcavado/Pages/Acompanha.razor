@@ -7,7 +7,6 @@
 @using Shared.models
 @inject TicketService TicketService
 @inject UtilizadorService UtilizadorService
-@inject ComentarioService ComentarioService
 @using System.Security.Cryptography
 @using System.Text
 @using System.Globalization
@@ -77,35 +76,7 @@
                     .OrderByDescending(r => r.Data);
                     @foreach (var registro in outrosRegistros)
                     {
-                        if (registro.Tipo == "comentario" && registro.Comentario != null)
-                        {
-                            var comentario = registro.Comentario;
-                            <div class="umcomentario">
-                                @if (comentario.Utilizador != null)
-                                {
-                                    <div class="nomecomentario">@GerarUsername(comentario.Utilizador.Email) <span class="hora-comentario">@(comentario.Data.ToString("HH:mm"))</span></div>
-                                    <div class="emailcomentario">@comentario.Utilizador.Email</div>
-                                }
-                                else
-                                {
-                                    <div class="nomecomentario">Convidado <span class="hora-comentario">@(comentario.Data.ToString("HH:mm"))</span></div>
-                                    <div class="emailcomentario">convidado@exemplo.com</div>
-                                }
-                                <div class="textocomentario">@comentario.Conteudo</div>
-                            </div>
-                        }
-                        else if (registro.Tipo == "evento" && registro.Evento != null)
-                        {
-                            var evento = registro.Evento;
-                            var nomeCompleto = nomesUtilizadores.GetValueOrDefault(evento.UtilizadorId, "Utilizador desconhecido");
-                            var username = FormatarNome(nomeCompleto);
-                            <div class="criouticket">
-                                <div class="point"> • </div>
-                                <div class="username">@username</div>
-                                <div class="textocriouticket">@evento.evento</div>
-                                <div class="horariocriacaoticket">@evento.Data.ToString("HH:mm")</div>
-                            </div>
-                        }
+                        
                     }
 
                     if (criacaoTicketRegistro != null)
@@ -135,6 +106,7 @@
 
 </div>
 
+<ChatBot />
 <Rodape />
 <Cookies />
 
@@ -609,9 +581,6 @@
     private string codigo ="";
     private Ticket ticketEncontrado;
     private string erro;
-    private ComentarioTicket novoComentario = new ComentarioTicket();
-    private List<ComentarioTicket> comentarios;
-    private List<Evento> Eventos;
     private string nomeUtilizador;
     private string userEmail;
     private Dictionary<int, string> nomesUtilizadores = new Dictionary<int, string>();
@@ -621,8 +590,7 @@
     {
         public DateTime Data { get; set; }
         public string Tipo { get; set; } 
-        public ComentarioTicket Comentario { get; set; }
-        public Evento Evento { get; set; }
+        
     }
 
 
@@ -657,8 +625,6 @@
     {
         erro = null;
         ticketEncontrado = null;
-        comentarios = null;
-        Eventos = null;
         isLoading = true;
         registrosAtividades.Clear();
 
@@ -667,37 +633,7 @@
             ticketEncontrado = await TicketService.SearchTicketByCodeAsync(codigo);
             if (ticketEncontrado != null)
             {
-                comentarios = await ComentarioService.GetComentariosPorCodigoTicketAsync(ticketEncontrado.codigo);
-                await CarregarNomesUtilizadores();
-
-          
-                if (comentarios != null)
-                {
-                    foreach (var comentario in comentarios)
-                    {
-                        registrosAtividades.Add(new RegistroAtividade
-                            {
-                                Data = comentario.Data,
-                                Tipo = "comentario",
-                                Comentario = comentario
-                            });
-                    }
-                }
-
-            
-                if (Eventos != null)
-                {
-                    foreach (var evento in Eventos)
-                    {
-                        registrosAtividades.Add(new RegistroAtividade
-                            {
-                                Data = evento.Data,
-                                Tipo = "evento",
-                                Evento = evento
-                            });
-                    }
-                }
-
+               
              
                 registrosAtividades.Add(new RegistroAtividade
                     {
@@ -725,17 +661,7 @@
 
     private async Task CarregarNomesUtilizadores()
     {
-        if (Eventos != null)
-        {
-            foreach (var evento in Eventos)
-            {
-                if (!nomesUtilizadores.ContainsKey(evento.UtilizadorId))
-                {
-                    var nomeCompleto = await ObterNomeUtilizador(evento.UtilizadorId);
-                    nomesUtilizadores[evento.UtilizadorId] = nomeCompleto;
-                }
-            }
-        }
+       
     }
 
     private async Task<string> ObterNomeUtilizador(int utilizadorId)

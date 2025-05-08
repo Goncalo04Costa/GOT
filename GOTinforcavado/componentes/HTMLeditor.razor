@@ -1,0 +1,10 @@
+﻿@using DevExpress.Blazor.Office
+
+
+<DxHtmlEditor @bind-Markup="@markup"
+              Height="200px"
+              Width="100%" />
+
+@code {
+    string markup { get; set; } = "Document content";
+}

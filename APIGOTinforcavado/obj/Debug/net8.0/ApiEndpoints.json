@@ -1,24 +1,24 @@
 [
   {
-    "ContainingType": "APIGOTinforcavado.Controllers.ComentarioController",
-    "Method": "CriarComentario",
-    "RelativePath": "api/Comentario",
+    "ContainingType": "APIGOTinforcavado.Controllers.ChatBotMessagesController",
+    "Method": "CriarMensagem",
+    "RelativePath": "api/ChatBotMessages",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "comentario",
-        "Type": "ComentarioTicket",
+        "Name": "mensagem",
+        "Type": "Shared.models.ChatBotMessages",
         "IsRequired": true
       }
     ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "APIGOTinforcavado.Controllers.ComentarioController",
-    "Method": "GetComentarios",
-    "RelativePath": "api/Comentario",
+    "ContainingType": "APIGOTinforcavado.Controllers.ChatBotMessagesController",
+    "Method": "GetMensagens",
+    "RelativePath": "api/ChatBotMessages",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -26,25 +26,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "APIGOTinforcavado.Controllers.ComentarioController",
-    "Method": "GetComentarioById",
-    "RelativePath": "api/Comentario/{id}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "APIGOTinforcavado.Controllers.ComentarioController",
-    "Method": "DeleteComentario",
-    "RelativePath": "api/Comentario/{id}",
+    "ContainingType": "APIGOTinforcavado.Controllers.ChatBotMessagesController",
+    "Method": "DeleteMensagem",
+    "RelativePath": "api/ChatBotMessages/{id}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -58,110 +42,31 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "APIGOTinforcavado.Controllers.ComentarioController",
-    "Method": "GetComentariosPorCodigoTicket",
-    "RelativePath": "api/Comentario/ticket/{codigo}",
+    "ContainingType": "APIGOTinforcavado.Controllers.ChatBotMessagesController",
+    "Method": "GetMensagemByPalavra",
+    "RelativePath": "api/ChatBotMessages/buscar",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "codigo",
+        "Name": "texto",
         "Type": "System.String",
-        "IsRequired": true
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "APIGOTinforcavado.Controllers.EventoController",
-    "Method": "CreateEvento",
-    "RelativePath": "api/Evento",
+    "ContainingType": "APIGOTinforcavado.Controllers.ChatBotMessagesController",
+    "Method": "ObterResposta",
+    "RelativePath": "api/ChatBotMessages/responder",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "evento",
-        "Type": "Shared.models.Evento",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "APIGOTinforcavado.Controllers.EventoController",
-    "Method": "GetEventos",
-    "RelativePath": "api/Evento",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "APIGOTinforcavado.Controllers.EventoController",
-    "Method": "GetEventoById",
-    "RelativePath": "api/Evento/{id}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "APIGOTinforcavado.Controllers.EventoController",
-    "Method": "UpdateEvento",
-    "RelativePath": "api/Evento/{id}",
-    "HttpMethod": "PUT",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      },
-      {
-        "Name": "evento",
-        "Type": "Shared.models.Evento",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "APIGOTinforcavado.Controllers.EventoController",
-    "Method": "DeleteEvento",
-    "RelativePath": "api/Evento/{id}",
-    "HttpMethod": "DELETE",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "APIGOTinforcavado.Controllers.EventoController",
-    "Method": "GetComentariosByTicketId",
-    "RelativePath": "api/Evento/ticket/{ticketId}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "ticketId",
+        "Name": "mensagemUsuario",
         "Type": "System.String",
         "IsRequired": true
       }
@@ -289,13 +194,38 @@
         "IsRequired": false
       },
       {
-        "Name": "Estadodoticket",
+        "Name": "Utilizador.Id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Utilizador.Email",
         "Type": "System.String",
         "IsRequired": false
       },
       {
-        "Name": "ComentarioTicket",
-        "Type": "System.Collections.Generic.List\u00601[[ComentarioTicket, Shared, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Name": "Utilizador.Password",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Utilizador.Nome",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Utilizador.EmpresaId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Utilizador.Tickets",
+        "Type": "System.Collections.Generic.List\u00601[[Shared.models.Ticket, Shared, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "Estadodoticket",
+        "Type": "System.String",
         "IsRequired": false
       },
       {
@@ -421,6 +351,38 @@
       {
         "Name": "id",
         "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIGOTinforcavado.Controllers.UtilizadorController",
+    "Method": "Login",
+    "RelativePath": "api/Utilizador/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Microsoft.AspNetCore.Identity.Data.LoginRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIGOTinforcavado.Controllers.UtilizadorController",
+    "Method": "Register",
+    "RelativePath": "api/Utilizador/register",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "RegisterRequest",
         "IsRequired": true
       }
     ],

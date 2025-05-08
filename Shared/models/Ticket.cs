@@ -50,10 +50,11 @@ namespace Shared.models
         public string TipoTicket { get; set; }
 
         public int? UtilizadorId { get; set; }
-
+        public Utilizador Utilizador { get; set; } 
+     
         public EstadoTicket Estadodoticket { get; set; } = EstadoTicket.PorIniciar;
 
-        public List<ComentarioTicket>? ComentarioTicket { get; set; }
+        
         public List<UploadedFiles>? Ficheiros { get; set; }
 
         #endregion
@@ -61,7 +62,6 @@ namespace Shared.models
         #region Construtores
         public Ticket()
         {
-            ComentarioTicket = new List<ComentarioTicket>();
             Ficheiros = new List<UploadedFiles>();
         }
         #endregion

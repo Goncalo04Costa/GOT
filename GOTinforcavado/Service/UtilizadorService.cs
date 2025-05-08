@@ -8,28 +8,45 @@ namespace GOTinforcavado.Services
     public class UtilizadorService
     {
         private readonly HttpClient _httpClient;
-        private const string BaseUrl = "api/Utilizador";
-        private const string LoginUrl = "api/Utilizador/login"; 
+        private const string BaseUrl = "api/Utilizador";  // URL base para os utilizadores
+        private const string LoginUrl = "api/Utilizador/login";  // URL para o login
 
         public UtilizadorService(HttpClient httpClient)
         {
             _httpClient = httpClient;
         }
 
-
+        // Método para obter um utilizador pelo ID
         public async Task<Utilizador> GetUtilizadorByIdAsync(int id)
         {
-            return await _httpClient.GetFromJsonAsync<Utilizador>($"{BaseUrl}/{id}");
+            try
+            {
+                return await _httpClient.GetFromJsonAsync<Utilizador>($"{BaseUrl}/{id}");
+            }
+            catch (Exception ex)
+            {
+                // Você pode tratar erros aqui, como quando não encontra o utilizador
+                throw new InvalidOperationException($"Erro ao obter o utilizador com ID {id}", ex);
+            }
         }
 
+        // Método para obter todos os utilizadores
         public async Task<List<Utilizador>> GetUtilizadoresAsync()
         {
-            return await _httpClient.GetFromJsonAsync<List<Utilizador>>(BaseUrl);
+            try
+            {
+                return await _httpClient.GetFromJsonAsync<List<Utilizador>>(BaseUrl);
+            }
+            catch (Exception ex)
+            {
+                // Tratamento de erros ao tentar obter a lista de utilizadores
+                throw new InvalidOperationException("Erro ao obter a lista de utilizadores", ex);
+            }
         }
 
+        // Método para autenticar o utilizador
         public async Task<string> AutenticarAsync(string email, string password)
         {
-    
             var loginRequest = new
             {
                 Email = email,
@@ -38,28 +55,27 @@ namespace GOTinforcavado.Services
 
             try
             {
-              
                 var response = await _httpClient.PostAsJsonAsync(LoginUrl, loginRequest);
 
-             
+                // Verifica se a resposta foi bem-sucedida
                 if (!response.IsSuccessStatusCode)
                 {
-                    return null;
+                    return null;  // Retorna null caso a autenticação falhe
                 }
 
-             
+                // Lê a resposta do token, se for bem-sucedido
                 var tokenResponse = await response.Content.ReadFromJsonAsync<TokenResponse>();
-
                 return tokenResponse?.Token;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return null;
+                // Adiciona tratamento de erro, caso ocorra algum problema na requisição
+                throw new InvalidOperationException("Erro ao tentar autenticar o utilizador", ex);
             }
         }
     }
 
-   
+    // Classe para a resposta do token
     public class TokenResponse
     {
         public string Token { get; set; }

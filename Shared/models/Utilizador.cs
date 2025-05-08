@@ -7,6 +7,8 @@ namespace Shared.models
 {
     public class Utilizador
     {
+
+        #region Atributos
         public int Id { get; set; }
 
         [Required, EmailAddress]
@@ -15,17 +17,14 @@ namespace Shared.models
         [Required]
         public string Password { get; set; }
 
-        public string Role { get; set; }
-
         [Required]
         public string Nome { get; set; }
-
-        [Required]
-        public string Login {  get; set; }
        
-        public List<ComentarioTicket> Comentarios { get; set; } = new List<ComentarioTicket>();
 
+        public int  EmpresaId { get; set; }
+       
         public List<Ticket> Tickets { get; set; } = new List<Ticket>();
 
+        #endregion
     }
 }

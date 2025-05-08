@@ -7,8 +7,6 @@
 @using Shared.models
 @inject TicketService TicketService
 @inject UtilizadorService UtilizadorService
-@inject ComentarioService ComentarioService
-@inject EventoService EventoService
 @using MudBlazor
 @using System.Security.Cryptography
 @using System.Text
@@ -22,7 +20,9 @@
 @using DevExpress.Blazor.Grid
 
 
-<Cabecalho imagem="false" botoes="Cabecalho.Botoes.Novo" />
+@* <Cabecalho imagem="false" botoes="Cabecalho.Botoes.Novo" />
+ *@
+  
 <div class="mostratickets">
     <div class="titulo">Tickets</div>
     <div class="Buttons">
@@ -191,9 +191,11 @@
     }
 </div>
 
+<Navbar SelectedItemId="3" />
 
-<Rodape />
-<Cookies />
+
+@* <Rodape />
+<Cookies /> *@
 
 @code {
     private List<Ticket> GridData = new();
@@ -278,7 +280,8 @@
 
     .mostratickets {
         background-color: #FFFF;
-        padding: 16px 140px;
+        padding: 86px 96px;
+        margin-left: 231px;
     }
 
     .titulo {
@@ -509,14 +512,14 @@
       @@media(max-width: 1280px){
         .mostratickets {
             background-color: #FFFF;
-            padding: 16px 96px;
+            padding: 86px 96px;
         }
     }
 
     @@media(max-width: 1024px) {
         .mostratickets {
             background-color: #FFFF;
-            padding: 16px 40px;
+            padding: 86px 40px;
         }
     }
 

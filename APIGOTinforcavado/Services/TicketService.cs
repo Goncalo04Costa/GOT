@@ -114,9 +114,12 @@
             }
             catch (Exception ex)
             {
+                Console.WriteLine("Erro ao procurar tickets: " + ex.Message);
+                Console.WriteLine(ex.StackTrace);
                 throw new InvalidOperationException("Erro ao procurar tickets.", ex);
             }
         }
+
 
         public async Task<List<Ticket>> SearchTicketsByCodeAsync(string codigo)
         {
@@ -148,13 +151,11 @@
 
                 existingTicket.codigo = updatedTicket.codigo;
                 existingTicket.Nome = updatedTicket.Nome;
-                existingTicket.Empresa = updatedTicket.Empresa;
                 existingTicket.Email = updatedTicket.Email;
                 existingTicket.Mensagem = updatedTicket.Mensagem;
                 existingTicket.TipoTicket = updatedTicket.TipoTicket;
                 existingTicket.Departamento = updatedTicket.Departamento;
                 existingTicket.Estadodoticket = updatedTicket.Estadodoticket;
-                existingTicket.ComentarioTicket = updatedTicket.ComentarioTicket;
                 existingTicket.Ficheiros = updatedTicket.Ficheiros;
 
                 await _ticketRepository.UpdateAsync(existingTicket);

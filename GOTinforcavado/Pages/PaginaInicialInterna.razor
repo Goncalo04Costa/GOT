@@ -1,0 +1,118 @@
+﻿@page "/paginainicialinterna"
+@using GOTinforcavado.Auxiliar
+@inject NavigationManager Navigation
+
+<Navbar SelectedItemId="1" />
+
+<div style="margin-left:231px">
+    <div class="gotrimeirotexto">
+        Growing together.
+    </div>
+    <div class="gotsegundotexto">
+        A solução começa aqui
+    </div>
+
+    <div class="titulopi">
+        Bem vindo
+    </div>
+
+    <!-- Container de Boxes -->
+    <div class="box-container">
+        <div class="info-box" @onclick="NavegarParaMostraTickets" style="cursor:pointer;">
+            <h3>Veja os seus tickets</h3>
+            <img style="margin-left: 27%; max-width: 200px;" src="../imagens/ticketicon.png" alt="Icon ticket" />
+            <p>Veja todos os  seus Tickets </p>
+        </div>
+        <div class="info-box">
+            <h3>A minha conta</h3>
+            <img style="margin-left: 27%; max-width: 200px;" src="../imagens/profileicon.png" alt="Icon ticket" />
+            <p>Veja as definições da sua conta</p>
+        </div>
+        <div class="info-box">
+            <h3>Título 3</h3>
+            <p>Descrição ou conteúdo 3</p>
+        </div>
+        <div class="info-box">
+            <h3>Título 4</h3>
+            <p>Descrição ou conteúdo 4</p>
+        </div>
+    </div>
+</div>
+
+@code {
+    private void NavegarParaMostraTickets()
+    {
+        Navigation.NavigateTo("/MostraTikcets");
+    }
+}
+}
+<style>
+    .gotrimeirotexto {
+        padding-top: 90px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: 600;
+        font-size: 50px;
+        font-family: 'Poppins';
+        color: #12444A;
+    }
+
+    .gotsegundotexto {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: 400;
+        font-size: 28px;
+        font-family: 'Poppins';
+        color: #12444A;
+    }
+
+    .titulopi {
+        padding-top: 24px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: 600;
+        font-size: 44px;
+        font-family: 'Poppins';
+        color: #12444A;
+    }
+
+    /* Estilo para o container de boxes */
+    .box-container {
+        display: flex;
+        justify-content: center;
+        gap: 32px;
+        padding: 40px 20px;
+        flex-wrap: wrap;
+    }
+
+    .info-box {
+        background-color: #2265890D;
+        padding: 32px;
+        flex: 1 1 45%; /* Cresce até 45% do container */
+        max-width: 500px;
+        min-width: 300px;
+        height: 350px; /* Define altura fixa para os boxes */
+        border-radius: 16px;
+        text-align: center;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        font-family: 'Poppins';
+        color: #12444A;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between; /* Ajusta os itens dentro do box */
+    }
+
+        .info-box h3 {
+            font-size: 20px;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .info-box p {
+            font-size: 16px;
+            font-weight: 400;
+        }
+</style>

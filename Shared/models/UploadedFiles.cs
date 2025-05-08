@@ -9,6 +9,8 @@ namespace Shared.models
 {
     public class UploadedFiles
     {
+
+        #region Atributos
         public int Id { get; set; }
         public string NomeFicheiro { get; set; }
         public byte[] FileData { get; set; }
@@ -20,7 +22,6 @@ namespace Shared.models
         public int TicketId { get; set; }
         public virtual Ticket? Ticket { get; set; }
 
-        public int? ComentarioId { get; set; }
-        public virtual ComentarioTicket? Comentario { get; set; }
+        #endregion
     }
 }

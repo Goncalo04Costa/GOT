@@ -1,0 +1,361 @@
+﻿@page "/MostraUtilizadores"
+@inject HttpClient HttpClient
+@using GOTinforcavado.Services
+@using Microsoft.AspNetCore.Components.Authorization
+@using Microsoft.AspNetCore.Components.Forms
+@inject NavigationManager NavigationManager
+@using Shared.models
+@inject TicketService TicketService
+@inject UtilizadorService UtilizadorService
+@using MudBlazor
+@using Microsoft.AspNetCore.Components
+@using DevExpress.Blazor
+
+<div class="mostrautilizadores">
+    <div class="titulo">Utilizadores e Tickets</div>
+    <div class="Buttons">
+        <MudPopover Target="utilizadorButton" Open="@isUtilizadorPopoverOpen">
+            <MudPaper Class="popover-container">
+                <MudButton Variant="Variant.Text" Color="Color.Primary" Style="color: #19235699;" OnClick="() => FiltrarPorUtilizador(null)">
+                    Todos
+                </MudButton>
+                @foreach (var utilizador in Utilizadores)
+                {
+                    <MudButton Variant="Variant.Text" Color="Color.Primary" Style="color: #19235699;" OnClick="() => FiltrarPorUtilizador(utilizador)">
+                        @utilizador.Nome
+                    </MudButton>
+                }
+            </MudPaper>
+        </MudPopover>
+
+        <button id="utilizadorButton" class="Utilizador" @onclick="ToggleUtilizadorPopover">
+            <span class="material-symbols-outlined">people</span>
+            Utilizador
+            <span class="material-symbols-outlined">arrow_drop_down</span>
+        </button>
+    </div>
+
+    @if (isLoading)
+    {
+        <div class="loading-message">Aguarde, a carregar utilizadores e tickets...</div>
+    }
+    else
+    {
+        <MudTable Items="@GridData" Hover="true" Bordered="true" Striped="true">
+            <HeaderContent>
+                <MudTh>ID</MudTh>
+                <MudTh>Nome</MudTh>
+                <MudTh>Email</MudTh>
+                <MudTh>Empresa</MudTh>
+                <MudTh>Tickets</MudTh>
+            </HeaderContent>
+            <RowTemplate Context="utilizador">
+                <MudTd DataLabel="ID">@utilizador.Id</MudTd>
+                <MudTd DataLabel="Nome">@utilizador.Nome</MudTd>
+                <MudTd DataLabel="Email">@utilizador.Email</MudTd>
+                <MudTd DataLabel="Empresa">@utilizador.EmpresaId</MudTd>
+                <MudTd DataLabel="Tickets">
+                    @foreach (var ticket in utilizador.Tickets)
+                    {
+                        <MudChip T="string" Class="@ObterClasseEstado(ticket.Estadodoticket)">
+                            @ticket.Assunto
+                        </MudChip>
+                    }
+                </MudTd>
+            </RowTemplate>
+        </MudTable>
+    }
+</div>
+
+<Navbar SelectedItemId="3" />
+
+@code {
+    private List<Utilizador> GridData = new();
+    private List<Utilizador> TodosUtilizadores = new();
+    private List<Utilizador> Utilizadores = new();
+    private bool isLoading = true;
+    private bool isUtilizadorPopoverOpen = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        TodosUtilizadores = await UtilizadorService.GetUtilizadoresAsync();
+        GridData = new List<Utilizador>(TodosUtilizadores);
+        Utilizadores = TodosUtilizadores.ToList();
+        isLoading = false;
+    }
+
+    private void FiltrarPorUtilizador(Utilizador utilizador)
+    {
+        GridData = utilizador == null ? new List<Utilizador>(TodosUtilizadores) : TodosUtilizadores.Where(u => u.Id == utilizador.Id).ToList();
+        isUtilizadorPopoverOpen = false;
+    }
+
+    private void ToggleUtilizadorPopover()
+    {
+        isUtilizadorPopoverOpen = !isUtilizadorPopoverOpen;
+    }
+
+    private string ObterClasseEstado(EstadoTicket estado)
+    {
+        return estado switch
+        {
+            EstadoTicket.PorIniciar => "estado-por-iniciar",
+            EstadoTicket.EmCurso => "estado-em-curso",
+            EstadoTicket.Resolvido => "estado-resolvido",
+            EstadoTicket.Pendente => "estado-pendente",
+            EstadoTicket.EmAnalise => "estado-em-analise",
+            EstadoTicket.Fechado => "estado-fechado",
+            _ => ""
+        };
+    }
+}
+
+
+<style>
+
+    .mostratickets {
+        background-color: #FFFF;
+        padding: 86px 96px;
+        margin-left: 231px;
+    }
+
+    .titulo {
+        width: 92px;
+        color: #12444A;
+        font-family: "Poppins";
+        font-size: 24px;
+        font-weight: 600;
+        padding-bottom: 16px;
+    }
+
+    .Departamento, .Topico {
+        background-color: white;
+        width: 156px;
+        display: flex;
+        flex-direction: row;
+        color: #19235699;
+        font-family: "Poppins";
+        font-size: 13px;
+        font-weight: 500;
+        border: 1px solid #22658933;
+        border-radius: 8px;
+        margin-right: 8px;
+    }
+
+    .Buttons {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .ButtonsRight {
+        display: flex;
+        flex-direction: row;
+        color: #19235699;
+        margin-left: auto;
+    }
+
+    .button {
+        background-color: transparent;
+        color: #19235699;
+        border: none;
+        cursor: pointer;
+        padding: 10px;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+    }
+
+        .button:hover {
+            background-color: #19235633;
+        }
+
+    .ButtonPressed {
+        background-color: #E8F2F3;
+        color: #1B7C87;
+        transform: scale(0.95);
+        font-weight: bold;
+    }
+
+
+
+    .ticket-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+        .ticket-table th, .ticket-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .ticket-table th {
+            background-color: #f2f2f2;
+        }
+
+    .estado-badge {
+        display: inline-block;
+        padding: 4px 8px;
+        border-radius: 12px;
+        font-size: 14px;
+        font-weight: 500;
+        min-width: 100px;
+        text-align: center;
+    }
+
+
+    .estado-por-iniciar {
+        background-color: #1923560D;
+        color: #192356;
+    }
+
+    .estado-em-curso {
+        background-color: #8BB7311A;
+        color: #8BB731;
+    }
+
+    .estado-concluido {
+        background-color: #33A3631A;
+        color: #33A363;
+    }
+
+    .estado-publicado {
+        background-color: #5D22891A;
+        color: #5D2289;
+    }
+
+    .estado-arquivado {
+        background-color: #192356;
+        color: white;
+    }
+
+    .estado-em-espera {
+        background-color: #192356;
+        color: white;
+    }
+
+
+    .ticket-table th {
+        background-color: #1923560D;
+        color: #19235699;
+    }
+
+    .ticket-table th, .ticket-table td {
+        border: 1px solid #2265891A;
+        padding: 8px;
+        text-align: left;
+    }
+
+    .loading-message {
+        text-align: center;
+        font-size: 18px;
+        font-weight: bold;
+        color: #12444A;
+        padding: 20px;
+    }
+
+
+
+
+    .tittleline {
+        width: 45px;
+        text-align: left;
+        font-family: "Poppins";
+        font-weight: 500;
+        font-size: 16px;
+        letter-spacing: 0px;
+        color: #192356;
+        opacity: 1;
+        padding-top: 8px;
+        /* padding-left: 8px; */
+        padding-bottom: 8px;
+    }
+
+    .mudgrid {
+        padding-left: 24px;
+    }
+
+    .ticket-card {
+        width: calc(25% - 10px);
+        min-width: 266px;
+        height: 178px;
+        /*   padding: 10px; */
+        box-sizing: border-box;
+    }
+
+    .cards-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    .cardtop {
+        display: flex;
+        justify-content: space-between;
+        padding-bottom: 6px;
+        padding-top: 8px;
+    }
+
+    .cardbottom {
+        display: flex;
+        gap: 8px;
+        padding-top: 16px;
+    }
+
+    .cardtext {
+        padding-top: 8px;
+        color: #19235699;
+        font-family: "Poppins";
+        font-size: 12px;
+        font-weight: 500;
+        width: 250px;
+    }
+
+    .datacard {
+        padding-top: 8px;
+        color: #19235699;
+        font-family: "Sora";
+        font-size: 14px;
+        font-weight: 500;
+        width: 52px;
+    }
+
+    .noscards {
+        border: 1px solid #B9D6DA;
+        color: #192356;
+        border-radius: 8px;
+    }
+
+    .mud-card-content {
+        flex-grow: 1;
+        padding: 0 16px;
+    }
+
+    .linhaestilo {
+        width: 1388px;
+        border: 1px solid #226589;
+        opacity: 0.2;
+    }
+
+    .mud-list-item-gutters {
+        padding-left: 16px;
+        /* padding-right: 16px; */
+    }
+
+
+    @@media(max-width: 1280px) {
+        .mostratickets {
+            background-color: #FFFF;
+            padding: 86px 96px;
+        }
+    }
+
+    @@media(max-width: 1024px) {
+        .mostratickets {
+            background-color: #FFFF;
+            padding: 86px 40px;
+        }
+    }
+
+</style>

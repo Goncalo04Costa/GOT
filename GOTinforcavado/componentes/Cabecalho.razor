@@ -469,10 +469,13 @@
         {
             @if (botoes == Botoes.Acompanhamento)
             {
-                <button class="verticket" @onclick="ToggleCodePopup">
-                    <span class="material-symbols-outlined">confirmation_number</span>
-                    <p>Acompanhar Ticket</p>
+                <button class="verticket" @onclick="IrParaConta">
+                    <span class="material-symbols-outlined">
+                        account_circle
+                    </span>
+                    <p>O meu painel</p>
                 </button>
+
 
                 <a href="https://inforcavado.com" class="website"  style="text-decoration: none;">
                     <p>Website Inforcavado</p>
@@ -484,8 +487,10 @@
 
                 <div class="popup-menu @(isMenuOpen ? "show" : "")">
                     <a href="/AcompanhaTicket" target="_blank" style="text-decoration: none;" class="popup-ticket">
-                        <span class="material-symbols-outlined">confirmation_number</span>
-                        <p>Acompanhar Ticket</p>
+                        <span class="material-symbols-outlined">
+                            account_circle
+                        </span>
+                        <p>O meu painel</p>
                     </a>
                     <a href="https://inforcavado.com" target="_blank">
                         <span class="material-symbols-outlined">language</span>
@@ -503,16 +508,6 @@
         }
     </div>
 
-    @if (isCodePopupOpen)
-    {
-        <div class="code-popup">
-            <div class="input-container">
-                <input type="text" @bind="ticketCode" placeholder="Introduza o código..." />
-                <button @onclick="SubmitCode">Acompanhar</button>
-            </div>
-        </div>
-
-    }
 </header>
 
 @if (isCreateTicketPopupOpen)
@@ -673,6 +668,11 @@
         {
             dropdownStates[key] = true;
         }
+    }
+
+    void IrParaConta()
+    {
+        Navigation.NavigateTo("/paginainicialinterna");
     }
 
     private string GetIcon(string key)

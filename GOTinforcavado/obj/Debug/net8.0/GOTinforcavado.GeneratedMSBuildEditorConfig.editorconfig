@@ -28,8 +28,20 @@ build_property.EnableCodeStyleSeverity =
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/gonca/OneDrive/Ambiente de Trabalho/GOT/GOT/GOTinforcavado/componentes/ChatBot.razor]
+build_metadata.AdditionalFiles.TargetPath = Y29tcG9uZW50ZXNcQ2hhdEJvdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/gonca/OneDrive/Ambiente de Trabalho/GOT/GOT/GOTinforcavado/componentes/Headline.razor]
 build_metadata.AdditionalFiles.TargetPath = Y29tcG9uZW50ZXNcSGVhZGxpbmUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/gonca/OneDrive/Ambiente de Trabalho/GOT/GOT/GOTinforcavado/componentes/HTMLeditor.razor]
+build_metadata.AdditionalFiles.TargetPath = Y29tcG9uZW50ZXNcSFRNTGVkaXRvci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/gonca/OneDrive/Ambiente de Trabalho/GOT/GOT/GOTinforcavado/componentes/Navbar.razor]
+build_metadata.AdditionalFiles.TargetPath = Y29tcG9uZW50ZXNcTmF2YmFyLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/gonca/OneDrive/Ambiente de Trabalho/GOT/GOT/GOTinforcavado/componentes/ZonaEscolha.razor]
@@ -56,6 +68,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRm9ybXVsYXJpby5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/gonca/OneDrive/Ambiente de Trabalho/GOT/GOT/GOTinforcavado/Pages/Htmlrazor.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSHRtbHJhem9yLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/gonca/OneDrive/Ambiente de Trabalho/GOT/GOT/GOTinforcavado/Pages/Index.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
@@ -68,8 +84,20 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTW9zdHJhVGlja2V0cy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/gonca/OneDrive/Ambiente de Trabalho/GOT/GOT/GOTinforcavado/Pages/MostraUtilizadores.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTW9zdHJhVXRpbGl6YWRvcmVzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/gonca/OneDrive/Ambiente de Trabalho/GOT/GOT/GOTinforcavado/Pages/PaginaInicialInterna.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGFnaW5hSW5pY2lhbEludGVybmEucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/gonca/OneDrive/Ambiente de Trabalho/GOT/GOT/GOTinforcavado/Pages/Sucesso.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3VjZXNzby5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/gonca/OneDrive/Ambiente de Trabalho/GOT/GOT/GOTinforcavado/Pages/TesteNavbar.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVGVzdGVOYXZiYXIucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/gonca/OneDrive/Ambiente de Trabalho/GOT/GOT/GOTinforcavado/_Imports.razor]

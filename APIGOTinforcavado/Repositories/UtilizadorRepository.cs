@@ -19,6 +19,32 @@ namespace APIGOTinforcavado.Repositories
             _connectionString = options.Value.DefaultConnection;
         }
 
+        // Criar novo utilizador
+        public async Task<Utilizador> CreateAsync(Utilizador utilizador)
+        {
+            try
+            {
+                var sql = @"
+                    INSERT INTO Utilizadores (Email, Password, Role, Nome)
+                    VALUES (@Email, @Password, @Role, @Nome);
+                    SELECT CAST(SCOPE_IDENTITY() as int);
+                ";
+
+                using (var connection = new SqlConnection(_connectionString))
+                {
+                    connection.Open();
+
+                    var id = await connection.ExecuteScalarAsync<int>(sql, utilizador);
+                    utilizador.Id = id;
+                    return utilizador;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro ao criar o utilizador.", ex);
+            }
+        }
+
         // Obter utilizador por email
         public async Task<Utilizador?> GetByEmailAsync(string email)
         {

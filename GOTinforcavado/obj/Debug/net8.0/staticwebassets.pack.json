@@ -9,6 +9,14 @@
       "PackagePath": "staticwebassets\\GOTinforcavado.styles.css"
     },
     {
+      "Id": "C:\\Users\\gonca\\OneDrive\\Ambiente de Trabalho\\GOT\\GOT\\GOTinforcavado\\wwwroot\\HtmlEditorStringDataProvider.cs",
+      "PackagePath": "staticwebassets\\HtmlEditorStringDataProvider.cs"
+    },
+    {
+      "Id": "C:\\Users\\gonca\\OneDrive\\Ambiente de Trabalho\\GOT\\GOT\\GOTinforcavado\\wwwroot\\IHtmlEditorStringDataProvider.cs",
+      "PackagePath": "staticwebassets\\IHtmlEditorStringDataProvider.cs"
+    },
+    {
       "Id": "C:\\Users\\gonca\\OneDrive\\Ambiente de Trabalho\\GOT\\GOT\\GOTinforcavado\\wwwroot\\css\\app.css",
       "PackagePath": "staticwebassets\\css\\app.css"
     },
@@ -81,6 +89,10 @@
       "PackagePath": "staticwebassets\\imagens\\i-youtube.svg"
     },
     {
+      "Id": "C:\\Users\\gonca\\OneDrive\\Ambiente de Trabalho\\GOT\\GOT\\GOTinforcavado\\wwwroot\\imagens\\inforbot.png",
+      "PackagePath": "staticwebassets\\imagens\\inforbot.png"
+    },
+    {
       "Id": "C:\\Users\\gonca\\OneDrive\\Ambiente de Trabalho\\GOT\\GOT\\GOTinforcavado\\wwwroot\\imagens\\inforcavado.svg",
       "PackagePath": "staticwebassets\\imagens\\inforcavado.svg"
     },
@@ -89,12 +101,24 @@
       "PackagePath": "staticwebassets\\imagens\\it.PNG"
     },
     {
+      "Id": "C:\\Users\\gonca\\OneDrive\\Ambiente de Trabalho\\GOT\\GOT\\GOTinforcavado\\wwwroot\\imagens\\logoGOTrecortado.png",
+      "PackagePath": "staticwebassets\\imagens\\logoGOTrecortado.png"
+    },
+    {
       "Id": "C:\\Users\\gonca\\OneDrive\\Ambiente de Trabalho\\GOT\\GOT\\GOTinforcavado\\wwwroot\\imagens\\outros.PNG",
       "PackagePath": "staticwebassets\\imagens\\outros.PNG"
     },
     {
+      "Id": "C:\\Users\\gonca\\OneDrive\\Ambiente de Trabalho\\GOT\\GOT\\GOTinforcavado\\wwwroot\\imagens\\profileicon.png",
+      "PackagePath": "staticwebassets\\imagens\\profileicon.png"
+    },
+    {
       "Id": "C:\\Users\\gonca\\OneDrive\\Ambiente de Trabalho\\GOT\\GOT\\GOTinforcavado\\wwwroot\\imagens\\smile.png",
       "PackagePath": "staticwebassets\\imagens\\smile.png"
+    },
+    {
+      "Id": "C:\\Users\\gonca\\OneDrive\\Ambiente de Trabalho\\GOT\\GOT\\GOTinforcavado\\wwwroot\\imagens\\ticketicon.png",
+      "PackagePath": "staticwebassets\\imagens\\ticketicon.png"
     },
     {
       "Id": "C:\\Users\\gonca\\OneDrive\\Ambiente de Trabalho\\GOT\\GOT\\GOTinforcavado\\wwwroot\\index.html",

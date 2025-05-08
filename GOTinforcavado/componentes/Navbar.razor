@@ -1,0 +1,235 @@
+﻿@using GOTinforcavado.Services
+@inject UtilizadorService UtilizadorService
+@inject NavigationManager NavigationManager
+
+<div class="navbar">
+    <img class="logoGOT" src="../imagens/Logo-growing-together-prioritario-cores.svg" alt="Logo GOT" />
+
+    <hr class="linha" />
+
+    <!-- Itens do topo -->
+    <div class="icon-list">
+        @foreach (var item in MenuItems.Where(i => i.IsTop))
+        {
+            <div class="icon-item @(item.Id == SelectedItemId ? "selected" : "")" @onclick="() => SelectItem(item)">
+                <span class="material-symbols-outlined">@item.Icon</span>
+                <span class="icon-text">@item.Label</span>
+            </div>
+        }
+    </div>
+
+    <hr class="linha" />
+
+    <!-- Itens de baixo -->
+    <div class="icon-list">
+        @foreach (var item in MenuItems.Where(i => !i.IsTop))
+        {
+            <div class="icon-item @(item.Id == SelectedItemId ? "selected" : "")" @onclick="() => SelectItem(item)">
+                <span class="material-symbols-outlined">@item.Icon</span>
+                <span class="icon-text">@item.Label</span>
+            </div>
+        }
+    </div>
+
+    <hr class="linha" />
+
+    <div class="logout-area" @onclick="Logout">
+        <span class="material-symbols-outlined">logout</span>
+        <span class="logout-text">Sair</span>
+    </div>
+
+    <div class="bottom-zone">
+        <div class="user-info" style="display: flex;">
+            <div class="avatar-ball"></div>
+            <div style="margin-left: 8px; display: flex; flex-direction: column;">
+                <span class="user-name">Nome</span>
+                <span class="company">Inforcavado</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    public class MenuItem
+    {
+        public int Id { get; set; }
+        public string Icon { get; set; } = "";
+        public string Label { get; set; } = "";
+        public bool IsTop { get; set; }
+        public string? Route { get; set; }  // nova propriedade para rota
+    }
+
+    private List<MenuItem> MenuItems = new()
+    {
+        new() { Id = 1, Icon = "home", Label = "Início", IsTop = true, Route = "/paginainicialinterna" },
+        new() { Id = 2, Icon = "person", Label = "Minha Costa", IsTop = true },
+        new() { Id = 3, Icon = "confirmation_number", Label = "Os Meus Tickets", IsTop = true, Route = "/MostraTikcets" },
+        new() { Id = 4, Icon = "assignment", Label = "Pedidos da Empresa", IsTop = false },
+        new() { Id = 5, Icon = "group", Label = "Colegas", IsTop = false }
+    };
+
+    [Parameter]
+    public int SelectedItemId { get; set; }
+
+    [Parameter]
+    public EventCallback<int> SelectedItemIdChanged { get; set; }
+
+    private async void SelectItem(MenuItem item)
+    {
+        SelectedItemId = item.Id;
+        await SelectedItemIdChanged.InvokeAsync(item.Id);
+
+        if (!string.IsNullOrEmpty(item.Route))
+        {
+            NavigationManager.NavigateTo(item.Route);
+        }
+    }
+
+    private async Task Logout()
+    {
+        // lógica de logout
+    }
+}
+
+
+
+
+<style>
+
+
+    .avatar-ball {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background-color: #6EA5A8;
+    }
+
+
+        .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 230px;
+    height: 100vh;
+    background-color: #2265890D;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+        z-index: 1000; /* alto o suficiente para ficar acima do conteúdo */
+}
+
+.logoGOT {
+    width: 100%;
+    padding-bottom: 28px;
+}
+
+.linha {
+    width: 100%;
+    border: none;
+    height: 1px;
+    background-color: #226589;
+    margin: 28px 0;
+}
+
+.icon-list {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    width: 100%;
+}
+
+.icon-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+}
+
+.icon-item.selected {
+    background: #2265891A 0% 0% no-repeat padding-box;
+    border-radius: 16px;
+    opacity: 1;
+    padding: 8px 12px;
+}
+
+.material-symbols-outlined {
+    font-size: 24px;
+    color: #226589;
+}
+
+.material-symbols-outlined:hover {
+    color: #1a4766;
+}
+
+.icon-text {
+    font: normal normal 600 12px/16px Poppins;
+    letter-spacing: 0px;
+    color: #19235699;
+    opacity: 1;
+    text-align: left;
+}
+
+    .logout-area {
+        position: absolute;
+        bottom: 91px; /* 53 (bottom zone) + 20 (gap) + 18 (bottom spacing) */
+        left: 20px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        cursor: pointer;
+    }
+
+    .logout-text {
+        font: normal normal 600 12px/16px Poppins;
+        letter-spacing: 0px;
+        color: #19235699;
+        opacity: 1;
+        text-align: left;
+    }
+
+    .logout-area:hover .logout-text {
+        color: #192356;
+    }
+
+    .logout-area:hover .material-symbols-outlined {
+        color: #1a4766;
+    }
+
+.bottom-zone {
+    position: absolute;
+    bottom: 18px;
+    left: 20px;
+    width: 195px;
+    height: 53px;
+    background: #2265890D 0% 0% no-repeat padding-box;
+    border-radius: 8px;
+    opacity: 1;
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+    gap: 12px;
+}
+
+.avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.user-name {
+    font: normal normal 600 12px/16px Poppins;
+    color: #19235699;
+}
+
+.companny {
+        
+        text-align: left;
+        font-family:"poppins";
+        font-size: 12px;
+        letter-spacing: 0px;
+        color: #19235699;
+        opacity: 1;
+}
+</style>

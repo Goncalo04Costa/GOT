@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "stJpfGrIPpA=",
+  "dgSpecHash": "4wxrlpiG4iU=",
   "success": true,
   "projectFilePath": "C:\\Users\\gonca\\OneDrive\\Ambiente de Trabalho\\GOT\\GOT\\Shared\\Shared.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\gonca\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\gonca\\.nuget\\packages\\blazored.localstorage\\4.5.0\\blazored.localstorage.4.5.0.nupkg.sha512",
     "C:\\Users\\gonca\\.nuget\\packages\\blazored.sessionstorage\\2.4.0\\blazored.sessionstorage.2.4.0.nupkg.sha512",
     "C:\\Users\\gonca\\.nuget\\packages\\devexpress.blazor\\24.2.5\\devexpress.blazor.24.2.5.nupkg.sha512",

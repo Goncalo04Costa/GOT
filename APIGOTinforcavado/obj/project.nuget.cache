@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "HxazeaCG3lQ=",
+  "dgSpecHash": "w0H9GfR86hk=",
   "success": true,
   "projectFilePath": "C:\\Users\\gonca\\OneDrive\\Ambiente de Trabalho\\GOT\\GOT\\APIGOTinforcavado\\APIGOTinforcavado.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\gonca\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\gonca\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",
+    "C:\\Users\\gonca\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\gonca\\.nuget\\packages\\blazored.localstorage\\4.5.0\\blazored.localstorage.4.5.0.nupkg.sha512",
     "C:\\Users\\gonca\\.nuget\\packages\\blazored.sessionstorage\\2.4.0\\blazored.sessionstorage.2.4.0.nupkg.sha512",
     "C:\\Users\\gonca\\.nuget\\packages\\dapper\\2.1.66\\dapper.2.1.66.nupkg.sha512",
