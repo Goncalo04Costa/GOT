@@ -83,6 +83,22 @@ namespace APIGOTinforcavado.Controllers
             return Ok(utilizadores);
         }
 
+        // GET: api/utilizador/email/{email}
+        [HttpGet("email/{email}")]
+        public async Task<IActionResult> GetUtilizadorByEmail(string email)
+        {
+            if (string.IsNullOrWhiteSpace(email))
+                return BadRequest("O e-mail não pode estar vazio.");
+
+            var utilizador = await _utilizadorService.GetUtilizadorByEmailAsync(email);
+
+            if (utilizador == null)
+                return NotFound();
+
+            return Ok(utilizador);
+        }
+
+
     }
 }
 

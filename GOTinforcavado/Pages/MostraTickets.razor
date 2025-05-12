@@ -39,6 +39,7 @@
                 }
             </MudPaper>
         </MudPopover>
+
         <MudPopover Target="Topico" Open="@isTopicoPopoverOpen">
             <MudPaper Class="popover-container">
                 <MudButton Variant="Variant.Text" Color="Color.Primary" Style="color: #19235699;" OnClick="() => FiltrarPorTopico(null)">
@@ -52,16 +53,19 @@
                 }
             </MudPaper>
         </MudPopover>
+
         <button id="departamentoButton" class="Departamento" @onclick="ToggleDepartamentoPopover">
             <span class="material-symbols-outlined">apps</span>
             Departamento
             <span class="material-symbols-outlined">arrow_drop_down</span>
         </button>
-        <button class="Topico" @onclick="ToggleTopicoPopover">
+
+        <button id="Topico" class="Topico" @onclick="ToggleTopicoPopover">
             <span class="material-symbols-outlined">help</span>
-            Topico
+            Tópico
             <span class="material-symbols-outlined">arrow_drop_down</span>
         </button>
+
         <div class="ButtonsRight">
             <button class="button @(visualizacaoAtual == Visualizacao.Tabela ? "ButtonPressed" : "")"
                     @onclick="() => MudarVisualizacao(Visualizacao.Tabela)">
@@ -76,48 +80,46 @@
                 <span class="material-symbols-outlined">dashboard</span>
             </button>
         </div>
-
-
     </div>
+
     @if (isLoading)
     {
         <div class="loading-message">Aguarde, a carregar tickets...</div>
     }
     else
     {
-     @if (visualizacaoAtual == Visualizacao.Tabela)
-{
-    <MudTable Items="@GridData" Hover="true" Bordered="true" Striped="true">
-        <HeaderContent>
-            <MudTh>ID</MudTh>
-            <MudTh>Assunto</MudTh>
-            <MudTh>Data de Criacao</MudTh>
-            <MudTh>Departamento</MudTh>
-            <MudTh>Topico</MudTh>
-            <MudTh>Estado</MudTh>
-            <MudTh>Ações</MudTh>
-        </HeaderContent>
-        <RowTemplate Context="ticket">
-            <MudTd DataLabel="ID">@ticket.codigo</MudTd>
-            <MudTd DataLabel="Assunto">@ticket.Assunto</MudTd>
-            <MudTd DataLabel="Data de Criacao">@ticket.Data.ToString("dd/MM/yyyy")</MudTd>
-            <MudTd DataLabel="Departamento">@ticket.Departamento</MudTd>
-            <MudTd DataLabel="Topico">@ticket.TipoTicket</MudTd>
-            <MudTd DataLabel="Estado">
+        @if (visualizacaoAtual == Visualizacao.Tabela)
+        {
+            <MudTable Items="@GridData" Hover="true" Bordered="true" Striped="true">
+                <HeaderContent>
+                    <MudTh>ID</MudTh>
+                    <MudTh>Assunto</MudTh>
+                    <MudTh>Data de Criação</MudTh>
+                    <MudTh>Departamento</MudTh>
+                    <MudTh>Tópico</MudTh>
+                    <MudTh>Estado</MudTh>
+                    <MudTh>Ações</MudTh>
+                </HeaderContent>
+                <RowTemplate Context="ticket">
+                    <MudTd DataLabel="ID">@ticket.codigo</MudTd>
+                    <MudTd DataLabel="Assunto">@ticket.Assunto</MudTd>
+                    <MudTd DataLabel="Data de Criação">@ticket.Data.ToString("dd/MM/yyyy")</MudTd>
+                    <MudTd DataLabel="Departamento">@ticket.Departamento</MudTd>
+                    <MudTd DataLabel="Tópico">@ticket.TipoTicket</MudTd>
+                    <MudTd DataLabel="Estado">
                         <MudChip T="string" Class="@ObterClasseEstado(ticket.Estadodoticket)">
                             @ticket.Estadodoticket
-                </MudChip>
-            </MudTd>
-            <MudTd>
-                <MudIcon Icon="@Icons.Material.Filled.MailOutline" Style="color: #758A8A;" />
-            </MudTd>
-        </RowTemplate>
-        <PagerContent>
-            <MudTablePager PageSizeOptions="new int[] { 5, 10, 20, 50 }" />
-        </PagerContent>
-    </MudTable>
-}
-
+                        </MudChip>
+                    </MudTd>
+                    <MudTd>
+                        <MudIcon Icon="@Icons.Material.Filled.MailOutline" Style="color: #758A8A;" />
+                    </MudTd>
+                </RowTemplate>
+                <PagerContent>
+                    <MudTablePager PageSizeOptions="new int[] { 5, 10, 20, 50 }" />
+                </PagerContent>
+            </MudTable>
+        }
         else if (visualizacaoAtual == Visualizacao.Lista)
         {
             <MudList T="string" Class="no-padding">
@@ -133,15 +135,16 @@
                                 <div style="display:flex; flex-direction:row; gap:8px">
                                     <div class="noscards">
                                         @ticket.Departamento
-                                    </div> <div class="noscards">
-                                         @ticket.TipoTicket
-                                         </div>
+                                    </div>
+                                    <div class="noscards">
+                                        @ticket.TipoTicket
+                                    </div>
                                     <span class="estado-badge @ObterClasseEstado(ticket.Estadodoticket)">
                                         @ticket.Estadodoticket
                                     </span>
-                                     <span class="material-symbols-outlined" style="color: #758A8A">
-                                    outgoing_mail
-                                </span>
+                                    <span class="material-symbols-outlined" style="color: #758A8A">
+                                        outgoing_mail
+                                    </span>
                                 </div>
                             </MudItem>
                             <MudItem xs="12" class="datacard" style="padding-top:8px; padding-bottom:8px">
@@ -152,8 +155,6 @@
                     </MudListItem>
                 }
             </MudList>
-
-
         }
         else if (visualizacaoAtual == Visualizacao.Cards)
         {
@@ -181,21 +182,16 @@
                                     @ticket.TipoTicket
                                 </div>
                             </div>
-
                         </MudCardContent>
                     </MudCard>
                 }
             </div>
-
         }
     }
 </div>
 
 <Navbar SelectedItemId="3" />
-
-
-@* <Rodape />
-<Cookies /> *@
+@inject IJSRuntime JSRuntime
 
 @code {
     private List<Ticket> GridData = new();
@@ -206,6 +202,7 @@
     private bool isDepartamentoPopoverOpen = false;
     private bool isTopicoPopoverOpen = false;
     private Visualizacao visualizacaoAtual = Visualizacao.Tabela;
+    private string userEmail;
 
     private void MudarVisualizacao(Visualizacao novaVisualizacao)
     {
@@ -219,19 +216,25 @@
         Cards
     }
 
-
     protected override async Task OnInitializedAsync()
     {
-        TodosTickets = await TicketService.GetTicketsAsync();
-        GridData = new List<Ticket>(TodosTickets);
-        Departamentos = TodosTickets
-     .Select(t => t.Departamento != null ? t.Departamento : "") 
-     .Distinct()
-     .ToList();
+        // Obtém o e-mail do utilizador a partir do sessionStorage
+        userEmail = await JSRuntime.InvokeAsync<string>("sessionStorage.getItem", "userEmail");
 
-      
+        // Carrega todos os tickets
+        TodosTickets = await TicketService.GetTicketsAsync();
+
+        // Filtra os tickets do utilizador
+        TodosTickets = TodosTickets.Where(t => t.Email == userEmail).ToList();
+        GridData = new List<Ticket>(TodosTickets);
+
+        Departamentos = TodosTickets
+            .Select(t => t.Departamento ?? "")
+            .Distinct()
+            .ToList();
+
         Topicos = TodosTickets
-            .Select(t => t.TipoTicket != null ? t.TipoTicket : "") 
+            .Select(t => t.TipoTicket ?? "")
             .Distinct()
             .ToList();
 
@@ -240,13 +243,19 @@
 
     private void FiltrarPorDepartamento(string departamento)
     {
-        GridData = departamento == null ? new List<Ticket>(TodosTickets) : TodosTickets.Where(t => t.Departamento == departamento).ToList();
+        GridData = departamento == null
+            ? new List<Ticket>(TodosTickets)
+            : TodosTickets.Where(t => t.Departamento == departamento).ToList();
+
         isDepartamentoPopoverOpen = false;
     }
 
     private void FiltrarPorTopico(string topico)
     {
-        GridData = string.IsNullOrEmpty(topico) ? new List<Ticket>(TodosTickets) : TodosTickets.Where(t => t.TipoTicket == topico).ToList();
+        GridData = string.IsNullOrEmpty(topico)
+            ? new List<Ticket>(TodosTickets)
+            : TodosTickets.Where(t => t.TipoTicket == topico).ToList();
+
         isTopicoPopoverOpen = false;
     }
 
@@ -274,7 +283,6 @@
         };
     }
 }
-
 
 <style>
 

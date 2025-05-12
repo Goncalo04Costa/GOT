@@ -683,6 +683,28 @@
           }
         }
       }
+    },
+    "/api/Utilizador/email/{email}": {
+      "get": {
+        "tags": [
+          "Utilizador"
+        ],
+        "parameters": [
+          {
+            "name": "email",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
     }
   },
   "components": {

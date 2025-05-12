@@ -1,6 +1,8 @@
 ﻿@using GOTinforcavado.Services
 @inject UtilizadorService UtilizadorService
 @inject NavigationManager NavigationManager
+@inject IJSRuntime JSRuntime
+
 
 <div class="navbar">
     <img class="logoGOT" src="../imagens/Logo-growing-together-prioritario-cores.svg" alt="Logo GOT" />
@@ -56,7 +58,7 @@
         public string Icon { get; set; } = "";
         public string Label { get; set; } = "";
         public bool IsTop { get; set; }
-        public string? Route { get; set; }  // nova propriedade para rota
+        public string? Route { get; set; }  
     }
 
     private List<MenuItem> MenuItems = new()
@@ -85,10 +87,16 @@
         }
     }
 
-    private async Task Logout()
+    private async void Logout()
     {
-        // lógica de logout
+        // Limpa o sessionStorage
+        await JSRuntime.InvokeVoidAsync("sessionStorage.clear");
+
+        // Redireciona para a página inicial
+        NavigationManager.NavigateTo("/");
     }
+
+   
 }
 
 

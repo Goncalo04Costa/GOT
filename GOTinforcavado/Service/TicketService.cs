@@ -91,6 +91,32 @@ namespace GOTinforcavado.Services
             return await _httpClient.GetFromJsonAsync<Ticket>($"{BaseUrl}/search/{encodedCodigo}");
         }
 
+
+        // Procurar tickets por email
+        public async Task<List<Ticket>> GetTicketsByEmailAsync(string email)
+        {
+            if (string.IsNullOrWhiteSpace(email))
+                return new List<Ticket>();
+
+            var encodedEmail = Uri.EscapeDataString(email);
+            var response = await _httpClient.GetAsync($"{BaseUrl}/por-email/{encodedEmail}");
+
+            if (response.IsSuccessStatusCode)
+            {
+                var tickets = await response.Content.ReadFromJsonAsync<List<Ticket>>();
+                return tickets ?? new List<Ticket>();
+            }
+
+            if (response.StatusCode == HttpStatusCode.NotFound)
+            {
+                return new List<Ticket>(); 
+            }
+
+            var errorMessage = await response.Content.ReadAsStringAsync();
+            throw new Exception($"Erro ao buscar tickets por email. Código: {response.StatusCode}, Mensagem: {errorMessage}");
+        }
+
+
         public async Task UploadFilesAsync(string ticketId, List<IFormFile> ficheiros)
         {
             var ticket = await GetTicketByIdAsync(ticketId);

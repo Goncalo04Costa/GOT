@@ -394,6 +394,22 @@
   },
   {
     "ContainingType": "APIGOTinforcavado.Controllers.UtilizadorController",
+    "Method": "GetUtilizadorByEmail",
+    "RelativePath": "api/Utilizador/email/{email}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "email",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIGOTinforcavado.Controllers.UtilizadorController",
     "Method": "GetUtilizadoresPorEmpresa",
     "RelativePath": "api/Utilizador/empresa/{empresaId}",
     "HttpMethod": "GET",

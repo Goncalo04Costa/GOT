@@ -1,5 +1,7 @@
-﻿using APIGOTinforcavado.Repositories;
+﻿using APIGOTinforcavado.Models;
+using APIGOTinforcavado.Repositories;
 using Microsoft.AspNetCore.Identity.Data;
+using Microsoft.Data.SqlClient;
 using Shared.models;
 using System;
 using System.Collections.Generic;
@@ -37,6 +39,22 @@ namespace APIGOTinforcavado.Services
                 throw new InvalidOperationException("Erro ao criar o utilizador.", ex);
             }
         }
+
+        public async Task<Utilizador?> GetUtilizadorByEmailAsync(string email)
+        {
+            if (string.IsNullOrWhiteSpace(email))
+                throw new ArgumentException("Email inválido.", nameof(email));
+
+            try
+            {
+                return await _utilizadorRepository.GetByEmailAsync(email);
+            }
+            catch (Exception ex)
+            {
+                throw new InvalidOperationException("Erro ao procurar o utilizador pelo email.", ex);
+            }
+        }
+
 
         public async Task<LoginResponse> LoginAsync(LoginRequest request)
         {
