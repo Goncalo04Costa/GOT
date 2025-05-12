@@ -28,13 +28,15 @@
             <img style="margin-left: 27%; max-width: 200px;" src="../imagens/profileicon.png" alt="Icon ticket" />
             <p>Veja as definições da sua conta</p>
         </div>
-        <div class="info-box">
-            <h3>Título 3</h3>
-            <p>Descrição ou conteúdo 3</p>
+        <div class="info-box" @onclick="NavegarParaMostraColegas" style="cursor:pointer;">
+            <h3>Tickets Empresa</h3>
+            <img style="margin-left: 27%; max-width: 200px;" src="../imagens/empresaicon.png" alt="Icon ticket" />
+            <p>Veja todos os seus colegas de trabalho </p>
         </div>
-        <div class="info-box">
-            <h3>Título 4</h3>
-            <p>Descrição ou conteúdo 4</p>
+        <div class="info-box" @onclick="NavegarParaMostraColegas" style="cursor:pointer;">
+            <h3>Colegas</h3>
+            <img style="margin-left: 27%; max-width: 200px;" src="../imagens/colegasicon.png" alt="Icon ticket" />
+            <p>Veja todos os seus colegas de trabalho </p>
         </div>
     </div>
 </div>
@@ -43,6 +45,11 @@
     private void NavegarParaMostraTickets()
     {
         Navigation.NavigateTo("/MostraTikcets");
+    }
+
+    private void NavegarParaMostraColegas()
+    {
+        Navigation.NavigateTo("/MostraUtilizadores");
     }
 }
 }

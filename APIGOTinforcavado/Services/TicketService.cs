@@ -167,7 +167,6 @@
             }
         }
 
-
         public async Task UploadFilesAsync(int ticketId, List<IFormFile> ficheiros)
         {
             var ticket = await GetTicketByIdAsync(ticketId);
@@ -212,7 +211,23 @@
             }
         }
 
-      
+        public async Task<List<Ticket>> SearchTicketsByEmailAsync(string email)
+        {
+            if (string.IsNullOrWhiteSpace(email))
+                return new List<Ticket>();
+
+            try
+            {
+                return await _ticketRepository.GetByEmailAsync(email);
+            }
+            catch (Exception ex)
+            {
+                throw new InvalidOperationException($"Erro ao procurar tickets pelo email {email}.", ex);
+            }
+        }
+
+
+
 
     }
 }

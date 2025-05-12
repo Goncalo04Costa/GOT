@@ -49,8 +49,16 @@
       "PackagePath": "staticwebassets\\imagens\\close_20dp_E8EAED_FILL0_wght400_GRAD0_opsz20.svg"
     },
     {
+      "Id": "C:\\Users\\gonca\\OneDrive\\Ambiente de Trabalho\\GOT\\GOT\\GOTinforcavado\\wwwroot\\imagens\\colegasicon.png",
+      "PackagePath": "staticwebassets\\imagens\\colegasicon.png"
+    },
+    {
       "Id": "C:\\Users\\gonca\\OneDrive\\Ambiente de Trabalho\\GOT\\GOT\\GOTinforcavado\\wwwroot\\imagens\\default.png",
       "PackagePath": "staticwebassets\\imagens\\default.png"
+    },
+    {
+      "Id": "C:\\Users\\gonca\\OneDrive\\Ambiente de Trabalho\\GOT\\GOT\\GOTinforcavado\\wwwroot\\imagens\\empresaicon.png",
+      "PackagePath": "staticwebassets\\imagens\\empresaicon.png"
     },
     {
       "Id": "C:\\Users\\gonca\\OneDrive\\Ambiente de Trabalho\\GOT\\GOT\\GOTinforcavado\\wwwroot\\imagens\\financeiro.PNG",

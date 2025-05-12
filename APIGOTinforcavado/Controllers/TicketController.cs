@@ -76,6 +76,16 @@ namespace APIGOTinforcavado.Controllers
             return ticket;
         }
 
+        [HttpGet("por-email/{email}")]
+        public async Task<IActionResult> GetTicketsByEmail(string email)
+        {
+            var tickets = await _ticketService.SearchTicketsByEmailAsync(email);
+            if (tickets == null || !tickets.Any())
+                return NotFound("Nenhum ticket encontrado com esse email.");
+
+            return Ok(tickets);
+        }
+
 
         // Download de ficheiro
         [HttpGet("ficheiro/{fileId}")]

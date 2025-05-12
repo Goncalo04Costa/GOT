@@ -44,7 +44,7 @@ namespace APIGOTinforcavado.Services
             if (utilizador == null)
                 throw new UnauthorizedAccessException("Utilizador não encontrado.");
 
-            // ⚠️ Futuramente: usar verificação com hash seguro (ex: BCrypt)
+            
             if (request.Password != utilizador.Password)
                 throw new UnauthorizedAccessException("Senha inválida.");
 
@@ -83,6 +83,12 @@ namespace APIGOTinforcavado.Services
                 throw new InvalidOperationException("Erro ao procurar os utilizadores.", ex);
             }
         }
+
+        public async Task<List<Utilizador>> GetUtilizadoresByEmpresaIdAsync(int empresaId)
+        {
+            return await _utilizadorRepository.GetByEmpresaIdAsync(empresaId);
+        }
+
 
         public class LoginResponse
         {

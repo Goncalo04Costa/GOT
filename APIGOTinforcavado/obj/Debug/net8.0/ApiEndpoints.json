@@ -214,6 +214,26 @@
         "IsRequired": false
       },
       {
+        "Name": "Utilizador.Empresa.Id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Utilizador.Empresa.Nome",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Utilizador.Empresa.Morada",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Utilizador.Empresa.Utilizadores",
+        "Type": "System.Collections.Generic.List\u00601[[Shared.models.Utilizador, Shared, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": false
+      },
+      {
         "Name": "Utilizador.EmpresaId",
         "Type": "System.Int32",
         "IsRequired": false
@@ -306,6 +326,22 @@
   },
   {
     "ContainingType": "APIGOTinforcavado.Controllers.TicketController",
+    "Method": "GetTicketsByEmail",
+    "RelativePath": "api/Ticket/por-email/{email}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "email",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIGOTinforcavado.Controllers.TicketController",
     "Method": "GetTicketByCodigo",
     "RelativePath": "api/Ticket/search/{codigo}",
     "HttpMethod": "GET",
@@ -350,6 +386,22 @@
     "Parameters": [
       {
         "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIGOTinforcavado.Controllers.UtilizadorController",
+    "Method": "GetUtilizadoresPorEmpresa",
+    "RelativePath": "api/Utilizador/empresa/{empresaId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "empresaId",
         "Type": "System.Int32",
         "IsRequired": true
       }

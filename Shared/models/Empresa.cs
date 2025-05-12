@@ -15,6 +15,9 @@ namespace Shared.models
         public int Id { get; set; }
         public string Nome { get; set; }
         public string Morada { get; set; }
+
+        public List<Utilizador> Utilizadores { get; set; } = new();
+
         #endregion
 
         #region COMPORTAMENTO

@@ -287,6 +287,22 @@
                   "Utilizador.Nome": {
                     "type": "string"
                   },
+                  "Utilizador.Empresa.Id": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "Utilizador.Empresa.Nome": {
+                    "type": "string"
+                  },
+                  "Utilizador.Empresa.Morada": {
+                    "type": "string"
+                  },
+                  "Utilizador.Empresa.Utilizadores": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/Utilizador"
+                    }
+                  },
                   "Utilizador.EmpresaId": {
                     "type": "integer",
                     "format": "int32"
@@ -362,6 +378,18 @@
                   "style": "form"
                 },
                 "Utilizador.Nome": {
+                  "style": "form"
+                },
+                "Utilizador.Empresa.Id": {
+                  "style": "form"
+                },
+                "Utilizador.Empresa.Nome": {
+                  "style": "form"
+                },
+                "Utilizador.Empresa.Morada": {
+                  "style": "form"
+                },
+                "Utilizador.Empresa.Utilizadores": {
                   "style": "form"
                 },
                 "Utilizador.EmpresaId": {
@@ -491,6 +519,28 @@
         }
       }
     },
+    "/api/Ticket/por-email/{email}": {
+      "get": {
+        "tags": [
+          "Ticket"
+        ],
+        "parameters": [
+          {
+            "name": "email",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Ticket/ficheiro/{fileId}": {
       "get": {
         "tags": [
@@ -610,6 +660,29 @@
           }
         }
       }
+    },
+    "/api/Utilizador/empresa/{empresaId}": {
+      "get": {
+        "tags": [
+          "Utilizador"
+        ],
+        "parameters": [
+          {
+            "name": "empresaId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -627,6 +700,31 @@
           },
           "message": {
             "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Empresa": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nome": {
+            "type": "string",
+            "nullable": true
+          },
+          "morada": {
+            "type": "string",
+            "nullable": true
+          },
+          "utilizadores": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Utilizador"
+            },
             "nullable": true
           }
         },
@@ -848,6 +946,9 @@
           "nome": {
             "minLength": 1,
             "type": "string"
+          },
+          "empresa": {
+            "$ref": "#/components/schemas/Empresa"
           },
           "empresaId": {
             "type": "integer",

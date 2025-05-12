@@ -73,6 +73,22 @@ namespace GOTinforcavado.Services
                 throw new InvalidOperationException("Erro ao tentar autenticar o utilizador", ex);
             }
         }
+
+
+        // Método para obter utilizadores por EmpresaId
+        public async Task<List<Utilizador>> GetUtilizadoresPorEmpresaAsync(int empresaId)
+        {
+            try
+            {
+                var url = $"{BaseUrl}/empresa/{empresaId}";
+                return await _httpClient.GetFromJsonAsync<List<Utilizador>>(url);
+            }
+            catch (Exception ex)
+            {
+                throw new InvalidOperationException($"Erro ao obter utilizadores da empresa com ID {empresaId}", ex);
+            }
+        }
+
     }
 
     // Classe para a resposta do token

@@ -19,8 +19,8 @@ namespace Shared.models
 
         [Required]
         public string Nome { get; set; }
-       
 
+        public Empresa Empresa { get; set; }  
         public int  EmpresaId { get; set; }
        
         public List<Ticket> Tickets { get; set; } = new List<Ticket>();

@@ -5,14 +5,13 @@
 @using Microsoft.AspNetCore.Components.Forms
 @inject NavigationManager NavigationManager
 @using Shared.models
-@inject TicketService TicketService
 @inject UtilizadorService UtilizadorService
 @using MudBlazor
 @using Microsoft.AspNetCore.Components
-@using DevExpress.Blazor
 
 <div class="mostrautilizadores">
-    <div class="titulo">Utilizadores e Tickets</div>
+    <div class="titulo">Utilizadores</div>
+
     <div class="Buttons">
         <MudPopover Target="utilizadorButton" Open="@isUtilizadorPopoverOpen">
             <MudPaper Class="popover-container">
@@ -28,16 +27,16 @@
             </MudPaper>
         </MudPopover>
 
-        <button id="utilizadorButton" class="Utilizador" @onclick="ToggleUtilizadorPopover">
+        @* <button id="utilizadorButton" class="Utilizador" @onclick="ToggleUtilizadorPopover">
             <span class="material-symbols-outlined">people</span>
             Utilizador
             <span class="material-symbols-outlined">arrow_drop_down</span>
-        </button>
+        </button> *@
     </div>
 
     @if (isLoading)
     {
-        <div class="loading-message">Aguarde, a carregar utilizadores e tickets...</div>
+        <div class="loading-message">Aguarde, a carregar utilizadores...</div>
     }
     else
     {
@@ -47,27 +46,18 @@
                 <MudTh>Nome</MudTh>
                 <MudTh>Email</MudTh>
                 <MudTh>Empresa</MudTh>
-                <MudTh>Tickets</MudTh>
             </HeaderContent>
             <RowTemplate Context="utilizador">
                 <MudTd DataLabel="ID">@utilizador.Id</MudTd>
                 <MudTd DataLabel="Nome">@utilizador.Nome</MudTd>
                 <MudTd DataLabel="Email">@utilizador.Email</MudTd>
                 <MudTd DataLabel="Empresa">@utilizador.EmpresaId</MudTd>
-                <MudTd DataLabel="Tickets">
-                    @foreach (var ticket in utilizador.Tickets)
-                    {
-                        <MudChip T="string" Class="@ObterClasseEstado(ticket.Estadodoticket)">
-                            @ticket.Assunto
-                        </MudChip>
-                    }
-                </MudTd>
             </RowTemplate>
         </MudTable>
     }
 </div>
 
-<Navbar SelectedItemId="3" />
+<Navbar SelectedItemId="5" />
 
 @code {
     private List<Utilizador> GridData = new();
@@ -94,26 +84,13 @@
     {
         isUtilizadorPopoverOpen = !isUtilizadorPopoverOpen;
     }
-
-    private string ObterClasseEstado(EstadoTicket estado)
-    {
-        return estado switch
-        {
-            EstadoTicket.PorIniciar => "estado-por-iniciar",
-            EstadoTicket.EmCurso => "estado-em-curso",
-            EstadoTicket.Resolvido => "estado-resolvido",
-            EstadoTicket.Pendente => "estado-pendente",
-            EstadoTicket.EmAnalise => "estado-em-analise",
-            EstadoTicket.Fechado => "estado-fechado",
-            _ => ""
-        };
-    }
 }
+
 
 
 <style>
 
-    .mostratickets {
+    .mostrautilizadores {
         background-color: #FFFF;
         padding: 86px 96px;
         margin-left: 231px;

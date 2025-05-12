@@ -233,9 +233,30 @@ namespace APIGOTinforcavado.Repositories
             //    .FirstOrDefaultAsync(f => f.Id == fileId);
         }
 
-        
+        public async Task<List<Ticket>> GetByEmailAsync(string email)
+        {
+            try
+            {
+                var sql = "SELECT * FROM Tickets WHERE Email = @Email";
 
- 
+                using (var connection = new SqlConnection(_connectionString))
+                {
+                    connection.Open();
+                    var tickets = await connection.QueryAsync<Ticket>(sql, new { Email = email });
+                    return tickets.ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro ao procurar tickets pelo email.", ex);
+            }
+        }
+
+
+
+
+
+
 
     }
 }

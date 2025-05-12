@@ -70,6 +70,19 @@ namespace APIGOTinforcavado.Controllers
                 return Unauthorized(new { message = ex.Message });
             }
         }
+
+        // GET: api/utilizador/empresa/5
+        [HttpGet("empresa/{empresaId}")]
+        public async Task<IActionResult> GetUtilizadoresPorEmpresa(int empresaId)
+        {
+            var utilizadores = await _utilizadorService.GetUtilizadoresByEmpresaIdAsync(empresaId);
+
+            if (utilizadores == null || !utilizadores.Any())
+                return NotFound();
+
+            return Ok(utilizadores);
+        }
+
     }
 }
 

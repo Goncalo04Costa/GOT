@@ -104,5 +104,25 @@ namespace APIGOTinforcavado.Repositories
                 throw new Exception("Erro ao procurar todos os utilizadores.", ex);
             }
         }
+
+        public async Task<List<Utilizador>> GetByEmpresaIdAsync(int empresaId)
+        {
+            try
+            {
+                var sql = "SELECT * FROM Utilizadores WHERE EmpresaId = @EmpresaId";
+
+                using (var connection = new SqlConnection(_connectionString))
+                {
+                    connection.Open();
+                    var utilizadores = await connection.QueryAsync<Utilizador>(sql, new { EmpresaId = empresaId });
+                    return utilizadores.ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro ao procurar utilizadores pela EmpresaId.", ex);
+            }
+        }
+
     }
 }

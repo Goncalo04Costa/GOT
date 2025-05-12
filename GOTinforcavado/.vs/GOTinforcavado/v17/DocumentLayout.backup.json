@@ -1,7 +1,23 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\gonca\\OneDrive\\Ambiente de Trabalho\\GOT\\GOT\\GOTinforcavado\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{904EAEAB-776F-4A7C-9BD5-A922FB3F9929}|..\\APIGOTinforcavado\\APIGOTinforcavado.csproj|c:\\users\\gonca\\onedrive\\ambiente de trabalho\\got\\got\\apigotinforcavado\\services\\ticketservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{904EAEAB-776F-4A7C-9BD5-A922FB3F9929}|..\\APIGOTinforcavado\\APIGOTinforcavado.csproj|c:\\users\\gonca\\onedrive\\ambiente de trabalho\\got\\got\\apigotinforcavado\\controllers\\ticketcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{904EAEAB-776F-4A7C-9BD5-A922FB3F9929}|..\\APIGOTinforcavado\\APIGOTinforcavado.csproj|c:\\users\\gonca\\onedrive\\ambiente de trabalho\\got\\got\\apigotinforcavado\\controllers\\utilizadorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{904EAEAB-776F-4A7C-9BD5-A922FB3F9929}|..\\APIGOTinforcavado\\APIGOTinforcavado.csproj|c:\\users\\gonca\\onedrive\\ambiente de trabalho\\got\\got\\apigotinforcavado\\repositories\\ticketrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{904EAEAB-776F-4A7C-9BD5-A922FB3F9929}|..\\APIGOTinforcavado\\APIGOTinforcavado.csproj|c:\\users\\gonca\\onedrive\\ambiente de trabalho\\got\\got\\apigotinforcavado\\services\\utilizadorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,8 +25,26 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 7,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "UtilizadorService.cs",
+              "DocumentMoniker": "C:\\Users\\gonca\\OneDrive\\Ambiente de Trabalho\\GOT\\GOT\\APIGOTinforcavado\\Services\\UtilizadorService.cs",
+              "RelativeDocumentMoniker": "..\\APIGOTinforcavado\\Services\\UtilizadorService.cs",
+              "ToolTip": "C:\\Users\\gonca\\OneDrive\\Ambiente de Trabalho\\GOT\\GOT\\APIGOTinforcavado\\Services\\UtilizadorService.cs",
+              "RelativeToolTip": "..\\APIGOTinforcavado\\Services\\UtilizadorService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-12T13:47:52.065Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
@@ -26,6 +60,62 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "TicketService.cs",
+              "DocumentMoniker": "C:\\Users\\gonca\\OneDrive\\Ambiente de Trabalho\\GOT\\GOT\\APIGOTinforcavado\\Services\\TicketService.cs",
+              "RelativeDocumentMoniker": "..\\APIGOTinforcavado\\Services\\TicketService.cs",
+              "ToolTip": "C:\\Users\\gonca\\OneDrive\\Ambiente de Trabalho\\GOT\\GOT\\APIGOTinforcavado\\Services\\TicketService.cs",
+              "RelativeToolTip": "..\\APIGOTinforcavado\\Services\\TicketService.cs",
+              "ViewState": "AgIAAJ0AAAAAAAAAAAApwKoAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-12T13:47:53.395Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "TicketController.cs",
+              "DocumentMoniker": "C:\\Users\\gonca\\OneDrive\\Ambiente de Trabalho\\GOT\\GOT\\APIGOTinforcavado\\Controllers\\TicketController.cs",
+              "RelativeDocumentMoniker": "..\\APIGOTinforcavado\\Controllers\\TicketController.cs",
+              "ToolTip": "C:\\Users\\gonca\\OneDrive\\Ambiente de Trabalho\\GOT\\GOT\\APIGOTinforcavado\\Controllers\\TicketController.cs",
+              "RelativeToolTip": "..\\APIGOTinforcavado\\Controllers\\TicketController.cs",
+              "ViewState": "AgIAADsAAAAAAAAAAAAAAFEAAABBAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-12T13:52:11.785Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "UtilizadorController.cs",
+              "DocumentMoniker": "C:\\Users\\gonca\\OneDrive\\Ambiente de Trabalho\\GOT\\GOT\\APIGOTinforcavado\\Controllers\\UtilizadorController.cs",
+              "RelativeDocumentMoniker": "..\\APIGOTinforcavado\\Controllers\\UtilizadorController.cs",
+              "ToolTip": "C:\\Users\\gonca\\OneDrive\\Ambiente de Trabalho\\GOT\\GOT\\APIGOTinforcavado\\Controllers\\UtilizadorController.cs",
+              "RelativeToolTip": "..\\APIGOTinforcavado\\Controllers\\UtilizadorController.cs",
+              "ViewState": "AgIAAEkAAAAAAAAAAAAqwGgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-12T13:52:03.484Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "TicketRepository.cs",
+              "DocumentMoniker": "C:\\Users\\gonca\\OneDrive\\Ambiente de Trabalho\\GOT\\GOT\\APIGOTinforcavado\\Repositories\\TicketRepository.cs",
+              "RelativeDocumentMoniker": "..\\APIGOTinforcavado\\Repositories\\TicketRepository.cs",
+              "ToolTip": "C:\\Users\\gonca\\OneDrive\\Ambiente de Trabalho\\GOT\\GOT\\APIGOTinforcavado\\Repositories\\TicketRepository.cs",
+              "RelativeToolTip": "..\\APIGOTinforcavado\\Repositories\\TicketRepository.cs",
+              "ViewState": "AgIAAOkAAAAAAAAAAAAYwP0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-12T13:51:28.579Z",
+              "EditorCaption": ""
             }
           ]
         }

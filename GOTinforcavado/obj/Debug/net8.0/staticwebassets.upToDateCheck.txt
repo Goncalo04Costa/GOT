@@ -3,7 +3,9 @@ wwwroot\HtmlEditorStringDataProvider.cs
 wwwroot\IHtmlEditorStringDataProvider.cs
 wwwroot\imagens\atomgest- Prioritária Horizontal Cores (positiva.svg
 wwwroot\imagens\close_20dp_E8EAED_FILL0_wght400_GRAD0_opsz20.svg
+wwwroot\imagens\colegasicon.png
 wwwroot\imagens\default.png
+wwwroot\imagens\empresaicon.png
 wwwroot\imagens\financeiro.PNG
 wwwroot\imagens\i-docs-text.svg
 wwwroot\imagens\i-excel.svg
