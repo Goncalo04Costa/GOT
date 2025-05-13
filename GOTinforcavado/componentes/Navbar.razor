@@ -43,7 +43,28 @@
 
     <div class="bottom-zone">
         <div class="user-info" style="display: flex;">
-            <div class="avatar-ball"></div>
+            <div class="avatar-ball">
+                <div style="    font-size: 20px;
+    margin-top: 2px;
+    margin-left: 8px;
+    font-family: 'Poppins';
+    color: white;">
+
+                    @* display: flex
+                    ;
+                    /* align-items: center; */
+                    font-size: 20px;
+                    /* margin-top: 2px; */
+                    /* margin-left: 8px; */
+                    font-family: 'Poppins';
+                    color: white;
+                    align-content: center;
+                    justify-content: center;
+                    flex-direction: row;
+                    } *@
+                @utilizador.Nome?.Substring(0, 1)
+                </div>
+            </div>
             <div style="margin-left: 8px; display: flex; flex-direction: column;">
                 <span class="user-name">@utilizador.Nome</span>
                 <span class="company">@utilizador.Empresa?.Nome</span>

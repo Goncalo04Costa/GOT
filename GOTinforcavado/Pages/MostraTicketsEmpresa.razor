@@ -18,7 +18,7 @@
 @inject AuthenticationStateProvider AuthenticationStateProvider
 @using DevExpress.Blazor
 @using DevExpress.Blazor.Grid
-
+@inject IJSRuntime JSRuntime
 
 @* <Cabecalho imagem="false" botoes="Cabecalho.Botoes.Novo" />
  *@
@@ -39,6 +39,7 @@
                 }
             </MudPaper>
         </MudPopover>
+
         <MudPopover Target="Topico" Open="@isTopicoPopoverOpen">
             <MudPaper Class="popover-container">
                 <MudButton Variant="Variant.Text" Color="Color.Primary" Style="color: #19235699;" OnClick="() => FiltrarPorTopico(null)">
@@ -52,16 +53,19 @@
                 }
             </MudPaper>
         </MudPopover>
+
         <button id="departamentoButton" class="Departamento" @onclick="ToggleDepartamentoPopover">
             <span class="material-symbols-outlined">apps</span>
             Departamento
             <span class="material-symbols-outlined">arrow_drop_down</span>
         </button>
-        <button class="Topico" @onclick="ToggleTopicoPopover">
+
+        <button id="Topico" class="Topico" @onclick="ToggleTopicoPopover">
             <span class="material-symbols-outlined">help</span>
-            Topico
+            Tópico
             <span class="material-symbols-outlined">arrow_drop_down</span>
         </button>
+
         <div class="ButtonsRight">
             <button class="button @(visualizacaoAtual == Visualizacao.Tabela ? "ButtonPressed" : "")"
                     @onclick="() => MudarVisualizacao(Visualizacao.Tabela)">
@@ -75,10 +79,14 @@
                     @onclick="() => MudarVisualizacao(Visualizacao.Cards)">
                 <span class="material-symbols-outlined">dashboard</span>
             </button>
+            <button class="button @(visualizacaoAtual == Visualizacao.Grafico ? "ButtonPressed" : "")"
+                    @onclick="() => MudarVisualizacao(Visualizacao.Grafico)">
+                <span class="material-symbols-outlined">bar_chart</span>
+            </button>
+
         </div>
-
-
     </div>
+
     @if (isLoading)
     {
         <div class="loading-message">Aguarde, a carregar tickets...</div>
@@ -91,18 +99,18 @@
                 <HeaderContent>
                     <MudTh>ID</MudTh>
                     <MudTh>Assunto</MudTh>
-                    <MudTh>Data de Criacao</MudTh>
+                    <MudTh>Data de Criação</MudTh>
                     <MudTh>Departamento</MudTh>
-                    <MudTh>Topico</MudTh>
+                    <MudTh>Tópico</MudTh>
                     <MudTh>Estado</MudTh>
                     <MudTh>Ações</MudTh>
                 </HeaderContent>
                 <RowTemplate Context="ticket">
                     <MudTd DataLabel="ID">@ticket.codigo</MudTd>
                     <MudTd DataLabel="Assunto">@ticket.Assunto</MudTd>
-                    <MudTd DataLabel="Data de Criacao">@ticket.Data.ToString("dd/MM/yyyy")</MudTd>
+                    <MudTd DataLabel="Data de Criação">@ticket.Data.ToString("dd/MM/yyyy")</MudTd>
                     <MudTd DataLabel="Departamento">@ticket.Departamento</MudTd>
-                    <MudTd DataLabel="Topico">@ticket.TipoTicket</MudTd>
+                    <MudTd DataLabel="Tópico">@ticket.TipoTicket</MudTd>
                     <MudTd DataLabel="Estado">
                         <MudChip T="string" Class="@ObterClasseEstado(ticket.Estadodoticket)">
                             @ticket.Estadodoticket
@@ -117,7 +125,6 @@
                 </PagerContent>
             </MudTable>
         }
-
         else if (visualizacaoAtual == Visualizacao.Lista)
         {
             <MudList T="string" Class="no-padding">
@@ -133,7 +140,8 @@
                                 <div style="display:flex; flex-direction:row; gap:8px">
                                     <div class="noscards">
                                         @ticket.Departamento
-                                    </div> <div class="noscards">
+                                    </div>
+                                    <div class="noscards">
                                         @ticket.TipoTicket
                                     </div>
                                     <span class="estado-badge @ObterClasseEstado(ticket.Estadodoticket)">
@@ -152,8 +160,6 @@
                     </MudListItem>
                 }
             </MudList>
-
-
         }
         else if (visualizacaoAtual == Visualizacao.Cards)
         {
@@ -181,21 +187,33 @@
                                     @ticket.TipoTicket
                                 </div>
                             </div>
-
                         </MudCardContent>
                     </MudCard>
                 }
             </div>
+        }
+        else if (visualizacaoAtual == Visualizacao.Grafico)
+        {
+
+            <MudPaper Class="mud-paper p-4">
+                <MudText Typo="Typo.h6">Distribuição de Tickets por Departamento</MudText>
+                <MudChart ChartType="ChartType.Bar"
+                          ChartSeries="@SeriesPorDepartamento"
+                          XAxisLabels="@Departamentos.ToArray()"
+                          Width="100%"
+                          Height="350px" />
+
+            </MudPaper>
+
+
 
         }
+
     }
 </div>
 
-<Navbar SelectedItemId="4" />
+<Navbar SelectedItemId="3" />
 
-
-@* <Rodape />
-<Cookies /> *@
 
 @code {
     private List<Ticket> GridData = new();
@@ -206,6 +224,23 @@
     private bool isDepartamentoPopoverOpen = false;
     private bool isTopicoPopoverOpen = false;
     private Visualizacao visualizacaoAtual = Visualizacao.Tabela;
+    private string userEmail;
+    private List<ChartSeries> SeriesPorDepartamento = new();
+
+    // Variáveis para armazenar os dados do utilizador logado
+    private string empresaId;
+
+    private void InicializarDadosGrafico()
+    {
+        var dados = Departamentos.Select(dep =>
+            GridData.Count(ticket => ticket.Departamento == dep)
+        ).ToArray();
+
+        SeriesPorDepartamento = new List<ChartSeries>
+        {
+            new ChartSeries { Name = "Tickets", Data = dados.Select(d => (double)d).ToArray() }
+        };
+    }
 
     private void MudarVisualizacao(Visualizacao novaVisualizacao)
     {
@@ -216,38 +251,72 @@
     {
         Tabela,
         Lista,
-        Cards
+        Cards,
+        Grafico
     }
-
 
     protected override async Task OnInitializedAsync()
     {
-        TodosTickets = await TicketService.GetTicketsAsync();
-        GridData = new List<Ticket>(TodosTickets);
-        Departamentos = TodosTickets
-     .Select(t => t.Departamento != null ? t.Departamento : "")
-     .Distinct()
-     .ToList();
+        // Obtém o e-mail do utilizador a partir do sessionStorage
+        userEmail = await JSRuntime.InvokeAsync<string>("sessionStorage.getItem", "userEmail");
 
+        if (!string.IsNullOrEmpty(userEmail))
+        {
+            // Carrega o utilizador logado com base no e-mail
+            var utilizadorLogado = await UtilizadorService.GetUtilizadorByEmailAsync(userEmail);
 
-        Topicos = TodosTickets
-            .Select(t => t.TipoTicket != null ? t.TipoTicket : "")
-            .Distinct()
-            .ToList();
+            // Obtém o EmpresaId do utilizador logado
+            empresaId = utilizadorLogado.EmpresaId.ToString();
 
-        isLoading = false;
+            // Carrega todos os tickets
+            TodosTickets = await TicketService.GetTicketsAsync();
+
+            // Filtra os tickets da mesma empresa
+            TodosTickets = TodosTickets.Where(t => t.EmpresaId.ToString() == empresaId).ToList();
+
+            GridData = new List<Ticket>(TodosTickets);
+
+            Departamentos = TodosTickets
+                .Select(t => t.Departamento ?? "")
+                .Distinct()
+                .ToList();
+
+            Topicos = TodosTickets
+                .Select(t => t.TipoTicket ?? "")
+                .Distinct()
+                .ToList();
+
+            InicializarDadosGrafico(); // Atualiza o gráfico com base na nova filtragem
+
+            isLoading = false;
+        }
+    }
+
+    private int[] ObterTicketsPorDepartamento()
+    {
+        return Departamentos.Select(dep =>
+            GridData.Count(ticket => ticket.Departamento == dep)
+        ).ToArray();
     }
 
     private void FiltrarPorDepartamento(string departamento)
     {
-        GridData = departamento == null ? new List<Ticket>(TodosTickets) : TodosTickets.Where(t => t.Departamento == departamento).ToList();
+        GridData = departamento == null
+            ? new List<Ticket>(TodosTickets)
+            : TodosTickets.Where(t => t.Departamento == departamento).ToList();
+
         isDepartamentoPopoverOpen = false;
+        InicializarDadosGrafico(); // Atualiza o gráfico
     }
 
     private void FiltrarPorTopico(string topico)
     {
-        GridData = string.IsNullOrEmpty(topico) ? new List<Ticket>(TodosTickets) : TodosTickets.Where(t => t.TipoTicket == topico).ToList();
+        GridData = string.IsNullOrEmpty(topico)
+            ? new List<Ticket>(TodosTickets)
+            : TodosTickets.Where(t => t.TipoTicket == topico).ToList();
+
         isTopicoPopoverOpen = false;
+        InicializarDadosGrafico(); // Atualiza o gráfico
     }
 
     private void ToggleDepartamentoPopover()

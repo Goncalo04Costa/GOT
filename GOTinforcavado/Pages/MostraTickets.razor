@@ -197,9 +197,15 @@
 
             <MudPaper Class="mud-paper p-4">
                 <MudText Typo="Typo.h6">Distribuição de Tickets por Departamento</MudText>
-                <MudChart ChartType="ChartType.Bar" Labels="@Departamentos" T="int"
-                          Data="@(new int[][] { ObterTicketsPorDepartamento() })" />
+                <MudChart ChartType="ChartType.Bar"
+                          ChartSeries="@SeriesPorDepartamento"
+                          XAxisLabels="@Departamentos.ToArray()"
+                          Width="100%"
+                          Height="350px" />
+
             </MudPaper>
+
+
 
         }
 
@@ -219,6 +225,22 @@
     private bool isTopicoPopoverOpen = false;
     private Visualizacao visualizacaoAtual = Visualizacao.Tabela;
     private string userEmail;
+    private List<ChartSeries> SeriesPorDepartamento = new();
+
+
+    private void InicializarDadosGrafico()
+    {
+        var dados = Departamentos.Select(dep =>
+            GridData.Count(ticket => ticket.Departamento == dep)
+        ).ToArray();
+
+        SeriesPorDepartamento = new List<ChartSeries>
+    {
+        new ChartSeries { Name = "Tickets", Data = dados.Select(d => (double)d).ToArray() }
+    };
+    }
+
+
 
     private void MudarVisualizacao(Visualizacao novaVisualizacao)
     {
@@ -255,6 +277,8 @@
             .Distinct()
             .ToList();
 
+        InicializarDadosGrafico(); // <<=== ESSENCIAL
+
         isLoading = false;
     }
 
@@ -266,7 +290,6 @@
         ).ToArray();
     }
 
-
     private void FiltrarPorDepartamento(string departamento)
     {
         GridData = departamento == null
@@ -274,6 +297,7 @@
             : TodosTickets.Where(t => t.Departamento == departamento).ToList();
 
         isDepartamentoPopoverOpen = false;
+        InicializarDadosGrafico(); // <<=== ATUALIZA O GRÁFICO
     }
 
     private void FiltrarPorTopico(string topico)
@@ -283,7 +307,9 @@
             : TodosTickets.Where(t => t.TipoTicket == topico).ToList();
 
         isTopicoPopoverOpen = false;
+        InicializarDadosGrafico(); // <<=== ATUALIZA O GRÁFICO
     }
+
 
     private void ToggleDepartamentoPopover()
     {

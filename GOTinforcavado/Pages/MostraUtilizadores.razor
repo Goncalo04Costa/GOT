@@ -42,16 +42,12 @@
     {
         <MudTable Items="@GridData" Hover="true" Bordered="true" Striped="true">
             <HeaderContent>
-                <MudTh>ID</MudTh>
                 <MudTh>Nome</MudTh>
                 <MudTh>Email</MudTh>
-                <MudTh>Empresa</MudTh>
             </HeaderContent>
             <RowTemplate Context="utilizador">
-                <MudTd DataLabel="ID">@utilizador.Id</MudTd>
                 <MudTd DataLabel="Nome">@utilizador.Nome</MudTd>
                 <MudTd DataLabel="Email">@utilizador.Email</MudTd>
-                <MudTd DataLabel="Empresa">@utilizador.EmpresaId</MudTd>
             </RowTemplate>
         </MudTable>
     }

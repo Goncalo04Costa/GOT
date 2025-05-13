@@ -244,6 +244,11 @@
         "IsRequired": false
       },
       {
+        "Name": "EmpresaId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
         "Name": "Estadodoticket",
         "Type": "System.String",
         "IsRequired": false

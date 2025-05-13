@@ -313,6 +313,10 @@
                       "$ref": "#/components/schemas/Ticket"
                     }
                   },
+                  "EmpresaId": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
                   "Estadodoticket": {
                     "$ref": "#/components/schemas/EstadoTicket"
                   },
@@ -396,6 +400,9 @@
                   "style": "form"
                 },
                 "Utilizador.Tickets": {
+                  "style": "form"
+                },
+                "EmpresaId": {
                   "style": "form"
                 },
                 "Estadodoticket": {
@@ -922,6 +929,10 @@
           },
           "utilizador": {
             "$ref": "#/components/schemas/Utilizador"
+          },
+          "empresaId": {
+            "type": "integer",
+            "format": "int32"
           },
           "estadodoticket": {
             "$ref": "#/components/schemas/EstadoTicket"

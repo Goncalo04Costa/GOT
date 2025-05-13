@@ -50,8 +50,9 @@ namespace Shared.models
         public string TipoTicket { get; set; }
 
         public int? UtilizadorId { get; set; }
-        public Utilizador Utilizador { get; set; } 
-     
+        public Utilizador Utilizador { get; set; }
+
+        public int EmpresaId { get; set; }  
         public EstadoTicket Estadodoticket { get; set; } = EstadoTicket.PorIniciar;
 
         
