@@ -18,7 +18,7 @@
 @inject AuthenticationStateProvider AuthenticationStateProvider
 @using DevExpress.Blazor
 @using DevExpress.Blazor.Grid
-
+@inject IJSRuntime JSRuntime
 
 @* <Cabecalho imagem="false" botoes="Cabecalho.Botoes.Novo" />
  *@
@@ -79,6 +79,11 @@
                     @onclick="() => MudarVisualizacao(Visualizacao.Cards)">
                 <span class="material-symbols-outlined">dashboard</span>
             </button>
+            <button class="button @(visualizacaoAtual == Visualizacao.Grafico ? "ButtonPressed" : "")"
+                    @onclick="() => MudarVisualizacao(Visualizacao.Grafico)">
+                <span class="material-symbols-outlined">bar_chart</span>
+            </button>
+
         </div>
     </div>
 
@@ -187,11 +192,22 @@
                 }
             </div>
         }
+        else if (visualizacaoAtual == Visualizacao.Grafico)
+        {
+
+            <MudPaper Class="mud-paper p-4">
+                <MudText Typo="Typo.h6">Distribuição de Tickets por Departamento</MudText>
+                <MudChart ChartType="ChartType.Bar" Labels="@Departamentos" T="int"
+                          Data="@(new int[][] { ObterTicketsPorDepartamento() })" />
+            </MudPaper>
+
+        }
+
     }
 </div>
 
 <Navbar SelectedItemId="3" />
-@inject IJSRuntime JSRuntime
+
 
 @code {
     private List<Ticket> GridData = new();
@@ -213,7 +229,8 @@
     {
         Tabela,
         Lista,
-        Cards
+        Cards,
+        Grafico
     }
 
     protected override async Task OnInitializedAsync()
@@ -240,6 +257,15 @@
 
         isLoading = false;
     }
+
+
+    private int[] ObterTicketsPorDepartamento()
+    {
+        return Departamentos.Select(dep =>
+            GridData.Count(ticket => ticket.Departamento == dep)
+        ).ToArray();
+    }
+
 
     private void FiltrarPorDepartamento(string departamento)
     {

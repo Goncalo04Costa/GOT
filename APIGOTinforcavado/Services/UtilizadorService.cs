@@ -1,4 +1,5 @@
-﻿using APIGOTinforcavado.Models;
+﻿using APIGOTinforcavado.Controllers;
+using APIGOTinforcavado.Models;
 using APIGOTinforcavado.Repositories;
 using Microsoft.AspNetCore.Identity.Data;
 using Microsoft.Data.SqlClient;
@@ -101,6 +102,24 @@ namespace APIGOTinforcavado.Services
                 throw new InvalidOperationException("Erro ao procurar os utilizadores.", ex);
             }
         }
+
+        public async Task<bool> UpdateUtilizadorByEmailAsync(UpdateUtilizadorRequest request)
+        {
+            var utilizador = await _utilizadorRepository.GetByEmailAsync(request.Email);
+            if (utilizador == null)
+                return false;
+
+            utilizador.Nome = request.Nome;
+
+            if (!string.IsNullOrWhiteSpace(request.Password))
+            {
+                utilizador.Password = request.Password; // sem hash
+            }
+
+            await _utilizadorRepository.UpdateByEmailAsync(utilizador);
+            return true;
+        }
+
 
         public async Task<List<Utilizador>> GetUtilizadoresByEmpresaIdAsync(int empresaId)
         {

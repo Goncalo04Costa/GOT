@@ -1,4 +1,5 @@
 ﻿@using GOTinforcavado.Services
+@using Shared.models
 @inject UtilizadorService UtilizadorService
 @inject NavigationManager NavigationManager
 @inject IJSRuntime JSRuntime
@@ -44,8 +45,8 @@
         <div class="user-info" style="display: flex;">
             <div class="avatar-ball"></div>
             <div style="margin-left: 8px; display: flex; flex-direction: column;">
-                <span class="user-name">Nome</span>
-                <span class="company">Inforcavado</span>
+                <span class="user-name">@utilizador.Nome</span>
+                <span class="company">@utilizador.Empresa?.Nome</span>
             </div>
         </div>
     </div>
@@ -58,16 +59,16 @@
         public string Icon { get; set; } = "";
         public string Label { get; set; } = "";
         public bool IsTop { get; set; }
-        public string? Route { get; set; }  
+        public string? Route { get; set; }
     }
 
     private List<MenuItem> MenuItems = new()
     {
         new() { Id = 1, Icon = "home", Label = "Início", IsTop = true, Route = "/paginainicialinterna" },
-        new() { Id = 2, Icon = "person", Label = "Minha Costa", IsTop = true },
+        new() { Id = 2, Icon = "person", Label = "Minha Costa", IsTop = true, Route="/editarperfil" },
         new() { Id = 3, Icon = "confirmation_number", Label = "Os Meus Tickets", IsTop = true, Route = "/MostraTikcets" },
         new() { Id = 4, Icon = "assignment", Label = "Pedidos da Empresa", IsTop = false, Route = "MostraTikcetsEmpresa" },
-        new() { Id = 5, Icon = "group", Label = "Colegas", IsTop = false , Route = "/MostraUtilizadores"}
+        new() { Id = 5, Icon = "group", Label = "Colegas", IsTop = false, Route = "/MostraUtilizadores" }
     };
 
     [Parameter]
@@ -76,7 +77,20 @@
     [Parameter]
     public EventCallback<int> SelectedItemIdChanged { get; set; }
 
-    private async void SelectItem(MenuItem item)
+    private Utilizador utilizador = new Utilizador();
+    private string userEmail = "";
+
+    protected override async Task OnInitializedAsync()
+    {
+        userEmail = await JSRuntime.InvokeAsync<string>("sessionStorage.getItem", "userEmail");
+
+        if (!string.IsNullOrEmpty(userEmail))
+        {
+            utilizador = await UtilizadorService.GetUtilizadorByEmailAsync(userEmail);
+        }
+    }
+
+    private async Task SelectItem(MenuItem item)
     {
         SelectedItemId = item.Id;
         await SelectedItemIdChanged.InvokeAsync(item.Id);
@@ -87,17 +101,13 @@
         }
     }
 
-    private async void Logout()
+    private async Task Logout()
     {
-        // Limpa o sessionStorage
         await JSRuntime.InvokeVoidAsync("sessionStorage.clear");
-
-        // Redireciona para a página inicial
         NavigationManager.NavigateTo("/");
     }
-
-   
 }
+
 
 
 

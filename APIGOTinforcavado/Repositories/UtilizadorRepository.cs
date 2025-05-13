@@ -45,6 +45,7 @@ namespace APIGOTinforcavado.Repositories
             }
         }
 
+
         // Obter utilizador por email
         public async Task<Utilizador?> GetByEmailAsync(string email)
         {
@@ -53,12 +54,28 @@ namespace APIGOTinforcavado.Repositories
                 if (string.IsNullOrWhiteSpace(email))
                     return null;
 
-                var sql = "SELECT * FROM Utilizadores WHERE Email = @Email";
+                var sql = @"
+            SELECT u.*, e.Id, e.Nome
+            FROM Utilizadores u
+            INNER JOIN Empresa e ON u.EmpresaId = e.Id
+            WHERE u.Email = @Email";
 
                 using (var connection = new SqlConnection(_connectionString))
                 {
                     connection.Open();
-                    return await connection.QueryFirstOrDefaultAsync<Utilizador>(sql, new { Email = email });
+
+                    var utilizador = await connection.QueryAsync<Utilizador, Empresa, Utilizador>(
+                        sql,
+                        (u, e) =>
+                        {
+                            u.Empresa = e;
+                            return u;
+                        },
+                        new { Email = email },
+                        splitOn: "Id"
+                    );
+
+                    return utilizador.FirstOrDefault();
                 }
             }
             catch (Exception ex)
@@ -66,6 +83,7 @@ namespace APIGOTinforcavado.Repositories
                 throw new Exception("Erro ao procurar o utilizador pelo email.", ex);
             }
         }
+
 
         // Obter utilizador por ID
         public async Task<Utilizador?> GetByIdAsync(int id)
@@ -104,6 +122,36 @@ namespace APIGOTinforcavado.Repositories
                 throw new Exception("Erro ao procurar todos os utilizadores.", ex);
             }
         }
+
+
+        public async Task UpdateByEmailAsync(Utilizador utilizador)
+        {
+            try
+            {
+                var sql = @"
+            UPDATE Utilizadores
+            SET Nome = @Nome,
+                Password = @Password
+            WHERE Email = @Email;
+        ";
+
+                using (var connection = new SqlConnection(_connectionString))
+                {
+                    connection.Open();
+                    await connection.ExecuteAsync(sql, new
+                    {
+                        Nome = utilizador.Nome,
+                        Password = utilizador.Password,
+                        Email = utilizador.Email
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro ao atualizar o utilizador pelo email.", ex);
+            }
+        }
+
 
         public async Task<List<Utilizador>> GetByEmpresaIdAsync(int empresaId)
         {

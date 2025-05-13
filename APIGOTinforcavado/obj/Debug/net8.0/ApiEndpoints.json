@@ -378,6 +378,22 @@
   },
   {
     "ContainingType": "APIGOTinforcavado.Controllers.UtilizadorController",
+    "Method": "UpdateUtilizador",
+    "RelativePath": "api/Utilizador",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "APIGOTinforcavado.Controllers.UpdateUtilizadorRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIGOTinforcavado.Controllers.UtilizadorController",
     "Method": "GetUtilizadorById",
     "RelativePath": "api/Utilizador/{id}",
     "HttpMethod": "GET",
@@ -450,7 +466,7 @@
     "Parameters": [
       {
         "Name": "request",
-        "Type": "RegisterRequest",
+        "Type": "APIGOTinforcavado.Controllers.RegisterRequest",
         "IsRequired": true
       }
     ],

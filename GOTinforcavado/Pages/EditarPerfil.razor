@@ -1,0 +1,197 @@
+﻿@page "/editarperfil"
+@using GOTinforcavado.Services
+@using Shared.models
+@inject UtilizadorService UtilizadorService
+@inject NavigationManager NavigationManager
+@inject IJSRuntime JSRuntime
+
+
+
+<Navbar SelectedItemId="2" />
+
+
+<div class="EditarPerfil">
+
+    <div class="titulo">Editar Perfil</div>
+
+    <EditForm Model="@utilizador" OnValidSubmit="AtualizarPerfil">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+
+        <div class="input-container">
+            <label class="Text" for="email">Email</label>
+            <InputText @bind-Value="utilizador.Email" id="email" class="CaixaTextoIncial" />
+            <ValidationMessage For="@(() => utilizador.Email)" />
+        </div>
+
+        <div class="input-container">
+            <label class="Text" for="nome">Nome</label>
+            <InputText @bind-Value="utilizador.Nome" id="nome" class="CaixaTextoIncial" />
+            <ValidationMessage For="@(() => utilizador.Nome)" />
+        </div>
+
+        <div class="input-container">
+            <label class="Text" for="password">Password</label>
+            <InputText @bind-Value="utilizador.Password" type="password" id="password" class="CaixaTextoIncial" autocomplete="current-password" />
+            <ValidationMessage For="@(() => utilizador.Password)" />
+        </div>
+
+        <button type="submit" class="botaoEnviarTicket">Guardar</button>
+
+        @if (!string.IsNullOrEmpty(mensagemSucesso))
+        {
+            <p style="color: green; margin-top: 10px;">@mensagemSucesso</p>
+        }
+
+        @if (!string.IsNullOrEmpty(mensagemErro))
+        {
+            <p style="color: red; margin-top: 10px;">@mensagemErro</p>
+        }
+    </EditForm>
+</div>
+
+@code {
+    private Utilizador utilizador = new Utilizador();
+    private string mensagemSucesso;
+    private string mensagemErro;
+
+    private string userEmail;
+    private Utilizador utilizadorOriginal = new Utilizador(); // Armazena os dados originais
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            // Obtém o email do utilizador logado do sessionStorage
+            userEmail = await JSRuntime.InvokeAsync<string>("sessionStorage.getItem", "userEmail");
+
+            if (!string.IsNullOrEmpty(userEmail))
+            {
+                // Busca os dados do utilizador com base no email
+                utilizador = await UtilizadorService.GetUtilizadorByEmailAsync(userEmail);
+                utilizadorOriginal = utilizador; // Armazene o estado original do utilizador
+            }
+            else
+            {
+                mensagemErro = "Utilizador não logado.";
+            }
+        }
+        catch (Exception ex)
+        {
+            mensagemErro = "Erro ao carregar dados do utilizador.";
+        }
+    }
+
+    private async Task AtualizarPerfil()
+    {
+        bool sucesso = false;
+
+        try
+        {
+            if ((!string.IsNullOrWhiteSpace(utilizador.Email) && utilizador.Email != utilizadorOriginal.Email) ||
+                (!string.IsNullOrWhiteSpace(utilizador.Nome) && utilizador.Nome != utilizadorOriginal.Nome) ||
+                (!string.IsNullOrWhiteSpace(utilizador.Password) && utilizador.Password != utilizadorOriginal.Password))
+            {
+                sucesso = await UtilizadorService.AtualizarUtilizadorAsync(
+                    emailAtual: userEmail,
+                    novoEmail: utilizador.Email != utilizadorOriginal.Email ? utilizador.Email : null,
+                    nome: utilizador.Nome != utilizadorOriginal.Nome ? utilizador.Nome : null,
+                    password: utilizador.Password != utilizadorOriginal.Password ? utilizador.Password : null
+                );
+            }
+
+            if (sucesso)
+            {
+                mensagemSucesso = "Perfil atualizado com sucesso!";
+                mensagemErro = string.Empty;
+
+                // Atualizar o utilizadorOriginal após a alteração
+                utilizadorOriginal = new Utilizador
+                    {
+                        Email = utilizador.Email,
+                        Nome = utilizador.Nome,
+                        Password = utilizador.Password
+                    };
+            }
+            else
+            {
+                mensagemErro = "Erro ao atualizar o perfil.";
+                mensagemSucesso = string.Empty;
+            }
+        }
+        catch (Exception ex)
+        {
+            mensagemErro = $"Erro ao atualizar o perfil: {ex.Message}";
+            mensagemSucesso = string.Empty;
+        }
+    }
+
+}
+
+
+<style>
+    .EditarPerfil {
+        background-color: #FFFF;
+        padding: 86px 96px;
+        margin-left: 231px;
+    }
+
+    .titulo {
+        color: #12444A;
+        font-family: "Poppins";
+        font-size: 30px;
+        font-weight: 600;
+        padding-bottom: 16px;
+    }
+
+    .input-container {
+        margin-bottom: 20px;
+    }
+
+    .Text {
+        display: block;
+        margin-bottom: 6px;
+        font-weight: 500;
+        font-family: "Poppins";
+        color: #333;
+    }
+
+    .CaixaTextoIncial {
+        width: 100%;
+        padding: 10px 12px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 14px;
+        font-family: "Poppins";
+        box-sizing: border-box;
+        transition: border-color 0.3s;
+    }
+
+        .CaixaTextoIncial:focus {
+            outline: none;
+            border-color: #12444A;
+        }
+
+    .botaoEnviarTicket {
+        background-color: #12444A;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        font-family: "Poppins";
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+        .botaoEnviarTicket:hover {
+            background-color: #0f373e;
+        }
+
+    .validation-message {
+        color: red;
+        font-size: 12px;
+        margin-top: 4px;
+        font-family: "Poppins";
+    }
+</style>

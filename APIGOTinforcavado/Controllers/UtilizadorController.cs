@@ -36,6 +36,7 @@ namespace APIGOTinforcavado.Controllers
             var utilizadores = await _utilizadorService.GetUtilizadoresAsync();
             return Ok(utilizadores);
         }
+
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] RegisterRequest request)
         {
@@ -98,10 +99,21 @@ namespace APIGOTinforcavado.Controllers
             return Ok(utilizador);
         }
 
+        // PUT: api/utilizador
+        [HttpPut]
+        public async Task<IActionResult> UpdateUtilizador([FromBody] UpdateUtilizadorRequest request)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
 
+            var atualizado = await _utilizadorService.UpdateUtilizadorByEmailAsync(request);
+
+            if (!atualizado)
+                return NotFound(new { message = "Utilizador não encontrado." });
+
+            return NoContent();
+        }
     }
-}
-
 
     public class RegisterRequest
     {
@@ -117,4 +129,16 @@ namespace APIGOTinforcavado.Controllers
         public string Password { get; set; }
     }
 
+    public class UpdateUtilizadorRequest
+    {
+        [Required(ErrorMessage = "O email é obrigatório.")]
+        [EmailAddress(ErrorMessage = "Email inválido.")]
+        public string Email { get; set; }
 
+        [Required(ErrorMessage = "O nome é obrigatório.")]
+        public string Nome { get; set; }
+
+        [MinLength(6, ErrorMessage = "A senha deve ter no mínimo 6 caracteres.")]
+        public string? Password { get; set; }
+    }
+}

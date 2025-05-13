@@ -88,12 +88,66 @@ namespace GOTinforcavado.Services
                 throw new InvalidOperationException($"Erro ao obter utilizadores da empresa com ID {empresaId}", ex);
             }
         }
+        public async Task<bool> AtualizarUtilizadorAsync(string emailAtual, string novoEmail, string nome, string password)
+        {
+            var updateRequest = new UpdateUtilizadorRequest
+            {
+                EmailAtual = emailAtual,
+                NovoEmail = novoEmail,
+                Nome = nome,
+                Password = password
+            };
+
+            try
+            {
+                var response = await _httpClient.PutAsJsonAsync($"{BaseUrl}/update", updateRequest);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return true;
+                }
+                else
+                {
+                    var errorMessage = await response.Content.ReadAsStringAsync();
+                    Console.Error.WriteLine($"Erro ao atualizar o utilizador: {response.StatusCode}, {errorMessage}");
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.Error.WriteLine($"Erro ao atualizar o utilizador: {ex.Message}");
+                throw new InvalidOperationException("Erro ao atualizar o utilizador", ex);
+            }
+        }
+
+
+        public async Task<Utilizador> GetUtilizadorByEmailAsync(string email)
+        {
+            try
+            {
+                var url = $"{BaseUrl}/email/{email}";
+                return await _httpClient.GetFromJsonAsync<Utilizador>(url);
+            }
+            catch (Exception ex)
+            {
+                throw new InvalidOperationException($"Erro ao obter o utilizador com email {email}", ex);
+            }
+        }
+
 
     }
 
-    // Classe para a resposta do token
     public class TokenResponse
     {
         public string Token { get; set; }
     }
+
+    public class UpdateUtilizadorRequest
+    {
+        public string EmailAtual { get; set; }  
+        public string NovoEmail { get; set; }    
+        public string Nome { get; set; }        
+        public string Password { get; set; }     
+    }
+
 }

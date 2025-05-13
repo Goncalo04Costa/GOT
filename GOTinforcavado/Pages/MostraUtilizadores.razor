@@ -66,17 +66,39 @@
     private bool isLoading = true;
     private bool isUtilizadorPopoverOpen = false;
 
+    private Utilizador utilizadorLogado = new Utilizador();
+    private string userEmail = "";
+
+    [Inject] private IJSRuntime JSRuntime { get; set; }
+
     protected override async Task OnInitializedAsync()
     {
-        TodosUtilizadores = await UtilizadorService.GetUtilizadoresAsync();
-        GridData = new List<Utilizador>(TodosUtilizadores);
-        Utilizadores = TodosUtilizadores.ToList();
+        userEmail = await JSRuntime.InvokeAsync<string>("sessionStorage.getItem", "userEmail");
+
+        if (!string.IsNullOrEmpty(userEmail))
+        {
+            utilizadorLogado = await UtilizadorService.GetUtilizadorByEmailAsync(userEmail);
+
+            var todos = await UtilizadorService.GetUtilizadoresAsync();
+
+            // Filtra apenas os utilizadores da mesma empresa
+            TodosUtilizadores = todos
+                .Where(u => u.EmpresaId == utilizadorLogado.EmpresaId)
+                .ToList();
+
+            GridData = new List<Utilizador>(TodosUtilizadores);
+            Utilizadores = TodosUtilizadores.ToList();
+        }
+
         isLoading = false;
     }
 
     private void FiltrarPorUtilizador(Utilizador utilizador)
     {
-        GridData = utilizador == null ? new List<Utilizador>(TodosUtilizadores) : TodosUtilizadores.Where(u => u.Id == utilizador.Id).ToList();
+        GridData = utilizador == null
+            ? new List<Utilizador>(TodosUtilizadores)
+            : TodosUtilizadores.Where(u => u.Id == utilizador.Id).ToList();
+
         isUtilizadorPopoverOpen = false;
     }
 
@@ -85,6 +107,7 @@
         isUtilizadorPopoverOpen = !isUtilizadorPopoverOpen;
     }
 }
+
 
 
 

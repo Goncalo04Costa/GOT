@@ -23,7 +23,7 @@
             <img style="margin-left: 27%; max-width: 200px;" src="../imagens/ticketicon.png" alt="Icon ticket" />
             <p>Veja todos os  seus Tickets </p>
         </div>
-        <div class="info-box">
+        <div class="info-box" @onclick="NavegarParaEditarerfil" style="cursor:pointer;">
             <h3>A minha conta</h3>
             <img style="margin-left: 27%; max-width: 200px;" src="../imagens/profileicon.png" alt="Icon ticket" />
             <p>Veja as definições da sua conta</p>
@@ -45,6 +45,11 @@
     private void NavegarParaMostraTickets()
     {
         Navigation.NavigateTo("/MostraTikcets");
+    }
+
+    private void NavegarParaEditarerfil()
+    {
+        Navigation.NavigateTo("/editarperfil");
     }
 
     private void NavegarParaMostraColegas()
