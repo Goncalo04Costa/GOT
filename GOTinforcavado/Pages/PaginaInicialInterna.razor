@@ -1,5 +1,10 @@
 ﻿@page "/paginainicialinterna"
 @using GOTinforcavado.Auxiliar
+@using GOTinforcavado.Services
+@using Shared.models
+@inject NavigationManager Navigation
+@inject UtilizadorService UtilizadorService
+@inject IJSRuntime JSRuntime
 @inject NavigationManager Navigation
 
 <Navbar SelectedItemId="1" />
@@ -13,7 +18,7 @@
     </div>
 
     <div class="titulopi">
-        Bem vindo
+        Bem vindo @utilizador.Nome
     </div>
 
     <!-- Container de Boxes -->
@@ -42,6 +47,19 @@
 </div>
 
 @code {
+      private Utilizador utilizador = new Utilizador();
+    private string userEmail = "";
+
+    protected override async Task OnInitializedAsync()
+    {
+        userEmail = await JSRuntime.InvokeAsync<string>("sessionStorage.getItem", "userEmail");
+
+        if (!string.IsNullOrEmpty(userEmail))
+        {
+            utilizador = await UtilizadorService.GetUtilizadorByEmailAsync(userEmail);
+        }
+    }
+
     private void NavegarParaMostraTickets()
     {
         Navigation.NavigateTo("/MostraTikcets");
