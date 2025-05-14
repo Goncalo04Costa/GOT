@@ -156,8 +156,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>d91efd1zw6</Fingerprint>
-      <Integrity>H2+Bllx/n5yzWv5wJeYWxZCACBfNcGFc0v0c8guODyM=</Integrity>
+      <Fingerprint>fcwyxwk0x3</Fingerprint>
+      <Integrity>wab6QcleQrnjZ8wWHJgrpnQY7chL2oSCwDANQKBWSrM=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\imagens\empresaicon.png'))</OriginalItemSpec>

@@ -29,6 +29,9 @@ namespace APIGOTinforcavado.Controllers
             return Ok(utilizador);
         }
 
+
+
+     
         // GET: api/utilizador
         [HttpGet]
         public async Task<IActionResult> GetUtilizadores()

@@ -28,14 +28,14 @@
             <img style="margin-left: 27%; max-width: 200px;" src="../imagens/ticketicon.png" alt="Icon ticket" />
             <p>Veja todos os  seus Tickets </p>
         </div>
-        <div class="info-box" @onclick="NavegarParaEditarerfil" style="cursor:pointer;">
+      @*   <div class="info-box" @onclick="NavegarParaEditarerfil" style="cursor:pointer;">
             <h3>A minha conta</h3>
             <img style="margin-left: 27%; max-width: 200px;" src="../imagens/profileicon.png" alt="Icon ticket" />
             <p>Veja as definições da sua conta</p>
-        </div>
-        <div class="info-box" @onclick="NavegarParaMostraColegas" style="cursor:pointer;">
+        </div> *@
+        <div class="info-box" @onclick="NavegarParaTicketsEmpresa" style="cursor:pointer;">
             <h3>Tickets Empresa</h3>
-            <img style="margin-left: 27%; max-width: 200px;" src="../imagens/empresaicon.png" alt="Icon ticket" />
+            <img style="margin-left: 27%; max-width: 200px;" src="../wwwroot/imagens/empresaicon.png" alt="Icon ticket" />
             <p>Veja todos os seus colegas de trabalho </p>
         </div>
         <div class="info-box" @onclick="NavegarParaMostraColegas" style="cursor:pointer;">
@@ -70,6 +70,14 @@
         Navigation.NavigateTo("/editarperfil");
     }
 
+
+    private void NavegarParaTicketsEmpresa()
+    {
+        Navigation.NavigateTo("/MostraTikcetsEmpresa");
+    }
+
+
+    
     private void NavegarParaMostraColegas()
     {
         Navigation.NavigateTo("/MostraUtilizadores");

@@ -34,7 +34,7 @@
         }
     </div>
 
-    <hr class="linha" />
+
 
     <div class="logout-area" @onclick="Logout">
         <span class="material-symbols-outlined">logout</span>
@@ -67,7 +67,7 @@
             </div>
             <div style="margin-left: 8px; display: flex; flex-direction: column;">
                 <span class="user-name">@utilizador.Nome</span>
-                <span class="company">@utilizador.Empresa?.Nome</span>
+                <span class="company" style="font-size: 10px;">@utilizador.Empresa?.Nome</span>
             </div>
         </div>
     </div>
@@ -86,7 +86,7 @@
     private List<MenuItem> MenuItems = new()
     {
         new() { Id = 1, Icon = "home", Label = "Início", IsTop = true, Route = "/paginainicialinterna" },
-        new() { Id = 2, Icon = "person", Label = "Minha Costa", IsTop = true, Route="/editarperfil" },
+        // new() { Id = 2, Icon = "person", Label = "Minha Costa", IsTop = true, Route="/editarperfil" },
         new() { Id = 3, Icon = "confirmation_number", Label = "Os Meus Tickets", IsTop = true, Route = "/MostraTikcets" },
         new() { Id = 4, Icon = "assignment", Label = "Pedidos da Empresa", IsTop = false, Route = "MostraTikcetsEmpresa" },
         new() { Id = 5, Icon = "group", Label = "Colegas", IsTop = false, Route = "/MostraUtilizadores" }

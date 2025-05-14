@@ -227,8 +227,6 @@
     private string userEmail;
     private List<ChartSeries> SeriesPorDepartamento = new();
 
-    // Variáveis para armazenar os dados do utilizador logado
-    private string empresaId;
 
     private void InicializarDadosGrafico()
     {
@@ -237,10 +235,12 @@
         ).ToArray();
 
         SeriesPorDepartamento = new List<ChartSeries>
-        {
-            new ChartSeries { Name = "Tickets", Data = dados.Select(d => (double)d).ToArray() }
-        };
+    {
+        new ChartSeries { Name = "Tickets", Data = dados.Select(d => (double)d).ToArray() }
+    };
     }
+
+
 
     private void MudarVisualizacao(Visualizacao novaVisualizacao)
     {
@@ -257,40 +257,38 @@
 
     protected override async Task OnInitializedAsync()
     {
-        // Obtém o e-mail do utilizador a partir do sessionStorage
         userEmail = await JSRuntime.InvokeAsync<string>("sessionStorage.getItem", "userEmail");
 
-        if (!string.IsNullOrEmpty(userEmail))
-        {
-            // Carrega o utilizador logado com base no e-mail
-            var utilizadorLogado = await UtilizadorService.GetUtilizadorByEmailAsync(userEmail);
+        var utilizador = await UtilizadorService.GetUtilizadorByEmailAsync(userEmail);
 
-            // Obtém o EmpresaId do utilizador logado
-            empresaId = utilizadorLogado.EmpresaId.ToString();
+        // Obter a empresa do utilizador (assumindo que existe esse método)
+        var empresa = await UtilizadorService.GetEmpresaByIdAsync(utilizador.EmpresaId); // ou EmpresaService
 
-            // Carrega todos os tickets
-            TodosTickets = await TicketService.GetTicketsAsync();
+        // Obter todos os tickets
+        TodosTickets = await TicketService.GetTicketsAsync();
 
-            // Filtra os tickets da mesma empresa
-            TodosTickets = TodosTickets.Where(t => t.EmpresaId.ToString() == empresaId).ToList();
+        // Comparar por nome da empresa
+        TodosTickets = TodosTickets
+     .Where(t => t.Empresa?.Trim().ToLower().Contains(empresa.Nome?.Trim().ToLower()) == true)
+     .ToList();
 
-            GridData = new List<Ticket>(TodosTickets);
 
-            Departamentos = TodosTickets
-                .Select(t => t.Departamento ?? "")
-                .Distinct()
-                .ToList();
+        GridData = new List<Ticket>(TodosTickets);
 
-            Topicos = TodosTickets
-                .Select(t => t.TipoTicket ?? "")
-                .Distinct()
-                .ToList();
+        Departamentos = TodosTickets
+            .Select(t => t.Departamento ?? "")
+            .Distinct()
+            .ToList();
 
-            InicializarDadosGrafico(); // Atualiza o gráfico com base na nova filtragem
+        Topicos = TodosTickets
+            .Select(t => t.TipoTicket ?? "")
+            .Distinct()
+            .ToList();
 
-            isLoading = false;
-        }
+        InicializarDadosGrafico();
+        isLoading = false;
     }
+
 
     private int[] ObterTicketsPorDepartamento()
     {
@@ -306,7 +304,7 @@
             : TodosTickets.Where(t => t.Departamento == departamento).ToList();
 
         isDepartamentoPopoverOpen = false;
-        InicializarDadosGrafico(); // Atualiza o gráfico
+        InicializarDadosGrafico(); // <<=== ATUALIZA O GRÁFICO
     }
 
     private void FiltrarPorTopico(string topico)
@@ -316,8 +314,9 @@
             : TodosTickets.Where(t => t.TipoTicket == topico).ToList();
 
         isTopicoPopoverOpen = false;
-        InicializarDadosGrafico(); // Atualiza o gráfico
+        InicializarDadosGrafico(); // <<=== ATUALIZA O GRÁFICO
     }
+
 
     private void ToggleDepartamentoPopover()
     {

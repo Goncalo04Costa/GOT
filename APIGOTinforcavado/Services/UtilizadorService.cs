@@ -91,6 +91,22 @@ namespace APIGOTinforcavado.Services
             }
         }
 
+
+        public async Task<Utilizador> GetEmpresaByIdAsync(int id)
+        {
+            if (id <= 0)
+                throw new ArgumentException("ID inválido.", nameof(id));
+
+            try
+            {
+                return await _utilizadorRepository.GetEmpresaByIdAsync(id);
+            }
+            catch (Exception ex)
+            {
+                throw new InvalidOperationException($"Erro ao procurar a empresa com ID {id}.", ex);
+            }
+        }
+
         public async Task<List<Utilizador>> GetUtilizadoresAsync()
         {
             try

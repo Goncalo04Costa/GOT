@@ -104,6 +104,25 @@ namespace APIGOTinforcavado.Repositories
             }
         }
 
+        // Obter utilizador por ID
+        public async Task<Utilizador?> GetEmpresaByIdAsync(int id)
+        {
+            try
+            {
+                var sql = "SELECT * FROM Empresa WHERE Id = @Id";
+
+                using (var connection = new SqlConnection(_connectionString))
+                {
+                    connection.Open();
+                    return await connection.QueryFirstOrDefaultAsync<Utilizador>(sql, new { Id = id });
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro ao procurar a empresa pelo ID.", ex);
+            }
+        }
+
         // Obter todos os utilizadores
         public async Task<List<Utilizador>> GetAllAsync()
         {

@@ -182,6 +182,9 @@
     [Parameter]
     public string Departamento { get; set; } = string.Empty;
 
+    [Parameter]
+    public Utilizador utilizador { get; set; }
+
     private Ticket newTicket = new Ticket();
     private List<IBrowserFile> UploadedFiles = new();
     private List<(string Name, byte[] Data, string ContentType)> PastedFiles = new();
@@ -192,32 +195,27 @@
     private bool formFoiSubmetido = false;
     private EditContext editContext;
 
-    private bool IsFieldInvalid(string fieldName)
-{
-    var fieldIdentifier = new FieldIdentifier(newTicket, fieldName);
-    return editContext.GetValidationMessages(fieldIdentifier).Any();
-}
+    private string ErrorMessage { get; set; } = string.Empty;
 
-    protected override void OnParametersSet()
+    protected override async Task OnParametersSetAsync()
     {
         newTicket.TipoTicket = EscolhaInicial;
         newTicket.Departamento = Departamento;
 
+        if (utilizador?.Empresa?.Nome is not null)
+        {
+            newTicket.Empresa = utilizador.Empresa.Nome;
+        }
+
+        // Buscar email do sessionStorage
+        var userEmail = await JSRuntime.InvokeAsync<string>("sessionStorage.getItem", "userEmail");
+        newTicket.Email = userEmail ?? string.Empty;
     }
 
 
-    private string ErrorMessage { get; set; } = string.Empty;
-
-    private void ValidateNome()
+    protected override void OnInitialized()
     {
-        if (string.IsNullOrWhiteSpace(newTicket.Nome))
-        {
-            ErrorMessage = "O campo Nome é obrigatório.";
-        }
-        else
-        {
-            ErrorMessage = string.Empty; 
-        }
+        editContext = new EditContext(newTicket);
     }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -228,16 +226,22 @@
         }
     }
 
-
-    private bool IsValidEmail(string email)
+    private bool IsFieldInvalid(string fieldName)
     {
-        var emailRegex = new System.Text.RegularExpressions.Regex(@"^[^@\s]+@[^@\s]+\.[^@\s]+$");
-        return emailRegex.IsMatch(email);
+        var fieldIdentifier = new FieldIdentifier(newTicket, fieldName);
+        return editContext.GetValidationMessages(fieldIdentifier).Any();
     }
 
-    protected override void OnInitialized()
+    private void ValidateNome()
     {
-        editContext = new EditContext(newTicket);
+        if (string.IsNullOrWhiteSpace(newTicket.Nome))
+        {
+            ErrorMessage = "O campo Nome é obrigatório.";
+        }
+        else
+        {
+            ErrorMessage = string.Empty;
+        }
     }
 
     private string GetFieldCssClass(string fieldName)
@@ -252,6 +256,11 @@
         };
     }
 
+    private bool IsValidEmail(string email)
+    {
+        var emailRegex = new System.Text.RegularExpressions.Regex(@"^[^@\s]+@[^@\s]+\.[^@\s]+$");
+        return emailRegex.IsMatch(email);
+    }
 
     private async Task HandleSubmit()
     {
@@ -296,7 +305,7 @@
         }
 
         var url = $"/SucessoTicket/{newTicket.TipoTicket}/{newTicket.Departamento}" +
-             $"?nome={newTicket.Nome}&empresa={newTicket.Empresa}";
+                  $"?nome={newTicket.Nome}&empresa={newTicket.Empresa}";
 
         NavigationManager.NavigateTo(url);
         var response = await HttpClient.PostAsync("https://localhost:7111/api/Ticket", content);
@@ -304,6 +313,7 @@
 
     private void ToggleCheck1() => isCheck1Checked = !isCheck1Checked;
     private void ToggleCheck2() => isCheck2Checked = !isCheck2Checked;
+
     private string GetCheckmarkClass(bool isChecked) => isChecked ? "Checkmark checked" : "Checkmark";
 
     private void HandleFileSelected(InputFileChangeEventArgs e)
@@ -328,11 +338,9 @@
 
     private static string GenerateFixedRandomId(string input)
     {
-        using (var sha256 = SHA256.Create())
-        {
-            byte[] hashBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(input + DateTime.UtcNow.Ticks));
-            return BitConverter.ToString(hashBytes.Take(/* 8 */4).ToArray()).Replace("-", "").ToLower();
-        }
+        using var sha256 = SHA256.Create();
+        byte[] hashBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(input + DateTime.UtcNow.Ticks));
+        return BitConverter.ToString(hashBytes.Take(4).ToArray()).Replace("-", "").ToLower();
     }
 
     [JSInvokable]
@@ -343,6 +351,7 @@
         InvokeAsync(StateHasChanged);
     }
 }
+
 
 <script>
     window.registerPasteHandler = (dotNetRef) => {

@@ -30,6 +30,19 @@ namespace GOTinforcavado.Services
             }
         }
 
+        public async Task<Empresa> GetEmpresaByIdAsync(int id)
+        {
+            try
+            {
+                return await _httpClient.GetFromJsonAsync<Empresa>($"api/empresa/{id}");
+            }
+            catch (Exception ex)
+            {
+                throw new InvalidOperationException($"Erro ao obter a empresa com ID {id}", ex);
+            }
+        }
+
+
         // Método para obter todos os utilizadores
         public async Task<List<Utilizador>> GetUtilizadoresAsync()
         {
