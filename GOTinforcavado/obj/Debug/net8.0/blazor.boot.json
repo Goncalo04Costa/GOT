@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "GOTinforcavado",
   "resources": {
-    "hash": "sha256-efyst58hkq4T3JhKvnTLpr6BH8SiTMwKis5cvihVRPc=",
+    "hash": "sha256-NKJrDoS6YQykDXvdgoVmMBqZWSfopNsc44xRUr0y9I4=",
     "jsModuleNative": {
       "dotnet.native.js": "sha256-ftpNqtARtVNE8ku5eB/jXoklb41UQ+EutUHfwmbNTBY="
     },
@@ -284,11 +284,11 @@
       "netstandard.wasm": "sha256-VkjUtJ6DK5bFTc2JwwGHmQY3tBcNSC7zMSJXuiXcnJA=",
       "System.Private.CoreLib.wasm": "sha256-VIQEPUSb48N39LR+ncGDP5xU02xuRbyZU8MhMho26wQ=",
       "Shared.wasm": "sha256-m5Cpt7oGmwgeo5WjIGT5uUhKpOopmfofaNhg3w5TkNo=",
-      "GOTinforcavado.wasm": "sha256-uNBJ5AQdI48VJI6iju0jn5C9hx2Zd/ErOgFnHL+AsyM="
+      "GOTinforcavado.wasm": "sha256-hqAwKPYtGSJef9Xom1pMG0zEVNvlIvpvZVJtEgmqV9M="
     },
     "pdb": {
       "Shared.pdb": "sha256-rELk6x1VB5fa9MLR2Igrqv2R79MASgnAzbS3a01pJBs=",
-      "GOTinforcavado.pdb": "sha256-rTkzcc+tchjtP8vFFNhmZdHKLrYXf2m8Ai0NABo7qaU="
+      "GOTinforcavado.pdb": "sha256-eUmIvA+RlqZl4fSXRJAjr/+TCn+cak4N5kP/9B/Fof8="
     },
     "satelliteResources": {
       "cs": {

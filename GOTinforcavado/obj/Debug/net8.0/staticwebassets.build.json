@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "YM/IHLi5YU3EZ7e3mppzsrWNA3sjq/EwVA9qIomzXiQ=",
+  "Hash": "GqxCfLrL7Bg95oW725gzPlvXEvuPGepsHmkhiS++fEE=",
   "Source": "GOTinforcavado",
   "BasePath": "/",
   "Mode": "Root",
@@ -4714,8 +4714,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "WasmResource",
       "AssetTraitValue": "manifest",
-      "Fingerprint": "wx2k6l8cor",
-      "Integrity": "HPrwTHWjZjH/5Vx33L9Pe1Fb1Ms5LWRMSdFFMWC2nQQ=",
+      "Fingerprint": "2b8716hvqo",
+      "Integrity": "MpE9/Qk91lCSKEKpI9m6mqnHNhTwRYQP00CBaeJz5Ms=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "obj\\Debug\\net8.0\\blazor.boot.json"
@@ -5638,8 +5638,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "WasmResource",
       "AssetTraitValue": "symbol",
-      "Fingerprint": "jo236o7oik",
-      "Integrity": "rTkzcc+tchjtP8vFFNhmZdHKLrYXf2m8Ai0NABo7qaU=",
+      "Fingerprint": "9otxl0s1ik",
+      "Integrity": "eUmIvA+RlqZl4fSXRJAjr/+TCn+cak4N5kP/9B/Fof8=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "obj\\Debug\\net8.0\\GOTinforcavado.pdb"
@@ -5659,8 +5659,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "WasmResource",
       "AssetTraitValue": "runtime",
-      "Fingerprint": "srts7txtj7",
-      "Integrity": "uNBJ5AQdI48VJI6iju0jn5C9hx2Zd/ErOgFnHL+AsyM=",
+      "Fingerprint": "abnqk9tqqn",
+      "Integrity": "hqAwKPYtGSJef9Xom1pMG0zEVNvlIvpvZVJtEgmqV9M=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\gonca\\OneDrive\\Ambiente de Trabalho\\GOT\\GOT\\GOTinforcavado\\obj\\Debug\\net8.0\\webcil\\GOTinforcavado.wasm"
@@ -12491,7 +12491,7 @@
       "OriginalItemSpec": "C:\\Users\\gonca\\OneDrive\\Ambiente de Trabalho\\GOT\\GOT\\GOTinforcavado\\bin\\Debug\\net8.0\\wwwroot\\_framework\\System.Xml.XPath.XDocument.wasm"
     },
     {
-      "Identity": "C:\\Users\\gonca\\OneDrive\\Ambiente de Trabalho\\GOT\\GOT\\GOTinforcavado\\obj\\Debug\\net8.0\\compressed\\1uhyo0sdkw-jo236o7oik.gz",
+      "Identity": "C:\\Users\\gonca\\OneDrive\\Ambiente de Trabalho\\GOT\\GOT\\GOTinforcavado\\obj\\Debug\\net8.0\\compressed\\1uhyo0sdkw-9otxl0s1ik.gz",
       "SourceId": "GOTinforcavado",
       "SourceType": "Computed",
       "ContentRoot": "C:\\Users\\gonca\\OneDrive\\Ambiente de Trabalho\\GOT\\GOT\\GOTinforcavado\\obj\\Debug\\net8.0\\compressed\\",
@@ -12505,8 +12505,8 @@
       "RelatedAsset": "C:\\Users\\gonca\\OneDrive\\Ambiente de Trabalho\\GOT\\GOT\\GOTinforcavado\\bin\\Debug\\net8.0\\wwwroot\\_framework\\GOTinforcavado.pdb",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "2rtplq7n3s",
-      "Integrity": "3m+1Id98lw9/Z99kPFUKq9s3YDPwqxa9IJMNThpoVqM=",
+      "Fingerprint": "l7ba5odslj",
+      "Integrity": "v1PFvcyPVODDABHDDCGoN50eha9g5f/jF3jaTbb2U3s=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\gonca\\OneDrive\\Ambiente de Trabalho\\GOT\\GOT\\GOTinforcavado\\bin\\Debug\\net8.0\\wwwroot\\_framework\\GOTinforcavado.pdb"
@@ -16355,7 +16355,7 @@
       "OriginalItemSpec": "C:\\Users\\gonca\\OneDrive\\Ambiente de Trabalho\\GOT\\GOT\\GOTinforcavado\\bin\\Debug\\net8.0\\wwwroot\\_framework\\System.Diagnostics.TraceSource.wasm"
     },
     {
-      "Identity": "C:\\Users\\gonca\\OneDrive\\Ambiente de Trabalho\\GOT\\GOT\\GOTinforcavado\\obj\\Debug\\net8.0\\compressed\\lh48ge3804-srts7txtj7.gz",
+      "Identity": "C:\\Users\\gonca\\OneDrive\\Ambiente de Trabalho\\GOT\\GOT\\GOTinforcavado\\obj\\Debug\\net8.0\\compressed\\lh48ge3804-abnqk9tqqn.gz",
       "SourceId": "GOTinforcavado",
       "SourceType": "Computed",
       "ContentRoot": "C:\\Users\\gonca\\OneDrive\\Ambiente de Trabalho\\GOT\\GOT\\GOTinforcavado\\obj\\Debug\\net8.0\\compressed\\",
@@ -16369,8 +16369,8 @@
       "RelatedAsset": "C:\\Users\\gonca\\OneDrive\\Ambiente de Trabalho\\GOT\\GOT\\GOTinforcavado\\bin\\Debug\\net8.0\\wwwroot\\_framework\\GOTinforcavado.wasm",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "d8bjda8ao6",
-      "Integrity": "Y6ujQ+aIbXiQT7McKdVIu+P9sKTjjSuqHOYc59mNsVE=",
+      "Fingerprint": "xefsfm4khe",
+      "Integrity": "9/u+vDcxoNT7PpNAyKqbwi+LtnISKgy4g6LMsvf861Y=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\gonca\\OneDrive\\Ambiente de Trabalho\\GOT\\GOT\\GOTinforcavado\\bin\\Debug\\net8.0\\wwwroot\\_framework\\GOTinforcavado.wasm"
@@ -19484,7 +19484,7 @@
       "OriginalItemSpec": "C:\\Users\\gonca\\OneDrive\\Ambiente de Trabalho\\GOT\\GOT\\GOTinforcavado\\bin\\Debug\\net8.0\\wwwroot\\_framework\\System.Runtime.CompilerServices.Unsafe.wasm"
     },
     {
-      "Identity": "C:\\Users\\gonca\\OneDrive\\Ambiente de Trabalho\\GOT\\GOT\\GOTinforcavado\\obj\\Debug\\net8.0\\compressed\\z5h69tlmac-wx2k6l8cor.gz",
+      "Identity": "C:\\Users\\gonca\\OneDrive\\Ambiente de Trabalho\\GOT\\GOT\\GOTinforcavado\\obj\\Debug\\net8.0\\compressed\\z5h69tlmac-2b8716hvqo.gz",
       "SourceId": "GOTinforcavado",
       "SourceType": "Computed",
       "ContentRoot": "C:\\Users\\gonca\\OneDrive\\Ambiente de Trabalho\\GOT\\GOT\\GOTinforcavado\\obj\\Debug\\net8.0\\compressed\\",
@@ -19498,8 +19498,8 @@
       "RelatedAsset": "C:\\Users\\gonca\\OneDrive\\Ambiente de Trabalho\\GOT\\GOT\\GOTinforcavado\\bin\\Debug\\net8.0\\wwwroot\\_framework\\blazor.boot.json",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "bz2stz2g2f",
-      "Integrity": "6TjANirv9MSHuQnsKdqwVIQkMivmvpNQiMAQ1hpsHjM=",
+      "Fingerprint": "kzxb6l6inb",
+      "Integrity": "0JoPpqTUPdxZSrEFfU8l6qSZWdG2R5YCsSuJlsrNuEQ=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\gonca\\OneDrive\\Ambiente de Trabalho\\GOT\\GOT\\GOTinforcavado\\bin\\Debug\\net8.0\\wwwroot\\_framework\\blazor.boot.json"
@@ -29159,11 +29159,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"HPrwTHWjZjH/5Vx33L9Pe1Fb1Ms5LWRMSdFFMWC2nQQ=\""
+          "Value": "\"MpE9/Qk91lCSKEKpI9m6mqnHNhTwRYQP00CBaeJz5Ms=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 15 May 2025 09:47:52 GMT"
+          "Value": "Thu, 15 May 2025 11:43:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -29173,13 +29173,13 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-HPrwTHWjZjH/5Vx33L9Pe1Fb1Ms5LWRMSdFFMWC2nQQ="
+          "Value": "sha256-MpE9/Qk91lCSKEKpI9m6mqnHNhTwRYQP00CBaeJz5Ms="
         }
       ]
     },
     {
       "Route": "_framework/blazor.boot.json",
-      "AssetFile": "C:\\Users\\gonca\\OneDrive\\Ambiente de Trabalho\\GOT\\GOT\\GOTinforcavado\\obj\\Debug\\net8.0\\compressed\\z5h69tlmac-wx2k6l8cor.gz",
+      "AssetFile": "C:\\Users\\gonca\\OneDrive\\Ambiente de Trabalho\\GOT\\GOT\\GOTinforcavado\\obj\\Debug\\net8.0\\compressed\\z5h69tlmac-2b8716hvqo.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
@@ -29198,11 +29198,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"6TjANirv9MSHuQnsKdqwVIQkMivmvpNQiMAQ1hpsHjM=\""
+          "Value": "\"0JoPpqTUPdxZSrEFfU8l6qSZWdG2R5YCsSuJlsrNuEQ=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 15 May 2025 09:31:03 GMT"
+          "Value": "Thu, 15 May 2025 09:47:52 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -29222,19 +29222,19 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"HPrwTHWjZjH/5Vx33L9Pe1Fb1Ms5LWRMSdFFMWC2nQQ=\""
+          "Value": "W/\"MpE9/Qk91lCSKEKpI9m6mqnHNhTwRYQP00CBaeJz5Ms=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-HPrwTHWjZjH/5Vx33L9Pe1Fb1Ms5LWRMSdFFMWC2nQQ="
+          "Value": "sha256-MpE9/Qk91lCSKEKpI9m6mqnHNhTwRYQP00CBaeJz5Ms="
         }
       ]
     },
     {
       "Route": "_framework/blazor.boot.json.gz",
-      "AssetFile": "C:\\Users\\gonca\\OneDrive\\Ambiente de Trabalho\\GOT\\GOT\\GOTinforcavado\\obj\\Debug\\net8.0\\compressed\\z5h69tlmac-wx2k6l8cor.gz",
+      "AssetFile": "C:\\Users\\gonca\\OneDrive\\Ambiente de Trabalho\\GOT\\GOT\\GOTinforcavado\\obj\\Debug\\net8.0\\compressed\\z5h69tlmac-2b8716hvqo.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -29251,11 +29251,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"6TjANirv9MSHuQnsKdqwVIQkMivmvpNQiMAQ1hpsHjM=\""
+          "Value": "\"0JoPpqTUPdxZSrEFfU8l6qSZWdG2R5YCsSuJlsrNuEQ=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 15 May 2025 09:31:03 GMT"
+          "Value": "Thu, 15 May 2025 09:47:52 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -29273,7 +29273,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-6TjANirv9MSHuQnsKdqwVIQkMivmvpNQiMAQ1hpsHjM="
+          "Value": "sha256-0JoPpqTUPdxZSrEFfU8l6qSZWdG2R5YCsSuJlsrNuEQ="
         }
       ]
     },
@@ -35179,7 +35179,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "143068"
+          "Value": "142852"
         },
         {
           "Name": "Content-Type",
@@ -35187,11 +35187,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"rTkzcc+tchjtP8vFFNhmZdHKLrYXf2m8Ai0NABo7qaU=\""
+          "Value": "\"eUmIvA+RlqZl4fSXRJAjr/+TCn+cak4N5kP/9B/Fof8=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 15 May 2025 09:47:51 GMT"
+          "Value": "Thu, 15 May 2025 11:43:12 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -35201,13 +35201,13 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-rTkzcc+tchjtP8vFFNhmZdHKLrYXf2m8Ai0NABo7qaU="
+          "Value": "sha256-eUmIvA+RlqZl4fSXRJAjr/+TCn+cak4N5kP/9B/Fof8="
         }
       ]
     },
     {
       "Route": "_framework/GOTinforcavado.pdb",
-      "AssetFile": "C:\\Users\\gonca\\OneDrive\\Ambiente de Trabalho\\GOT\\GOT\\GOTinforcavado\\obj\\Debug\\net8.0\\compressed\\1uhyo0sdkw-jo236o7oik.gz",
+      "AssetFile": "C:\\Users\\gonca\\OneDrive\\Ambiente de Trabalho\\GOT\\GOT\\GOTinforcavado\\obj\\Debug\\net8.0\\compressed\\1uhyo0sdkw-9otxl0s1ik.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
@@ -35226,11 +35226,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"3m+1Id98lw9/Z99kPFUKq9s3YDPwqxa9IJMNThpoVqM=\""
+          "Value": "\"v1PFvcyPVODDABHDDCGoN50eha9g5f/jF3jaTbb2U3s=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 15 May 2025 09:31:01 GMT"
+          "Value": "Thu, 15 May 2025 09:47:51 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -35250,19 +35250,19 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"rTkzcc+tchjtP8vFFNhmZdHKLrYXf2m8Ai0NABo7qaU=\""
+          "Value": "W/\"eUmIvA+RlqZl4fSXRJAjr/+TCn+cak4N5kP/9B/Fof8=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-rTkzcc+tchjtP8vFFNhmZdHKLrYXf2m8Ai0NABo7qaU="
+          "Value": "sha256-eUmIvA+RlqZl4fSXRJAjr/+TCn+cak4N5kP/9B/Fof8="
         }
       ]
     },
     {
       "Route": "_framework/GOTinforcavado.pdb.gz",
-      "AssetFile": "C:\\Users\\gonca\\OneDrive\\Ambiente de Trabalho\\GOT\\GOT\\GOTinforcavado\\obj\\Debug\\net8.0\\compressed\\1uhyo0sdkw-jo236o7oik.gz",
+      "AssetFile": "C:\\Users\\gonca\\OneDrive\\Ambiente de Trabalho\\GOT\\GOT\\GOTinforcavado\\obj\\Debug\\net8.0\\compressed\\1uhyo0sdkw-9otxl0s1ik.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -35279,11 +35279,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"3m+1Id98lw9/Z99kPFUKq9s3YDPwqxa9IJMNThpoVqM=\""
+          "Value": "\"v1PFvcyPVODDABHDDCGoN50eha9g5f/jF3jaTbb2U3s=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 15 May 2025 09:31:01 GMT"
+          "Value": "Thu, 15 May 2025 09:47:51 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -35301,7 +35301,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-3m+1Id98lw9/Z99kPFUKq9s3YDPwqxa9IJMNThpoVqM="
+          "Value": "sha256-v1PFvcyPVODDABHDDCGoN50eha9g5f/jF3jaTbb2U3s="
         }
       ]
     },
@@ -35324,7 +35324,46 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"uNBJ5AQdI48VJI6iju0jn5C9hx2Zd/ErOgFnHL+AsyM=\""
+          "Value": "\"hqAwKPYtGSJef9Xom1pMG0zEVNvlIvpvZVJtEgmqV9M=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 15 May 2025 11:43:12 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-hqAwKPYtGSJef9Xom1pMG0zEVNvlIvpvZVJtEgmqV9M="
+        }
+      ]
+    },
+    {
+      "Route": "_framework/GOTinforcavado.wasm",
+      "AssetFile": "C:\\Users\\gonca\\OneDrive\\Ambiente de Trabalho\\GOT\\GOT\\GOTinforcavado\\obj\\Debug\\net8.0\\compressed\\lh48ge3804-abnqk9tqqn.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000012674111"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "78900"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"9/u+vDcxoNT7PpNAyKqbwi+LtnISKgy4g6LMsvf861Y=\""
         },
         {
           "Name": "Last-Modified",
@@ -35333,45 +35372,6 @@
         {
           "Name": "Cache-Control",
           "Value": "no-cache"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-uNBJ5AQdI48VJI6iju0jn5C9hx2Zd/ErOgFnHL+AsyM="
-        }
-      ]
-    },
-    {
-      "Route": "_framework/GOTinforcavado.wasm",
-      "AssetFile": "C:\\Users\\gonca\\OneDrive\\Ambiente de Trabalho\\GOT\\GOT\\GOTinforcavado\\obj\\Debug\\net8.0\\compressed\\lh48ge3804-srts7txtj7.gz",
-      "Selectors": [
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip",
-          "Quality": "0.000012673950"
-        }
-      ],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "78901"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"Y6ujQ+aIbXiQT7McKdVIu+P9sKTjjSuqHOYc59mNsVE=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Thu, 15 May 2025 09:31:02 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
         },
         {
           "Name": "Content-Encoding",
@@ -35387,19 +35387,19 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"uNBJ5AQdI48VJI6iju0jn5C9hx2Zd/ErOgFnHL+AsyM=\""
+          "Value": "W/\"hqAwKPYtGSJef9Xom1pMG0zEVNvlIvpvZVJtEgmqV9M=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-uNBJ5AQdI48VJI6iju0jn5C9hx2Zd/ErOgFnHL+AsyM="
+          "Value": "sha256-hqAwKPYtGSJef9Xom1pMG0zEVNvlIvpvZVJtEgmqV9M="
         }
       ]
     },
     {
       "Route": "_framework/GOTinforcavado.wasm.gz",
-      "AssetFile": "C:\\Users\\gonca\\OneDrive\\Ambiente de Trabalho\\GOT\\GOT\\GOTinforcavado\\obj\\Debug\\net8.0\\compressed\\lh48ge3804-srts7txtj7.gz",
+      "AssetFile": "C:\\Users\\gonca\\OneDrive\\Ambiente de Trabalho\\GOT\\GOT\\GOTinforcavado\\obj\\Debug\\net8.0\\compressed\\lh48ge3804-abnqk9tqqn.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -35408,7 +35408,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "78901"
+          "Value": "78900"
         },
         {
           "Name": "Content-Type",
@@ -35416,11 +35416,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"Y6ujQ+aIbXiQT7McKdVIu+P9sKTjjSuqHOYc59mNsVE=\""
+          "Value": "\"9/u+vDcxoNT7PpNAyKqbwi+LtnISKgy4g6LMsvf861Y=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 15 May 2025 09:31:02 GMT"
+          "Value": "Thu, 15 May 2025 09:47:51 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -35438,7 +35438,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-Y6ujQ+aIbXiQT7McKdVIu+P9sKTjjSuqHOYc59mNsVE="
+          "Value": "sha256-9/u+vDcxoNT7PpNAyKqbwi+LtnISKgy4g6LMsvf861Y="
         }
       ]
     },

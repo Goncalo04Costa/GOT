@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("APIGOTinforcavado")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1c3aaa72679c315708aa825f27dfe4c271da041e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0543c5827f6241661ba4ef5e74819b38d4672ff9")]
 [assembly: System.Reflection.AssemblyProductAttribute("APIGOTinforcavado")]
 [assembly: System.Reflection.AssemblyTitleAttribute("APIGOTinforcavado")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
