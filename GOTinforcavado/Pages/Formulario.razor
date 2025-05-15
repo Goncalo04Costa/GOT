@@ -174,16 +174,20 @@
 <Rodape />
 <Cookies />
 
-@code {
+@inject IJSRuntime JSRuntime
+@inject NavigationManager NavigationManager
+@inject HttpClient HttpClient
+@inject UtilizadorService UtilizadorService
 
+@code {
     [Parameter]
     public string EscolhaInicial { get; set; } = string.Empty;
 
     [Parameter]
     public string Departamento { get; set; } = string.Empty;
 
-    [Parameter]
-    public Utilizador utilizador { get; set; }
+    // Removido o parâmetro utilizador, pois vamos carregar diretamente aqui
+    private Utilizador utilizador = new();
 
     private Ticket newTicket = new Ticket();
     private List<IBrowserFile> UploadedFiles = new();
@@ -197,25 +201,26 @@
 
     private string ErrorMessage { get; set; } = string.Empty;
 
-    protected override async Task OnParametersSetAsync()
+    protected override async Task OnInitializedAsync()
     {
-        newTicket.TipoTicket = EscolhaInicial;
-        newTicket.Departamento = Departamento;
+        // Inicializa editContext com newTicket
+        editContext = new EditContext(newTicket);
 
-        if (utilizador?.Empresa?.Nome is not null)
+        // Tenta buscar o email do sessionStorage para carregar o utilizador
+        var userEmail = await JSRuntime.InvokeAsync<string>("sessionStorage.getItem", "userEmail");
+
+        if (!string.IsNullOrWhiteSpace(userEmail))
         {
-            newTicket.Empresa = utilizador.Empresa.Nome;
+            utilizador = await UtilizadorService.GetUtilizadorByEmailAsync(userEmail);
         }
 
-        // Buscar email do sessionStorage
-        var userEmail = await JSRuntime.InvokeAsync<string>("sessionStorage.getItem", "userEmail");
-        newTicket.Email = userEmail ?? string.Empty;
-    }
+        // Se tiver empresa, popula o newTicket
+        newTicket.Empresa = utilizador.Empresa?.Nome ?? string.Empty;
+        newTicket.Email = utilizador.Email ?? userEmail ?? string.Empty;
 
-
-    protected override void OnInitialized()
-    {
-        editContext = new EditContext(newTicket);
+        // Define tipo e departamento
+        newTicket.TipoTicket = EscolhaInicial;
+        newTicket.Departamento = Departamento;
     }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -266,6 +271,7 @@
     {
         formFoiSubmetido = true;
 
+        // Validação simples dos campos obrigatórios
         if (string.IsNullOrWhiteSpace(newTicket.Nome) ||
             string.IsNullOrWhiteSpace(newTicket.Empresa) ||
             string.IsNullOrWhiteSpace(newTicket.Email) ||
@@ -276,6 +282,7 @@
             return;
         }
 
+        // Gera código único
         newTicket.codigo = GenerateFixedRandomId(newTicket.Nome ?? "");
 
         using var content = new MultipartFormDataContent();
@@ -304,11 +311,20 @@
             content.Add(streamContent, "ficheiros", file.Name);
         }
 
-        var url = $"/SucessoTicket/{newTicket.TipoTicket}/{newTicket.Departamento}" +
-                  $"?nome={newTicket.Nome}&empresa={newTicket.Empresa}";
-
-        NavigationManager.NavigateTo(url);
+        // Primeiro faz post, depois navega (para garantir a chamada)
         var response = await HttpClient.PostAsync("https://localhost:7111/api/Ticket", content);
+
+        if (response.IsSuccessStatusCode)
+        {
+            var url = $"/SucessoTicket/{newTicket.TipoTicket}/{newTicket.Departamento}" +
+                      $"?nome={Uri.EscapeDataString(newTicket.Nome ?? "")}&empresa={Uri.EscapeDataString(newTicket.Empresa ?? "")}";
+            NavigationManager.NavigateTo(url);
+        }
+        else
+        {
+            // Tratar erro caso queiras
+            ErrorMessage = "Erro ao submeter o ticket. Tente novamente.";
+        }
     }
 
     private void ToggleCheck1() => isCheck1Checked = !isCheck1Checked;

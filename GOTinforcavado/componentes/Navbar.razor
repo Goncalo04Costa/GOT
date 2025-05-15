@@ -4,7 +4,6 @@
 @inject NavigationManager NavigationManager
 @inject IJSRuntime JSRuntime
 
-
 <div class="navbar">
     <img class="logoGOT" src="../imagens/Logo-growing-together-prioritario-cores.svg" alt="Logo GOT" />
 
@@ -34,8 +33,6 @@
         }
     </div>
 
-
-
     <div class="logout-area" @onclick="Logout">
         <span class="material-symbols-outlined">logout</span>
         <span class="logout-text">Sair</span>
@@ -44,25 +41,8 @@
     <div class="bottom-zone">
         <div class="user-info" style="display: flex;">
             <div class="avatar-ball">
-                <div style="    font-size: 20px;
-    margin-top: 2px;
-    margin-left: 8px;
-    font-family: 'Poppins';
-    color: white;">
-
-            @*         display: flex
-                    ;
-                    /* align-items: center; */
-                    font-size: 20px;
-                    /* margin-top: 2px; */
-                    /* margin-left: 8px; */
-                    font-family: 'Poppins';
-                    color: white;
-                    align-content: center;
-                    justify-content: center;
-                    flex-direction: row;
-                    } *@
-                @utilizador.Nome?.Substring(0, 1)
+                <div style="font-size: 20px; margin-top: 2px; margin-left: 8px; font-family: 'Poppins'; color: white;">
+                    @utilizador.Nome?.Substring(0, 1)
                 </div>
             </div>
             <div style="margin-left: 8px; display: flex; flex-direction: column;">
@@ -86,8 +66,8 @@
     private List<MenuItem> MenuItems = new()
     {
         new() { Id = 1, Icon = "home", Label = "Início", IsTop = true, Route = "/paginainicialinterna" },
-        // new() { Id = 2, Icon = "person", Label = "Minha Costa", IsTop = true, Route="/editarperfil" },
         new() { Id = 3, Icon = "confirmation_number", Label = "Os Meus Tickets", IsTop = true, Route = "/MostraTikcets" },
+        new() { Id = 6, Icon = "add_circle", Label = "Criar Ticket", IsTop = true, Route = "/MenuInicial" },
         new() { Id = 4, Icon = "assignment", Label = "Pedidos da Empresa", IsTop = false, Route = "MostraTikcetsEmpresa" },
         new() { Id = 5, Icon = "group", Label = "Colegas", IsTop = false, Route = "/MostraUtilizadores" }
     };
@@ -128,7 +108,6 @@
         NavigationManager.NavigateTo("/");
     }
 }
-
 
 
 

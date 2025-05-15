@@ -44,13 +44,6 @@
     </div>
 </div>
 
-@if (!string.IsNullOrEmpty(loggedInEmail))
-{
-    <div>
-        <h4>Bem-vindo, @loggedInEmail!</h4>
-    </div>
-}
-
 @code {
     private Credentials credentials = new();
     private LoginResponse loginResponse = new();
