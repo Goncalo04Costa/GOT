@@ -1,40 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\gonca\\OneDrive\\Ambiente de Trabalho\\GOT\\GOT\\GOTinforcavado\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{6D722FF2-9CEA-4E4E-8976-B3E12E8E0515}|GOTinforcavado.csproj|c:\\users\\gonca\\onedrive\\ambiente de trabalho\\got\\got\\gotinforcavado\\service\\comentarioservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6D722FF2-9CEA-4E4E-8976-B3E12E8E0515}|GOTinforcavado.csproj|solutionrelative:service\\comentarioservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6D722FF2-9CEA-4E4E-8976-B3E12E8E0515}|GOTinforcavado.csproj|c:\\users\\gonca\\onedrive\\ambiente de trabalho\\got\\got\\gotinforcavado\\service\\ticketservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6D722FF2-9CEA-4E4E-8976-B3E12E8E0515}|GOTinforcavado.csproj|solutionrelative:service\\ticketservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{904EAEAB-776F-4A7C-9BD5-A922FB3F9929}|..\\APIGOTinforcavado\\APIGOTinforcavado.csproj|c:\\users\\gonca\\onedrive\\ambiente de trabalho\\got\\got\\apigotinforcavado\\controllers\\comentariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{904EAEAB-776F-4A7C-9BD5-A922FB3F9929}|..\\APIGOTinforcavado\\APIGOTinforcavado.csproj|c:\\users\\gonca\\onedrive\\ambiente de trabalho\\got\\got\\apigotinforcavado\\controllers\\ticketcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{904EAEAB-776F-4A7C-9BD5-A922FB3F9929}|..\\APIGOTinforcavado\\APIGOTinforcavado.csproj|c:\\users\\gonca\\onedrive\\ambiente de trabalho\\got\\got\\apigotinforcavado\\services\\comentarioservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{904EAEAB-776F-4A7C-9BD5-A922FB3F9929}|..\\APIGOTinforcavado\\APIGOTinforcavado.csproj|c:\\users\\gonca\\onedrive\\ambiente de trabalho\\got\\got\\apigotinforcavado\\services\\ticketservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{904EAEAB-776F-4A7C-9BD5-A922FB3F9929}|..\\APIGOTinforcavado\\APIGOTinforcavado.csproj|c:\\users\\gonca\\onedrive\\ambiente de trabalho\\got\\got\\apigotinforcavado\\repositories\\comentariorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{904EAEAB-776F-4A7C-9BD5-A922FB3F9929}|..\\APIGOTinforcavado\\APIGOTinforcavado.csproj|c:\\users\\gonca\\onedrive\\ambiente de trabalho\\got\\got\\apigotinforcavado\\repositories\\ticketrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3CFBB8FC-9121-4F1A-9852-D263E8541126}|..\\Shared\\Shared.csproj|c:\\users\\gonca\\onedrive\\ambiente de trabalho\\got\\got\\shared\\models\\comentario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3CFBB8FC-9121-4F1A-9852-D263E8541126}|..\\Shared\\Shared.csproj|c:\\users\\gonca\\onedrive\\ambiente de trabalho\\got\\got\\shared\\models\\utilizador.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -42,7 +9,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -59,136 +26,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ComentarioService.cs",
-              "DocumentMoniker": "C:\\Users\\gonca\\OneDrive\\Ambiente de Trabalho\\GOT\\GOT\\GOTinforcavado\\Service\\ComentarioService.cs",
-              "RelativeDocumentMoniker": "Service\\ComentarioService.cs",
-              "ToolTip": "C:\\Users\\gonca\\OneDrive\\Ambiente de Trabalho\\GOT\\GOT\\GOTinforcavado\\Service\\ComentarioService.cs",
-              "RelativeToolTip": "Service\\ComentarioService.cs",
-              "ViewState": "AgIAABsAAAAAAAAAAAAqwCsAAAAmAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-15T12:01:07.182Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ComentarioController.cs",
-              "DocumentMoniker": "C:\\Users\\gonca\\OneDrive\\Ambiente de Trabalho\\GOT\\GOT\\APIGOTinforcavado\\Controllers\\ComentarioController.cs",
-              "RelativeDocumentMoniker": "..\\APIGOTinforcavado\\Controllers\\ComentarioController.cs",
-              "ToolTip": "C:\\Users\\gonca\\OneDrive\\Ambiente de Trabalho\\GOT\\GOT\\APIGOTinforcavado\\Controllers\\ComentarioController.cs",
-              "RelativeToolTip": "..\\APIGOTinforcavado\\Controllers\\ComentarioController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-15T12:00:15.36Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "TicketController.cs",
-              "DocumentMoniker": "C:\\Users\\gonca\\OneDrive\\Ambiente de Trabalho\\GOT\\GOT\\APIGOTinforcavado\\Controllers\\TicketController.cs",
-              "RelativeDocumentMoniker": "..\\APIGOTinforcavado\\Controllers\\TicketController.cs",
-              "ToolTip": "C:\\Users\\gonca\\OneDrive\\Ambiente de Trabalho\\GOT\\GOT\\APIGOTinforcavado\\Controllers\\TicketController.cs",
-              "RelativeToolTip": "..\\APIGOTinforcavado\\Controllers\\TicketController.cs",
-              "ViewState": "AgIAAEYAAAAAAAAAAAAAAGsAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-15T12:00:01.017Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ComentarioService.cs",
-              "DocumentMoniker": "C:\\Users\\gonca\\OneDrive\\Ambiente de Trabalho\\GOT\\GOT\\APIGOTinforcavado\\Services\\ComentarioService.cs",
-              "RelativeDocumentMoniker": "..\\APIGOTinforcavado\\Services\\ComentarioService.cs",
-              "ToolTip": "C:\\Users\\gonca\\OneDrive\\Ambiente de Trabalho\\GOT\\GOT\\APIGOTinforcavado\\Services\\ComentarioService.cs",
-              "RelativeToolTip": "..\\APIGOTinforcavado\\Services\\ComentarioService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-15T11:59:36.434Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "TicketService.cs",
-              "DocumentMoniker": "C:\\Users\\gonca\\OneDrive\\Ambiente de Trabalho\\GOT\\GOT\\APIGOTinforcavado\\Services\\TicketService.cs",
-              "RelativeDocumentMoniker": "..\\APIGOTinforcavado\\Services\\TicketService.cs",
-              "ToolTip": "C:\\Users\\gonca\\OneDrive\\Ambiente de Trabalho\\GOT\\GOT\\APIGOTinforcavado\\Services\\TicketService.cs",
-              "RelativeToolTip": "..\\APIGOTinforcavado\\Services\\TicketService.cs",
-              "ViewState": "AgIAAMQAAAAAAAAAAAAAAOkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-15T11:59:24.572Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "ComentarioRepository.cs",
-              "DocumentMoniker": "C:\\Users\\gonca\\OneDrive\\Ambiente de Trabalho\\GOT\\GOT\\APIGOTinforcavado\\Repositories\\ComentarioRepository.cs",
-              "RelativeDocumentMoniker": "..\\APIGOTinforcavado\\Repositories\\ComentarioRepository.cs",
-              "ToolTip": "C:\\Users\\gonca\\OneDrive\\Ambiente de Trabalho\\GOT\\GOT\\APIGOTinforcavado\\Repositories\\ComentarioRepository.cs",
-              "RelativeToolTip": "..\\APIGOTinforcavado\\Repositories\\ComentarioRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAABAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-15T11:58:55.871Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "TicketRepository.cs",
-              "DocumentMoniker": "C:\\Users\\gonca\\OneDrive\\Ambiente de Trabalho\\GOT\\GOT\\APIGOTinforcavado\\Repositories\\TicketRepository.cs",
-              "RelativeDocumentMoniker": "..\\APIGOTinforcavado\\Repositories\\TicketRepository.cs",
-              "ToolTip": "C:\\Users\\gonca\\OneDrive\\Ambiente de Trabalho\\GOT\\GOT\\APIGOTinforcavado\\Repositories\\TicketRepository.cs",
-              "RelativeToolTip": "..\\APIGOTinforcavado\\Repositories\\TicketRepository.cs",
-              "ViewState": "AgIAAOAAAAAAAAAAAAAAwAYBAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-15T11:58:41.423Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "TicketService.cs",
-              "DocumentMoniker": "C:\\Users\\gonca\\OneDrive\\Ambiente de Trabalho\\GOT\\GOT\\GOTinforcavado\\Service\\TicketService.cs",
-              "RelativeDocumentMoniker": "Service\\TicketService.cs",
-              "ToolTip": "C:\\Users\\gonca\\OneDrive\\Ambiente de Trabalho\\GOT\\GOT\\GOTinforcavado\\Service\\TicketService.cs",
-              "RelativeToolTip": "Service\\TicketService.cs",
-              "ViewState": "AgIAAG4AAAAAAAAAAAAAwJQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-15T11:58:25.513Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Comentario.cs",
-              "DocumentMoniker": "C:\\Users\\gonca\\OneDrive\\Ambiente de Trabalho\\GOT\\GOT\\Shared\\models\\Comentario.cs",
-              "RelativeDocumentMoniker": "..\\Shared\\models\\Comentario.cs",
-              "ToolTip": "C:\\Users\\gonca\\OneDrive\\Ambiente de Trabalho\\GOT\\GOT\\Shared\\models\\Comentario.cs",
-              "RelativeToolTip": "..\\Shared\\models\\Comentario.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-15T11:56:25.714Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Utilizador.cs",
-              "DocumentMoniker": "C:\\Users\\gonca\\OneDrive\\Ambiente de Trabalho\\GOT\\GOT\\Shared\\models\\Utilizador.cs",
-              "RelativeDocumentMoniker": "..\\Shared\\models\\Utilizador.cs",
-              "ToolTip": "C:\\Users\\gonca\\OneDrive\\Ambiente de Trabalho\\GOT\\GOT\\Shared\\models\\Utilizador.cs",
-              "RelativeToolTip": "..\\Shared\\models\\Utilizador.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-15T11:56:03.836Z",
-              "EditorCaption": ""
             }
           ]
         }

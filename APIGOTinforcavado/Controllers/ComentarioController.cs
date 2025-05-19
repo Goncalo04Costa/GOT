@@ -26,7 +26,7 @@ namespace APIGOTinforcavado.Controllers
             return CreatedAtAction(nameof(GetComentarioById), new { id = createdComentario.id }, createdComentario);
         }
 
-        // Buscar comentário por ID
+        // Procura comentário por ID
         [HttpGet("{id}")]
         public async Task<IActionResult> GetComentarioById(int id)
         {
@@ -37,7 +37,7 @@ namespace APIGOTinforcavado.Controllers
             return Ok(comentario);
         }
 
-        // Buscar todos os comentários
+        // Procura todos os comentários
         [HttpGet]
         public async Task<IActionResult> GetAllComentarios()
         {
@@ -45,7 +45,7 @@ namespace APIGOTinforcavado.Controllers
             return Ok(comentarios);
         }
 
-        // Buscar comentários de um ticket específico
+        // Procura comentários de um ticket específico
         [HttpGet("por-ticket/{ticketId}")]
         public async Task<IActionResult> GetComentariosByTicketId(int ticketId)
         {

@@ -32,6 +32,8 @@ namespace APIGOTinforcavado
             builder.Services.AddScoped<JwtGenerator>();
             builder.Services.AddScoped<ChatBotMessagesRepository>();
             builder.Services.AddScoped<ChatBotMessagesService>();
+            builder.Services.AddScoped<ComentarioRepository>();
+            builder.Services.AddScoped<ComentarioService>();
 
             builder.Services.AddControllers().AddJsonOptions(options =>
             {

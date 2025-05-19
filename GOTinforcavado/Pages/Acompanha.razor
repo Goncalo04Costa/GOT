@@ -1,4 +1,4 @@
-﻿@page "/AcompanhaTicket"
+﻿@page "/AcompanhaTicket/{codigo}"
 @inject HttpClient HttpClient
 @using GOTinforcavado.Services
 @using Microsoft.AspNetCore.Components.Authorization
@@ -578,7 +578,9 @@
 
 @code {
     private bool isLoading = true;
-    private string codigo ="";
+    [Parameter]
+    public string codigo { get; set; } = "";
+
     private Ticket ticketEncontrado;
     private string erro;
     private string nomeUtilizador;

@@ -117,8 +117,13 @@
                         </MudChip>
                     </MudTd>
                     <MudTd>
-                        <MudIcon Icon="@Icons.Material.Filled.MailOutline" Style="color: #758A8A;" />
+                        <MudLink Href="@($"/AcompanhaTicket/{ticket.codigo}")" Style="color: none;">
+                            <MudIcon Icon="@Icons.Material.Filled.MailOutline" />
+                        </MudLink>
                     </MudTd>
+
+
+
                 </RowTemplate>
                 <PagerContent>
                     <MudTablePager PageSizeOptions="new int[] { 5, 10, 20, 50 }" />

@@ -43,7 +43,7 @@ namespace GOTinforcavado
             builder.Services.AddScoped<UtilizadorService>();
             builder.Services.AddScoped<NewsLetterService>();
             builder.Services.AddScoped<ChatBotService>();
-
+            builder.Services.AddScoped<ComentarioService>();
             builder.Services.AddOptions();
             builder.Services.AddAuthorizationCore();
             builder.Services.AddScoped<AuthenticationStateProvider, CustomAuthenticationStateProvider>();

@@ -103,6 +103,7 @@
                     <MudTh>Departamento</MudTh>
                     <MudTh>Tópico</MudTh>
                     <MudTh>Estado</MudTh>
+                    <MudTh>Ações</MudTh>
                 </HeaderContent>
                 <RowTemplate Context="ticket">
                     <MudTd DataLabel="ID">@ticket.codigo</MudTd>
@@ -114,6 +115,9 @@
                         <MudChip T="string" Class="@ObterClasseEstado(ticket.Estadodoticket)">
                             @ticket.Estadodoticket
                         </MudChip>
+                    </MudTd>
+                    <MudTd>
+                        <MudIcon Icon="@Icons.Material.Filled.MailOutline" Style="color: #758A8A;" />
                     </MudTd>
                 </RowTemplate>
                 <PagerContent>
@@ -143,6 +147,9 @@
                                     <span class="estado-badge @ObterClasseEstado(ticket.Estadodoticket)">
                                         @ticket.Estadodoticket
                                     </span>
+                                    <span class="material-symbols-outlined" style="color: #758A8A">
+                                        outgoing_mail
+                                    </span>
                                 </div>
                             </MudItem>
                             <MudItem xs="12" class="datacard" style="padding-top:8px; padding-bottom:8px">
@@ -164,6 +171,9 @@
                             <div class="cardtop">
                                 <span class="estado-badge @ObterClasseEstado(ticket.Estadodoticket)">
                                     @ticket.Estadodoticket
+                                </span>
+                                <span class="material-symbols-outlined" style="color: #758A8A">
+                                    outgoing_mail
                                 </span>
                             </div>
                             <div>@ticket.codigo</div>
@@ -194,9 +204,6 @@
                           Height="350px" />
 
             </MudPaper>
-
-
-
         }
 
     }
@@ -252,7 +259,7 @@
         var utilizador = await UtilizadorService.GetUtilizadorByEmailAsync(userEmail);
 
         // Obter a empresa do utilizador (assumindo que existe esse método)
-        var empresa = await UtilizadorService.GetEmpresaByIdAsync(utilizador.EmpresaId); // ou EmpresaService
+        var empresa = await UtilizadorService.GetEmpresaByIdAsync(utilizador.EmpresaId); 
 
         // Obter todos os tickets
         TodosTickets = await TicketService.GetTicketsAsync();
@@ -294,7 +301,7 @@
             : TodosTickets.Where(t => t.Departamento == departamento).ToList();
 
         isDepartamentoPopoverOpen = false;
-        InicializarDadosGrafico(); // <<=== ATUALIZA O GRÁFICO
+        InicializarDadosGrafico();
     }
 
     private void FiltrarPorTopico(string topico)
@@ -304,7 +311,7 @@
             : TodosTickets.Where(t => t.TipoTicket == topico).ToList();
 
         isTopicoPopoverOpen = false;
-        InicializarDadosGrafico(); // <<=== ATUALIZA O GRÁFICO
+        InicializarDadosGrafico(); 
     }
 
 

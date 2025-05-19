@@ -35,19 +35,26 @@ namespace GOTinforcavado.Services
             return comentarioCriado;
         }
 
-        // Buscar comentário por ID
         public async Task<Comentario?> GetComentarioByIdAsync(int id)
         {
-            return await _httpClient.GetFromJsonAsync<Comentario>($"{BaseUrl}/{id}");
+            try
+            {
+                var comentario = await _httpClient.GetFromJsonAsync<Comentario>($"{BaseUrl}/{id}");
+                return comentario;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Erro ao buscar comentário por ID: {id}. Detalhes: {ex.Message}", ex);
+            }
         }
 
-        // Buscar todos os comentários
+        // Procura todos os comentários
         public async Task<List<Comentario>> GetAllComentariosAsync()
         {
             return await _httpClient.GetFromJsonAsync<List<Comentario>>(BaseUrl) ?? new List<Comentario>();
         }
 
-        // Buscar comentários por ID do ticket
+        // Procura comentários por ID do ticket
         public async Task<List<Comentario>> GetComentariosByTicketIdAsync(int ticketId)
         {
             return await _httpClient.GetFromJsonAsync<List<Comentario>>($"{BaseUrl}/por-ticket/{ticketId}") ?? new List<Comentario>();
