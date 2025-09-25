@@ -28,14 +28,6 @@ O principal objetivo deste projeto é:
 
 ---
 
-## 🛠️ Tecnologias Utilizadas
-
-Durante o desenvolvimento do sistema foram exploradas e/ou utilizadas as seguintes tecnologias:
-
-- **Backend**: (C# .NET / Node.js / Outra tecnologia usada → substituir conforme o projeto real)  
-- **Frontend**: (React / Angular / Outra tecnologia usada → substituir conforme o projeto real)  
-- **Base de Dados**: (SQL Server / Firebase / Outra → substituir conforme o projeto real)  
-- **Outros**: (Swagger, Docker, etc. → se aplicável)  
 
 ---
 
